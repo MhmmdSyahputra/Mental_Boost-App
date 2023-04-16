@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:mentalboost/widgets/WidgetDokter.dart';
+import 'package:mentalboost/widgets/widgetBox.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -24,7 +25,7 @@ class HomeScreen extends StatelessWidget {
       body: ListView(
         children: [
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.all(15),
             child: Column(children: [
               Container(
                 child: Row(children: [
@@ -53,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                 ]),
               ),
               SizedBox(
-                height: 80,
+                height: 50,
               ),
               Container(
                 child: Row(children: [
@@ -62,14 +63,41 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Text(
                         "Populer",
-                        style: TextStyle(fontWeight: FontWeight.w400),
+                        style: TextStyle(fontWeight: FontWeight.w500),
                       )
                     ],
                   )),
                 ]),
               ),
               SizedBox(
-                height: 200,
+                height: 15,
+              ),
+              Container(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      WidgetBox(
+                        title: "Quiz Game",
+                        category: "Quiz",
+                        color: Colors.red,
+                      ),
+                      WidgetBox(
+                        title: "Stress & Kecemasan",
+                        category: "Meditasi",
+                        color: Colors.amber,
+                      ),
+                      WidgetBox(
+                        title: "Kesehatan Fisik",
+                        category: "Meditasi",
+                        color: Colors.green,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 50,
               ),
               Container(
                 child: Row(children: [
@@ -78,11 +106,14 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Text(
                         "Dokter Populer",
-                        style: TextStyle(fontWeight: FontWeight.w400),
+                        style: TextStyle(fontWeight: FontWeight.w500),
                       )
                     ],
                   )),
                 ]),
+              ),
+              SizedBox(
+                height: 15,
               ),
               Container(
                 child: Column(
@@ -98,15 +129,22 @@ class HomeScreen extends StatelessWidget {
                       fotoProfile:
                           "https://cdn.discordapp.com/attachments/1083786029435191356/1097039300157251635/image.png",
                       namaDokter: "dr. Putra, S.kom",
-                      status: false,
+                      status: true,
                       harga: "70000",
                     ),
                     WidgetDokter(
                       fotoProfile:
                           "https://cdn.discordapp.com/attachments/1083786029435191356/1097039583683821648/image.png",
                       namaDokter: "dr. Aldi, S.kom",
-                      status: true,
+                      status: false,
                       harga: "35000",
+                    ),
+                    WidgetDokter(
+                      fotoProfile:
+                          "https://cdn.discordapp.com/attachments/1083786029435191356/1097056903382700102/image.png",
+                      namaDokter: "dr. Filber, SI.kom",
+                      status: true,
+                      harga: "100000",
                     ),
                   ],
                 ),

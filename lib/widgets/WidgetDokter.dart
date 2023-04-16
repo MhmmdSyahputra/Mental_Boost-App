@@ -26,17 +26,29 @@ class _WidgetDokterState extends State<WidgetDokter> {
       padding: EdgeInsets.symmetric(vertical: 5),
       child: Container(
         padding: EdgeInsets.all(10),
-        color: Color.fromARGB(255, 243, 243, 243),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Color.fromARGB(255, 243, 243, 243),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 3,
+              blurRadius: 5,
+              offset: Offset(1, 1), // changes position of shadow
+            ),
+          ],
+        ),
         child: Row(
           children: [
             Container(
               width: 80,
+              height: 80,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(50),
-                child: Image.network(widget.fotoProfile),
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(widget.fotoProfile),
+                ),
               ),
             ),
             SizedBox(width: 10),
