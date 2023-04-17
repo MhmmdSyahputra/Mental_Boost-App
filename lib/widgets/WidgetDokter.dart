@@ -41,8 +41,8 @@ class _WidgetDokterState extends State<WidgetDokter> {
         child: Row(
           children: [
             Container(
-              width: 80,
-              height: 80,
+              width: 70,
+              height: 70,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
@@ -60,7 +60,7 @@ class _WidgetDokterState extends State<WidgetDokter> {
                     widget.namaDokter,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                      fontSize: 15,
                     ),
                   ),
                   SizedBox(height: 5),

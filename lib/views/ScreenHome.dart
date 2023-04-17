@@ -33,8 +33,9 @@ class HomeScreen extends StatelessWidget {
                       child: Row(
                     children: [
                       Text(
-                        greeting,
-                        style: TextStyle(fontWeight: FontWeight.w500),
+                        "${greeting},",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, fontSize: 17),
                       )
                     ],
                   )),
@@ -47,7 +48,8 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Text(
                         "Novita",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 17),
                       )
                     ],
                   )),

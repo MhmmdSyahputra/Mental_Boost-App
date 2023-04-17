@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/views/ScreenHome.dart';
+import 'package:mentalboost/views/ScreenMeditasi.dart';
 // import 'beranda.dart';
 // import 'profile.dart';
 // import 'upload.dart';
@@ -35,6 +36,7 @@ class _BottonNavMainState extends State<BottonNavMain> {
         body = HomeScreen();
         break;
       case 1:
+        body = MeditasiScreen();
         //body = SearchPage();
         break;
       case 2:
