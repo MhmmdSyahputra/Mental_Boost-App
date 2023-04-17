@@ -65,7 +65,7 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Text(
                         "Populer",
-                        style: TextStyle(fontWeight: FontWeight.w500),
+                        style: TextStyle(fontWeight: FontWeight.w600),
                       )
                     ],
                   )),
@@ -108,7 +108,7 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Text(
                         "Dokter Populer",
-                        style: TextStyle(fontWeight: FontWeight.w500),
+                        style: TextStyle(fontWeight: FontWeight.w600),
                       )
                     ],
                   )),

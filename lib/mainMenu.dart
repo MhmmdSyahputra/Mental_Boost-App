@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/views/ScreenHome.dart';
 import 'package:mentalboost/views/ScreenMeditasi.dart';
-// import 'beranda.dart';
-// import 'profile.dart';
-// import 'upload.dart';
+import 'package:mentalboost/views/ScreenQuiz.dart';
+import 'package:mentalboost/views/ScreenTips.dart';
 
 class BottonNavMain extends StatefulWidget {
   const BottonNavMain({super.key});
@@ -37,22 +36,22 @@ class _BottonNavMainState extends State<BottonNavMain> {
         break;
       case 1:
         body = MeditasiScreen();
-        //body = SearchPage();
         break;
       case 2:
-        // body = Upload();
+        body = QuizScreen();
         break;
       case 3:
         //body = NotificationPage();
         break;
       case 4:
-        // body = ProfilePage();
+        body = TipsScreen();
         break;
     }
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xFF4E37A9),
           toolbarHeight: 60,
           title: Row(
             children: [
@@ -72,9 +71,29 @@ class _BottonNavMainState extends State<BottonNavMain> {
               SizedBox(
                 width: 20,
               ),
-              Text("Novita")
+              Expanded(child: Text("Novita")),
             ],
           ),
+          actions: [
+            PopupMenuButton<MenuItem>(
+                onSelected: (value) {
+                  if (value == MenuItem.Profil) {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const MeditasiScreen(),
+                    ));
+                  } else if (value == MenuItem.Pengaturan) {
+                  } else if (value == MenuItem.Logout) {}
+                },
+                itemBuilder: (context) => [
+                      PopupMenuItem(
+                          value: MenuItem.Profil, child: Text("Profil")),
+                      PopupMenuItem(
+                          value: MenuItem.Pengaturan,
+                          child: Text("Pengaturan")),
+                      PopupMenuItem(
+                          value: MenuItem.Logout, child: Text("Logout")),
+                    ])
+          ],
         ),
         body: body,
         bottomNavigationBar: BottomNavigationBar(
@@ -110,4 +129,10 @@ class _BottonNavMainState extends State<BottonNavMain> {
       ),
     );
   }
+}
+
+enum MenuItem {
+  Profil,
+  Pengaturan,
+  Logout,
 }
