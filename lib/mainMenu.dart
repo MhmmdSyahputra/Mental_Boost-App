@@ -97,6 +97,7 @@ class _BottonNavMainState extends State<BottonNavMain> {
         ),
         body: body,
         bottomNavigationBar: BottomNavigationBar(
+          elevation: 10,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
