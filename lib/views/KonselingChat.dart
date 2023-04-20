@@ -120,8 +120,7 @@ Future<String> getOpenAIResponse(String input) async {
       Uri.parse('https://api.openai.com/v1/completions'),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization':
-            'Bearer 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' // Ganti dengan API Key Anda
+        'Authorization': 'Bearer APIKEY' // Ganti dengan API Key Anda
       },
       body:
           '{"prompt": "$input", "max_tokens": 60, "model": "text-davinci-003"}');
