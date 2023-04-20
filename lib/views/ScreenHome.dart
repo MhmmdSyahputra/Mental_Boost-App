@@ -80,19 +80,37 @@ class HomeScreen extends StatelessWidget {
                   child: Row(
                     children: [
                       WidgetBox(
+                        icon: Icon(
+                          Icons.gamepad_outlined,
+                          size: 40,
+                          color: Color(0xFFA800A6),
+                        ),
                         title: "Quiz Game",
                         category: "Quiz",
-                        color: Colors.red,
+                        color: Color(0xCCD800A6),
+                        displayCategory: true,
                       ),
                       WidgetBox(
+                        icon: Icon(
+                          Icons.sentiment_very_dissatisfied,
+                          size: 40,
+                          color: Color(0xFFFF6969),
+                        ),
                         title: "Stress & Kecemasan",
                         category: "Meditasi",
-                        color: Colors.amber,
+                        color: Color(0xCCFF9969),
+                        displayCategory: true,
                       ),
                       WidgetBox(
+                        icon: Icon(
+                          Icons.healing,
+                          size: 40,
+                          color: Color(0xFF576CBC),
+                        ),
                         title: "Kesehatan Fisik",
                         category: "Meditasi",
-                        color: Colors.green,
+                        color: Color(0xCC576CBC),
+                        displayCategory: true,
                       ),
                     ],
                   ),
