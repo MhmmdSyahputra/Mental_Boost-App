@@ -1,12 +1,26 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 class KonselingScreen extends StatelessWidget {
-  const KonselingScreen({super.key});
+  final List<String> quotes = [
+    "Bicaralah dengan seseorang yang bisa dipercaya, itu adalah salah satu terapi terbaik.",
+    "Saat kita tidak mampu merubah keadaan, yang bisa kita ubah hanyalah diri kita sendiri.",
+    "Kesulitan yang kita alami hari ini adalah kekuatan yang akan membentuk kita menjadi lebih kuat di masa depan.",
+    "Kesembuhan dimulai dengan keberanian untuk menghadapi masalah-masalah kita.",
+    "Jangan pernah meremehkan kekuatan sebuah obrolan.",
+    "Jika kamu ingin perubahan dalam hidupmu, ubahlah cara berpikirmu terlebih dahulu.",
+    "Kebahagiaan terbesar adalah ketika kamu merasa baik-baik saja tanpa harus membuktikan apapun kepada siapa pun.",
+    "Kita semua punya masalah, tetapi itu tidak berarti kita tidak punya solusi.",
+    "Menerima diri sendiri adalah awal dari segala kebahagiaan.",
+  ];
+  final Random random = Random();
 
   @override
   Widget build(BuildContext context) {
+    String randomQuote = quotes[random.nextInt(quotes.length)];
     return Scaffold(
       body: ListView(
         children: [
@@ -14,9 +28,51 @@ class KonselingScreen extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             child: Column(
               children: [
-                Container(
-                  child: Image.network(
-                      "https://plus.unsplash.com/premium_photo-1672292536183-ad3f774197d0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"),
+                Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    Container(
+                      height: 250,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image:
+                              AssetImage('assets/images/banner-konseling.png'),
+                        ),
+                      ),
+                    ),
+                    // Image.asset('assets/images/banner-konseling.png'),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: LinearGradient(
+                          begin: Alignment.bottomCenter,
+                          end: Alignment.topCenter,
+                          colors: [
+                            Colors.black.withOpacity(0.8),
+                            Colors.transparent,
+                          ],
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 100),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              bottom: 20, left: 5, right: 5),
+                          child: Text(
+                            randomQuote,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 30,
