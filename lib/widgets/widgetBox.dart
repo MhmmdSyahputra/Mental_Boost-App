@@ -35,9 +35,8 @@ class _WidgetBoxState extends State<WidgetBox> {
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 3,
+              spreadRadius: 1,
               blurRadius: 5,
-              offset: Offset(1, 1), // changes position of shadow
             ),
           ],
         ),

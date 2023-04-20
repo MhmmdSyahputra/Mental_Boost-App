@@ -36,9 +36,8 @@ class _WidgetQuizBoxState extends State<WidgetQuizBox> {
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 3,
+                      spreadRadius: 1,
                       blurRadius: 5,
-                      offset: Offset(1, 1), // changes position of shadow
                     ),
                   ],
                 ),

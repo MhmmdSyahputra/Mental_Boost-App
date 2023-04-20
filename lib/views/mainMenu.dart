@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/views/ScreenHome.dart';
+import 'package:mentalboost/views/ScreenKonseling.dart';
 import 'package:mentalboost/views/ScreenMeditasi.dart';
 import 'package:mentalboost/views/ScreenQuiz.dart';
 import 'package:mentalboost/views/ScreenTips.dart';
@@ -41,7 +42,7 @@ class _BottonNavMainState extends State<BottonNavMain> {
         body = QuizScreen();
         break;
       case 3:
-        //body = NotificationPage();
+        body = KonselingScreen();
         break;
       case 4:
         body = TipsScreen();
