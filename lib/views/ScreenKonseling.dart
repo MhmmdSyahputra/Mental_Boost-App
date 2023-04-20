@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:mentalboost/widgets/Widgetkonseling.dart';
 
 class KonselingScreen extends StatelessWidget {
   final List<String> quotes = [
@@ -100,73 +101,23 @@ class KonselingScreen extends StatelessWidget {
                     shrinkWrap: true,
                     crossAxisCount: 2,
                     childAspectRatio: 2,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                            decoration: BoxDecoration(
-                              color: Color(0xFFFFB200),
-                              borderRadius: BorderRadius.circular(15),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 1,
-                                  blurRadius: 5,
-                                ),
-                              ],
-                            ),
-                            padding: EdgeInsets.all(10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    "Pekerjaan",
-                                    maxLines: 2,
-                                    textAlign: TextAlign.center,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                )
-                              ],
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                            decoration: BoxDecoration(
-                              color: Color(0xFF40DFEF),
-                              borderRadius: BorderRadius.circular(15),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 1,
-                                  blurRadius: 5,
-                                ),
-                              ],
-                            ),
-                            padding: EdgeInsets.all(10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    "Pendidikan",
-                                    maxLines: 2,
-                                    textAlign: TextAlign.center,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                )
-                              ],
-                            )),
-                      ),
+                    children: <Widget>[
+                      Widgetkoseling(
+                          color: Color(0xCCFD841F), title: 'Pekerjaan'),
+                      Widgetkoseling(
+                          color: Color(0xCC4649FF), title: 'Pendidikan'),
+                      Widgetkoseling(
+                          color: Color(0xCCFEF5AC), title: 'Masalah Hidup'),
+                      Widgetkoseling(
+                          color: Color(0xCCA5F1E9), title: 'Keluarga'),
+                      Widgetkoseling(
+                          color: Color(0xCCA66CFF), title: 'Pola Makan'),
+                      Widgetkoseling(
+                          color: Color(0xCCF9D923), title: 'kecemasan'),
+                      Widgetkoseling(
+                          color: Color(0xCCFF78F0), title: 'Hubungan'),
+                      Widgetkoseling(
+                          color: Color(0xCCEB455F), title: 'Kecanduan'),
                     ],
                   ),
                 ),
