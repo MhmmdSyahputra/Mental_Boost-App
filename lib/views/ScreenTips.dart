@@ -22,7 +22,7 @@ class TipsScreen extends StatelessWidget {
                       child: Row(
                     children: [
                       Text(
-                        "Sebuah Tips Untuk mu",
+                        'Sebuah Tips Untuk mu',
                         style: TextStyle(
                             fontWeight: FontWeight.w600, fontSize: 17),
                       )
@@ -38,32 +38,28 @@ class TipsScreen extends StatelessWidget {
                   children: <Widget>[
                     WidgetTips(
                       id: 1,
-                      coverTips:
-                          'https://images.unsplash.com/photo-1612277795421-9bc7706a4a34?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGhlYWx0aGNhcmV8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60',
+                      coverTips: 'assets/images/tips/tips-1.png',
                       titleTips: 'Menjaga Kesehatan Mental Selama Pandemi',
                       contentTips: 'lorem ipsum',
                       categoryTips: 'Kesehatan',
                     ),
                     WidgetTips(
                       id: 2,
-                      coverTips:
-                          'https://o-cdf.sirclocdn.com/unsafe/o-cdn-cas.sirclocdn.com/parenting/images/memilih-mainan-untuk-anak.width-800.format-webp.webp',
+                      coverTips: 'assets/images/tips/tips-2.png',
                       titleTips: 'Tips Memilih Mainan Anak yang Aman dan Sehat',
                       contentTips: 'lorem ipsum',
                       categoryTips: 'Keluarga',
                     ),
                     WidgetTips(
                       id: 3,
-                      coverTips:
-                          'https://res.cloudinary.com/dk0z4ums3/image/upload/v1535594438/attached_image/menyiasati-insomnia.jpg',
+                      coverTips: 'assets/images/tips/tips-3.png',
                       titleTips: 'Tips Mengatasi Masalah Tidur atau Insomnia',
                       contentTips: 'lorem ipsum',
                       categoryTips: 'Kesehatan',
                     ),
                     WidgetTips(
                       id: 4,
-                      coverTips:
-                          'https://jisindonesia.com/asset/foto_berita/stress.jpg',
+                      coverTips: 'assets/images/tips/tips-4.png',
                       titleTips:
                           'Kiat Mengatasi Stres dan Kecemasan Secara Alami',
                       contentTips: 'lorem ipsum',
@@ -71,8 +67,7 @@ class TipsScreen extends StatelessWidget {
                     ),
                     WidgetTips(
                       id: 5,
-                      coverTips:
-                          'https://res.cloudinary.com/dk0z4ums3/image/upload/v1599022373/attached_image/cara-menjaga-kesehatan-mental-anak-yang-perlu-dipahami-orang-tua.jpg',
+                      coverTips: 'assets/images/tips/tips-5.png',
                       titleTips:
                           'Pentingnya Menjaga Kesehatan Mental Keluarga dalam Keseharian',
                       contentTips: 'lorem ipsum',

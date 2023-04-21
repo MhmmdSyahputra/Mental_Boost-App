@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -33,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                       child: Row(
                     children: [
                       Text(
-                        "${greeting},",
+                        '${greeting},',
                         style: TextStyle(
                             fontWeight: FontWeight.w600, fontSize: 17),
                       )
@@ -47,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                       child: Row(
                     children: [
                       Text(
-                        "Novita",
+                        'Novita',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 17),
                       )
@@ -64,7 +66,7 @@ class HomeScreen extends StatelessWidget {
                       child: Row(
                     children: [
                       Text(
-                        "Populer",
+                        'Populer',
                         style: TextStyle(fontWeight: FontWeight.w600),
                       )
                     ],
@@ -85,8 +87,8 @@ class HomeScreen extends StatelessWidget {
                           size: 40,
                           color: Color(0xFFA800A6),
                         ),
-                        title: "Quiz Game",
-                        category: "Quiz",
+                        title: 'Quiz Game',
+                        category: 'Quiz',
                         color: Color(0xCCD800A6),
                         displayCategory: true,
                       ),
@@ -96,8 +98,8 @@ class HomeScreen extends StatelessWidget {
                           size: 40,
                           color: Color(0xFFFF6969),
                         ),
-                        title: "Stress & Kecemasan",
-                        category: "Meditasi",
+                        title: 'Stress & Kecemasan',
+                        category: 'Meditasi',
                         color: Color(0xCCFF9969),
                         displayCategory: true,
                       ),
@@ -107,8 +109,8 @@ class HomeScreen extends StatelessWidget {
                           size: 40,
                           color: Color(0xFF576CBC),
                         ),
-                        title: "Kesehatan Fisik",
-                        category: "Meditasi",
+                        title: 'Kesehatan Fisik',
+                        category: 'Meditasi',
                         color: Color(0xCC576CBC),
                         displayCategory: true,
                       ),
@@ -125,7 +127,7 @@ class HomeScreen extends StatelessWidget {
                       child: Row(
                     children: [
                       Text(
-                        "Dokter Populer",
+                        'Dokter Populer',
                         style: TextStyle(fontWeight: FontWeight.w600),
                       )
                     ],
@@ -139,32 +141,28 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     WidgetDokter(
-                      fotoProfile:
-                          "https://cdn.discordapp.com/attachments/1083786029435191356/1097026345814458418/image.png",
-                      namaDokter: "dr Tiara S.Pd",
-                      status: true,
-                      harga: "40000",
+                      fotoProfile: 'assets/images/dokter/dokter-1.png',
+                      namaDokter: 'dr Tiara S.Pd',
+                      status: randomBool(),
+                      harga: '40000',
                     ),
                     WidgetDokter(
-                      fotoProfile:
-                          "https://cdn.discordapp.com/attachments/1083786029435191356/1097039300157251635/image.png",
-                      namaDokter: "dr. Putra, S.kom",
-                      status: true,
-                      harga: "70000",
+                      fotoProfile: 'assets/images/dokter/dokter-2.png',
+                      namaDokter: 'dr. Putra, S.kom',
+                      status: randomBool(),
+                      harga: '70000',
                     ),
                     WidgetDokter(
-                      fotoProfile:
-                          "https://cdn.discordapp.com/attachments/1083786029435191356/1097039583683821648/image.png",
-                      namaDokter: "dr. Aldi, S.kom",
-                      status: false,
-                      harga: "35000",
+                      fotoProfile: 'assets/images/dokter/dokter-3.png',
+                      namaDokter: 'dr. Aldi, S.kom',
+                      status: randomBool(),
+                      harga: '35000',
                     ),
                     WidgetDokter(
-                      fotoProfile:
-                          "https://cdn.discordapp.com/attachments/1083786029435191356/1097056903382700102/image.png",
-                      namaDokter: "dr. Filber, SI.kom",
-                      status: true,
-                      harga: "100000",
+                      fotoProfile: 'assets/images/dokter/dokter-4.png',
+                      namaDokter: 'dr. Filber, SI.kom',
+                      status: randomBool(),
+                      harga: '100000',
                     ),
                   ],
                 ),
@@ -175,4 +173,9 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+bool randomBool() {
+  final random = Random();
+  return random.nextInt(2) == 0;
 }

@@ -45,7 +45,7 @@ class _WidgetTipsState extends State<WidgetTips> {
                 borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(widget.coverTips),
+                  image: AssetImage(widget.coverTips),
                 ),
               ),
             ),

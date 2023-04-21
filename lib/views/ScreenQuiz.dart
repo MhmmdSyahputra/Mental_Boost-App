@@ -20,7 +20,7 @@ class QuizScreen extends StatelessWidget {
                       child: Row(
                     children: [
                       Text(
-                        "Quiz Penenang Untuk mu",
+                        'Quiz Penenang Untuk mu',
                         style: TextStyle(
                             fontWeight: FontWeight.w600, fontSize: 17),
                       )
@@ -36,41 +36,36 @@ class QuizScreen extends StatelessWidget {
                   children: <Widget>[
                     WidgetQuizBox(
                       idQuiz: 1,
-                      coverQuiz:
-                          "https://images.unsplash.com/photo-1634128221889-82ed6efebfc3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bGFuZ3VhZ2V8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
-                      titleQuiz: "Quiz Bahasa",
-                      descripsiQuiz: "Kosakata, tata bahasa, dan literatur",
+                      coverQuiz: 'assets/images/quiz/quiz-1.png',
+                      titleQuiz: 'Quiz Bahasa',
+                      descripsiQuiz: 'Kosakata, tata bahasa, dan literatur',
                     ),
                     WidgetQuizBox(
                       idQuiz: 2,
-                      coverQuiz:
-                          "https://images.unsplash.com/photo-1618590067824-5ba32ca76ce9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGVyc29uYWxpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
-                      titleQuiz: "Kuiz Kepribadian",
-                      descripsiQuiz: "mempelajari tentang diri mereka sendiri",
+                      coverQuiz: 'assets/images/quiz/quiz-2.png',
+                      titleQuiz: 'Kuiz Kepribadian',
+                      descripsiQuiz: 'mempelajari tentang diri mereka sendiri',
                     ),
                     WidgetQuizBox(
                       idQuiz: 3,
-                      coverQuiz:
-                          "https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8ZmlsbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-                      titleQuiz: "Kuiz Film dan TV",
+                      coverQuiz: 'assets/images/quiz/quiz-3.png',
+                      titleQuiz: 'Kuiz Film dan TV',
                       descripsiQuiz:
-                          "topik seperti karakter, sutradara, dan penghargaan.",
+                          'topik seperti karakter, sutradara, dan penghargaan.',
                     ),
                     WidgetQuizBox(
                       idQuiz: 4,
-                      coverQuiz:
-                          "https://images.unsplash.com/photo-1477233534935-f5e6fe7c1159?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fG11c2ljfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
-                      titleQuiz: "Kuiz Musik",
+                      coverQuiz: 'assets/images/quiz/quiz-4.png',
+                      titleQuiz: 'Kuiz Musik',
                       descripsiQuiz:
-                          "topik seperti artis, genre, dan sejarah musik.",
+                          'topik seperti artis, genre, dan sejarah musik.',
                     ),
                     WidgetQuizBox(
                       idQuiz: 5,
-                      coverQuiz:
-                          "https://images.unsplash.com/photo-1553481187-be93c21490a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Z2FtZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-                      titleQuiz: "Kuiz Game",
+                      coverQuiz: 'assets/images/quiz/quiz-5.png',
+                      titleQuiz: 'Kuiz Game',
                       descripsiQuiz:
-                          "topik seperti karakter, plot, dan permainan video.",
+                          'topik seperti karakter, plot, dan permainan video.',
                     ),
                   ],
                 ),

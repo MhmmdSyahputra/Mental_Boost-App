@@ -50,7 +50,7 @@ class _WidgetQuizBoxState extends State<WidgetQuizBox> {
                         borderRadius: BorderRadius.circular(10),
                         image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: NetworkImage(widget.coverQuiz),
+                          image: AssetImage(widget.coverQuiz),
                         ),
                       ),
                     ),

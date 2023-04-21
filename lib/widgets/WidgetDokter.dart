@@ -46,7 +46,7 @@ class _WidgetDokterState extends State<WidgetDokter> {
                 shape: BoxShape.circle,
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(widget.fotoProfile),
+                  image: AssetImage(widget.fotoProfile),
                 ),
               ),
             ),
