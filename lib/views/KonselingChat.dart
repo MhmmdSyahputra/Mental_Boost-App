@@ -123,7 +123,7 @@ Future<String> getOpenAIResponse(String input) async {
         'Authorization': 'Bearer APIKEY' // Ganti dengan API Key Anda
       },
       body:
-          '{"prompt": "$input", "max_tokens": 60, "model": "text-davinci-003"}');
+          '{"prompt": "$input", "max_tokens": 100, "model": "text-davinci-003"}');
 
   if (response.statusCode == 200) {
     final jsonResponse = json.decode(response.body);
