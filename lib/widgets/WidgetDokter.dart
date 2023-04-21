@@ -4,12 +4,22 @@ import 'package:mentalboost/views/DetailDokter.dart';
 class WidgetDokter extends StatefulWidget {
   final String fotoProfile;
   final String namaDokter;
+  final String spesialis;
+  final String manyPasien;
+  final String pengalaman;
+  final String review;
+  final String biografi;
   final bool status;
   final String harga;
   const WidgetDokter({
     super.key,
     required this.fotoProfile,
     required this.namaDokter,
+    required this.spesialis,
+    required this.manyPasien,
+    required this.pengalaman,
+    required this.review,
+    required this.biografi,
     required this.status,
     required this.harga,
   });
@@ -27,11 +37,11 @@ class _WidgetDokterState extends State<WidgetDokter> {
             builder: (context) => DetailDokterScreen(
                 profil: widget.fotoProfile,
                 name: widget.namaDokter,
-                biografi: 'biografi',
-                spesialis: 'Psikologi',
-                manyPasien: '3000',
-                pengalaman: '6',
-                review: '3013')));
+                biografi: widget.biografi,
+                spesialis: widget.spesialis,
+                manyPasien: widget.manyPasien,
+                pengalaman: widget.pengalaman,
+                review: widget.review)));
       },
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 5),
@@ -98,11 +108,11 @@ class _WidgetDokterState extends State<WidgetDokter> {
                         builder: (context) => DetailDokterScreen(
                             profil: widget.fotoProfile,
                             name: widget.namaDokter,
-                            biografi: 'biografi',
-                            spesialis: 'Psikologi',
-                            manyPasien: '3000',
-                            pengalaman: '6',
-                            review: '3013')));
+                            biografi: widget.biografi,
+                            spesialis: widget.spesialis,
+                            manyPasien: widget.manyPasien,
+                            pengalaman: widget.pengalaman,
+                            review: widget.review)));
                   },
                   child: Text("Lihat"),
                   style: ElevatedButton.styleFrom(
