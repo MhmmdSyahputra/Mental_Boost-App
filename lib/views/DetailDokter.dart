@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:mentalboost/views/ScreenQuiz.dart';
+
+import 'AddSchedule.dart';
 
 class DetailDokterScreen extends StatefulWidget {
   final String profil;
@@ -43,7 +46,7 @@ class _DetailDokterScreenState extends State<DetailDokterScreen> {
                 alignment: Alignment.bottomCenter,
                 children: [
                   Container(
-                    height: 330,
+                    height: 310,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
@@ -246,7 +249,14 @@ class _DetailDokterScreenState extends State<DetailDokterScreen> {
                                     width: double
                                         .infinity, // membuat button full width
                                     child: ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        showModalBottomSheet(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AddScheduleScreen();
+                                          },
+                                        );
+                                      },
                                       child: Text(
                                         'BUAT JADWAL',
                                         style: TextStyle(
