@@ -36,7 +36,7 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.all(10),
+                  margin: EdgeInsets.symmetric(vertical: 10),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -94,7 +94,7 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.all(10),
+                  margin: EdgeInsets.symmetric(vertical: 10),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -154,7 +154,7 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.all(10),
+                  margin: EdgeInsets.symmetric(vertical: 10),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -183,7 +183,7 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
                                     children: timeOptions.map((time) {
                                       return ChoiceChip(
                                         padding: EdgeInsets.symmetric(
-                                            vertical: 10, horizontal: 15),
+                                            vertical: 10, horizontal: 10),
                                         label: Text(
                                           time,
                                           style: TextStyle(
