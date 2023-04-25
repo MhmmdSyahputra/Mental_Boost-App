@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:mentalboost/views/MySchedule.dart';
 import 'package:mentalboost/views/ScreenHome.dart';
 import 'package:mentalboost/views/ScreenKonseling.dart';
 import 'package:mentalboost/views/ScreenMeditasi.dart';
 import 'package:mentalboost/views/ScreenQuiz.dart';
 import 'package:mentalboost/views/ScreenTips.dart';
 
-class BottonNavMain extends StatefulWidget {
-  const BottonNavMain({super.key});
+class BottomNavMain extends StatefulWidget {
+  const BottomNavMain({super.key});
 
   @override
-  State<BottonNavMain> createState() => _BottonNavMainState();
+  State<BottomNavMain> createState() => _BottomNavMainState();
 }
 
-class _BottonNavMainState extends State<BottonNavMain> {
+class _BottomNavMainState extends State<BottomNavMain> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     Text('Home'),
@@ -76,7 +77,12 @@ class _BottonNavMainState extends State<BottonNavMain> {
             ],
           ),
           actions: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.event_note_sharp)),
+            IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => MyScheduleScreen()));
+                },
+                icon: Icon(Icons.event_note_sharp)),
             PopupMenuButton<MenuItem>(
                 onSelected: (value) {
                   if (value == MenuItem.Profil) {
