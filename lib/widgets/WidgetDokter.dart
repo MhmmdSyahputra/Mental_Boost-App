@@ -4,24 +4,24 @@ import 'package:mentalboost/views/DetailDokter.dart';
 class WidgetDokter extends StatefulWidget {
   final String fotoProfile;
   final String namaDokter;
+  final String price;
   final String spesialis;
   final String manyPasien;
   final String pengalaman;
   final String review;
   final String biografi;
   final bool status;
-  final String harga;
   const WidgetDokter({
     super.key,
     required this.fotoProfile,
     required this.namaDokter,
+    required this.price,
     required this.spesialis,
     required this.manyPasien,
     required this.pengalaman,
     required this.review,
     required this.biografi,
     required this.status,
-    required this.harga,
   });
 
   @override
@@ -37,6 +37,7 @@ class _WidgetDokterState extends State<WidgetDokter> {
             builder: (context) => DetailDokterScreen(
                 profil: widget.fotoProfile,
                 name: widget.namaDokter,
+                price: widget.price,
                 biografi: widget.biografi,
                 spesialis: widget.spesialis,
                 manyPasien: widget.manyPasien,
@@ -92,7 +93,7 @@ class _WidgetDokterState extends State<WidgetDokter> {
                     ),
                     SizedBox(height: 5),
                     Text(
-                      "RP ${widget.harga}",
+                      "RP ${widget.price}",
                       style: TextStyle(
                         color: Color(0xFF4E37A9),
                         fontWeight: FontWeight.bold,
@@ -108,6 +109,7 @@ class _WidgetDokterState extends State<WidgetDokter> {
                         builder: (context) => DetailDokterScreen(
                             profil: widget.fotoProfile,
                             name: widget.namaDokter,
+                            price: widget.price,
                             biografi: widget.biografi,
                             spesialis: widget.spesialis,
                             manyPasien: widget.manyPasien,

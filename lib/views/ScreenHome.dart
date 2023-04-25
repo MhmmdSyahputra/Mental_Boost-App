@@ -150,7 +150,7 @@ class HomeScreen extends StatelessWidget {
                       biografi:
                           'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores unde quasi deserunt quod ad cumque mollitia eaque vel adipisci incidunt minus perferendis sed odio, molestiae nam! Obcaecati ab ex vitae.',
                       status: randomBool(),
-                      harga: '40000',
+                      price: '40000',
                     ),
                     WidgetDokter(
                       fotoProfile: 'assets/images/dokter/dokter-2.png',
@@ -162,7 +162,7 @@ class HomeScreen extends StatelessWidget {
                       biografi:
                           'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores unde quasi deserunt quod ad cumque mollitia eaque vel adipisci incidunt minus perferendis sed odio, molestiae nam! Obcaecati ab ex vitae.',
                       status: randomBool(),
-                      harga: '100000',
+                      price: '100000',
                     ),
                     WidgetDokter(
                       fotoProfile: 'assets/images/dokter/dokter-3.png',
@@ -174,7 +174,7 @@ class HomeScreen extends StatelessWidget {
                       biografi:
                           'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores unde quasi deserunt quod ad cumque mollitia eaque vel adipisci incidunt minus perferendis sed odio, molestiae nam! Obcaecati ab ex vitae.',
                       status: randomBool(),
-                      harga: '65000',
+                      price: '65000',
                     ),
                     WidgetDokter(
                       fotoProfile: 'assets/images/dokter/dokter-4.png',
@@ -186,7 +186,7 @@ class HomeScreen extends StatelessWidget {
                       biografi:
                           'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores unde quasi deserunt quod ad cumque mollitia eaque vel adipisci incidunt minus perferendis sed odio, molestiae nam! Obcaecati ab ex vitae.',
                       status: randomBool(),
-                      harga: '80000',
+                      price: '80000',
                     ),
                   ],
                 ),

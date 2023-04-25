@@ -8,6 +8,7 @@ import 'AddSchedule.dart';
 class DetailDokterScreen extends StatefulWidget {
   final String profil;
   final String name;
+  final String price;
   final String biografi;
   final String spesialis;
   final String manyPasien;
@@ -18,6 +19,7 @@ class DetailDokterScreen extends StatefulWidget {
       {super.key,
       required this.profil,
       required this.name,
+      required this.price,
       required this.biografi,
       required this.spesialis,
       required this.manyPasien,
@@ -51,6 +53,19 @@ class _DetailDokterScreenState extends State<DetailDokterScreen> {
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: AssetImage(widget.profil),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 100,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color.fromARGB(0, 255, 239, 239),
+                          Color.fromARGB(250, 250, 250, 250).withOpacity(0.7)
+                        ],
                       ),
                     ),
                   ),
@@ -253,7 +268,11 @@ class _DetailDokterScreenState extends State<DetailDokterScreen> {
                                         showModalBottomSheet(
                                           context: context,
                                           builder: (BuildContext context) {
-                                            return AddScheduleScreen();
+                                            return AddScheduleScreen(
+                                                profil: widget.profil,
+                                                name: widget.name,
+                                                price: widget.price,
+                                                spesialis: widget.spesialis);
                                           },
                                         );
                                       },
