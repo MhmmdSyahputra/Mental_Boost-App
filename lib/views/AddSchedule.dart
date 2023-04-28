@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:date_time_picker/date_time_picker.dart';
+import 'package:mentalboost/model/ScheduleModel.dart';
+import 'package:mentalboost/providers/ScheduleProvider.dart';
+import 'package:mentalboost/views/MySchedule.dart';
+import 'package:mentalboost/views/ScreenSuccess.dart';
+import 'package:provider/provider.dart';
 
 class AddScheduleScreen extends StatefulWidget {
   final String profil;
@@ -171,7 +176,7 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
                                         children: genderOptions.map((gender) {
                                           return ChoiceChip(
                                             padding: EdgeInsets.symmetric(
-                                                vertical: 10, horizontal: 25),
+                                                vertical: 10, horizontal: 20),
                                             label: Text(
                                               gender,
                                               style: TextStyle(
@@ -354,11 +359,25 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
                                       .infinity, // membuat button full width
                                   child: ElevatedButton(
                                     onPressed: () {
-                                      // print(_nameInputController.text);
-                                      // print(_ageInputController.text);
-                                      // print(selectedGender);
-                                      // print(selectedTime);
-                                      // print(dateInput);
+                                      Provider.of<ScheduleProvider>(context,
+                                              listen: false)
+                                          .AddSchedule(ScheduleModel(
+                                              id: '1',
+                                              profilDokter: widget.profil,
+                                              nameDokter: widget.name,
+                                              priceDokter: widget.price,
+                                              spesialisDokter: widget.spesialis,
+                                              namePasien:
+                                                  _nameInputController.text,
+                                              agePasien:
+                                                  _ageInputController.text,
+                                              appointment: 'selectedGender',
+                                              time: 'time',
+                                              date: 'date'));
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  SuccessScreen()));
                                     },
                                     child: Text(
                                       'BUAT JADWAL',
