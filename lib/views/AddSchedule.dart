@@ -3,6 +3,7 @@ import 'package:date_time_picker/date_time_picker.dart';
 import 'package:mentalboost/model/ScheduleModel.dart';
 import 'package:mentalboost/providers/ScheduleProvider.dart';
 import 'package:mentalboost/views/MySchedule.dart';
+import 'package:mentalboost/views/ScreenSuccess.dart';
 import 'package:provider/provider.dart';
 
 class AddScheduleScreen extends StatefulWidget {
@@ -376,7 +377,7 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
                                       Navigator.of(context).push(
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  MyScheduleScreen()));
+                                                  SuccessScreen()));
                                     },
                                     child: Text(
                                       'BUAT JADWAL',

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/providers/ScheduleProvider.dart';
+import 'package:mentalboost/views/ScreenSuccess.dart';
 import 'package:provider/provider.dart';
 import 'views/mainMenu.dart';
 
