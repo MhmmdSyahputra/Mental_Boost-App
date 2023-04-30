@@ -12,6 +12,7 @@ class DetailDokterScreen extends StatefulWidget {
   final String biografi;
   final String spesialis;
   final String manyPasien;
+  final Color color;
   final String pengalaman;
   final String review;
 
@@ -22,6 +23,7 @@ class DetailDokterScreen extends StatefulWidget {
       required this.price,
       required this.biografi,
       required this.spesialis,
+      required this.color,
       required this.manyPasien,
       required this.pengalaman,
       required this.review});
@@ -272,6 +274,7 @@ class _DetailDokterScreenState extends State<DetailDokterScreen> {
                                                 profil: widget.profil,
                                                 name: widget.name,
                                                 price: widget.price,
+                                                color: widget.color,
                                                 spesialis: widget.spesialis);
                                           },
                                         );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/providers/ScheduleProvider.dart';
+import 'package:mentalboost/widgets/widgetCardSchedule.dart';
 import 'package:provider/provider.dart';
 
 class MyScheduleScreen extends StatefulWidget {
@@ -24,12 +25,22 @@ class _MyScheduleScreenState extends State<MyScheduleScreen> {
           ScheduleProvider,
           child,
         ) {
-          return ListView(
-            children: ScheduleProvider.scheduleList.isNotEmpty
-                ? ScheduleProvider.scheduleList.map((allSchedule) {
-                    return Text(allSchedule.namePasien);
-                  }).toList()
-                : [Text("data masih kosong!")],
+          return Padding(
+            padding: EdgeInsets.all(15),
+            child: ListView(
+              children: ScheduleProvider.scheduleList.isNotEmpty
+                  ? ScheduleProvider.scheduleList.map((allSchedule) {
+                      return WidgetMySchedule(
+                        profil: allSchedule.profilDokter,
+                        name: allSchedule.nameDokter,
+                        spesialis: allSchedule.spesialisDokter,
+                        color: allSchedule.color,
+                        date: allSchedule.date,
+                        time: allSchedule.time,
+                      );
+                    }).toList()
+                  : [Text("data masih kosong!")],
+            ),
           );
         }));
   }

@@ -10,6 +10,7 @@ class AddScheduleScreen extends StatefulWidget {
   final String profil;
   final String name;
   final String price;
+  final Color color;
   final String spesialis;
 
   const AddScheduleScreen(
@@ -17,6 +18,7 @@ class AddScheduleScreen extends StatefulWidget {
       required this.profil,
       required this.name,
       required this.price,
+      required this.color,
       required this.spesialis});
 
   @override
@@ -371,9 +373,11 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
                                                   _nameInputController.text,
                                               agePasien:
                                                   _ageInputController.text,
-                                              appointment: 'selectedGender',
-                                              time: 'time',
-                                              date: 'date'));
+                                              appointment:
+                                                  selectedGender.toString(),
+                                              color: widget.color,
+                                              time: selectedTime.toString(),
+                                              date: dateInput.toString()));
                                       Navigator.of(context).push(
                                           MaterialPageRoute(
                                               builder: (context) =>
