@@ -145,6 +145,7 @@ class HomeScreen extends StatelessWidget {
                       namaDokter: 'Dr Tiara S.Pd',
                       spesialis: 'Psikiater',
                       manyPasien: '5230',
+                      color: Color(0xcc4361ee),
                       review: '6420',
                       pengalaman: '6',
                       biografi:
@@ -157,6 +158,7 @@ class HomeScreen extends StatelessWidget {
                       namaDokter: 'Dr. Putra, S.kom',
                       spesialis: 'Psikolog',
                       manyPasien: '6809',
+                      color: Color(0xccffba08),
                       review: '10353',
                       pengalaman: '10+',
                       biografi:
@@ -169,6 +171,7 @@ class HomeScreen extends StatelessWidget {
                       namaDokter: 'Dr. Aldi, S.kom',
                       spesialis: 'Terapis',
                       manyPasien: '5342',
+                      color: Color(0xcc7400b8),
                       review: '7065',
                       pengalaman: '4+',
                       biografi:
@@ -181,6 +184,7 @@ class HomeScreen extends StatelessWidget {
                       namaDokter: 'Dr. Filber, SI.kom',
                       spesialis: 'Konselor',
                       manyPasien: '7593',
+                      color: Color(0xcc52b788),
                       review: '5095',
                       pengalaman: '7',
                       biografi:

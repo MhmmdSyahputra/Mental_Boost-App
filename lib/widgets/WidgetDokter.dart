@@ -7,6 +7,7 @@ class WidgetDokter extends StatefulWidget {
   final String price;
   final String spesialis;
   final String manyPasien;
+  final Color color;
   final String pengalaman;
   final String review;
   final String biografi;
@@ -18,6 +19,7 @@ class WidgetDokter extends StatefulWidget {
     required this.price,
     required this.spesialis,
     required this.manyPasien,
+    required this.color,
     required this.pengalaman,
     required this.review,
     required this.biografi,
@@ -41,6 +43,7 @@ class _WidgetDokterState extends State<WidgetDokter> {
                 biografi: widget.biografi,
                 spesialis: widget.spesialis,
                 manyPasien: widget.manyPasien,
+                color: widget.color,
                 pengalaman: widget.pengalaman,
                 review: widget.review)));
       },
@@ -113,6 +116,7 @@ class _WidgetDokterState extends State<WidgetDokter> {
                             biografi: widget.biografi,
                             spesialis: widget.spesialis,
                             manyPasien: widget.manyPasien,
+                            color: widget.color,
                             pengalaman: widget.pengalaman,
                             review: widget.review)));
                   },
