@@ -6,6 +6,8 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:mentalboost/widgets/WidgetDokter.dart';
 import 'package:mentalboost/widgets/widgetBox.dart';
 
+import '../utils/data.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -80,41 +82,12 @@ class HomeScreen extends StatelessWidget {
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
-                    children: [
-                      WidgetBox(
-                        icon: Icon(
-                          Icons.gamepad_outlined,
-                          size: 40,
-                          color: Color(0xFFA800A6),
-                        ),
-                        title: 'Quiz Game',
-                        category: 'Quiz',
-                        color: Color(0xCCD800A6),
-                        displayCategory: true,
-                      ),
-                      WidgetBox(
-                        icon: Icon(
-                          Icons.sentiment_very_dissatisfied,
-                          size: 40,
-                          color: Color(0xFFFF6969),
-                        ),
-                        title: 'Stress & Kecemasan',
-                        category: 'Meditasi',
-                        color: Color(0xCCFF9969),
-                        displayCategory: true,
-                      ),
-                      WidgetBox(
-                        icon: Icon(
-                          Icons.healing,
-                          size: 40,
-                          color: Color(0xFF576CBC),
-                        ),
-                        title: 'Kesehatan Fisik',
-                        category: 'Meditasi',
-                        color: Color(0xCC576CBC),
-                        displayCategory: true,
-                      ),
-                    ],
+                    children: List.generate(
+                        Listpopuler.length,
+                        (index) => Padding(
+                              padding: EdgeInsets.all(0),
+                              child: WidgetBox(data: Listpopuler[index]),
+                            )),
                   ),
                 ),
               ),
@@ -139,61 +112,12 @@ class HomeScreen extends StatelessWidget {
               ),
               Container(
                 child: Column(
-                  children: <Widget>[
-                    WidgetDokter(
-                      fotoProfile: 'assets/images/dokter/dokter-1.png',
-                      namaDokter: 'Dr Tiara S.Pd',
-                      spesialis: 'Psikiater',
-                      manyPasien: '5230',
-                      color: Color(0xcc4361ee),
-                      review: '6420',
-                      pengalaman: '6',
-                      biografi:
-                          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores unde quasi deserunt quod ad cumque mollitia eaque vel adipisci incidunt minus perferendis sed odio, molestiae nam! Obcaecati ab ex vitae.',
-                      status: randomBool(),
-                      price: '40000',
-                    ),
-                    WidgetDokter(
-                      fotoProfile: 'assets/images/dokter/dokter-2.png',
-                      namaDokter: 'Dr. Putra, S.kom',
-                      spesialis: 'Psikolog',
-                      manyPasien: '6809',
-                      color: Color(0xccffba08),
-                      review: '10353',
-                      pengalaman: '10+',
-                      biografi:
-                          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores unde quasi deserunt quod ad cumque mollitia eaque vel adipisci incidunt minus perferendis sed odio, molestiae nam! Obcaecati ab ex vitae.',
-                      status: randomBool(),
-                      price: '100000',
-                    ),
-                    WidgetDokter(
-                      fotoProfile: 'assets/images/dokter/dokter-3.png',
-                      namaDokter: 'Dr. Aldi, S.kom',
-                      spesialis: 'Terapis',
-                      manyPasien: '5342',
-                      color: Color(0xcc7400b8),
-                      review: '7065',
-                      pengalaman: '4+',
-                      biografi:
-                          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores unde quasi deserunt quod ad cumque mollitia eaque vel adipisci incidunt minus perferendis sed odio, molestiae nam! Obcaecati ab ex vitae.',
-                      status: randomBool(),
-                      price: '65000',
-                    ),
-                    WidgetDokter(
-                      fotoProfile: 'assets/images/dokter/dokter-4.png',
-                      namaDokter: 'Dr. Filber, SI.kom',
-                      spesialis: 'Konselor',
-                      manyPasien: '7593',
-                      color: Color(0xcc52b788),
-                      review: '5095',
-                      pengalaman: '7',
-                      biografi:
-                          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores unde quasi deserunt quod ad cumque mollitia eaque vel adipisci incidunt minus perferendis sed odio, molestiae nam! Obcaecati ab ex vitae.',
-                      status: randomBool(),
-                      price: '80000',
-                    ),
-                  ],
-                ),
+                    children: List.generate(
+                        Listdokter.length,
+                        (index) => Padding(
+                              padding: EdgeInsets.all(0),
+                              child: WidgetDokter(data: Listdokter[index]),
+                            ))),
               ),
             ]),
           ),
@@ -201,9 +125,4 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-bool randomBool() {
-  final random = Random();
-  return random.nextInt(2) == 0;
 }

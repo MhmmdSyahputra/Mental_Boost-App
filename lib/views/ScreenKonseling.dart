@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:mentalboost/utils/data.dart';
 import 'package:mentalboost/widgets/Widgetkonseling.dart';
 
 class KonselingScreen extends StatelessWidget {
@@ -101,24 +102,14 @@ class KonselingScreen extends StatelessWidget {
                     shrinkWrap: true,
                     crossAxisCount: 2,
                     childAspectRatio: 2,
-                    children: <Widget>[
-                      Widgetkoseling(
-                          color: Color(0xCCFD841F), title: 'Pekerjaan'),
-                      Widgetkoseling(
-                          color: Color(0xCC4649FF), title: 'Pendidikan'),
-                      Widgetkoseling(
-                          color: Color(0xCCFEF5AC), title: 'Masalah Hidup'),
-                      Widgetkoseling(
-                          color: Color(0xCCA5F1E9), title: 'Keluarga'),
-                      Widgetkoseling(
-                          color: Color(0xCCA66CFF), title: 'Pola Makan'),
-                      Widgetkoseling(
-                          color: Color(0xCCF9D923), title: 'kecemasan'),
-                      Widgetkoseling(
-                          color: Color(0xCCFF78F0), title: 'Hubungan'),
-                      Widgetkoseling(
-                          color: Color(0xCCEB455F), title: 'Kecanduan'),
-                    ],
+                    children: List.generate(
+                        Listkonseling.length,
+                        (index) => Padding(
+                              padding: EdgeInsets.all(0),
+                              child: Widgetkoseling(
+                                data: Listkonseling[index],
+                              ),
+                            )),
                   ),
                 ),
               ],

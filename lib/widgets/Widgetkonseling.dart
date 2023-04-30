@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mentalboost/views/KonselingChat.dart';
 
 class Widgetkoseling extends StatefulWidget {
-  final Color color;
-  final String title;
-  const Widgetkoseling({super.key, required this.color, required this.title});
+  final data;
+  const Widgetkoseling({super.key, this.data});
 
   @override
   State<Widgetkoseling> createState() => _WidgetkoselingState();
@@ -16,14 +15,14 @@ class _WidgetkoselingState extends State<Widgetkoseling> {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) =>
-                ChatKonselingScreen(title: widget.title, color: widget.color)));
+            builder: (context) => ChatKonselingScreen(
+                title: widget.data['title'], color: widget.data['color'])));
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
             decoration: BoxDecoration(
-              color: widget.color,
+              color: widget.data['color'],
               borderRadius: BorderRadius.circular(15),
               boxShadow: [
                 BoxShadow(
@@ -39,7 +38,7 @@ class _WidgetkoselingState extends State<Widgetkoseling> {
               children: [
                 Expanded(
                   child: Text(
-                    widget.title,
+                    widget.data['title'],
                     maxLines: 2,
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
