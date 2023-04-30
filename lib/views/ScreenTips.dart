@@ -36,6 +36,8 @@ class TipsScreen extends StatelessWidget {
               ),
               Container(
                 child: Column(
+                    // children:
+                    //     Listartikel.map((e) => Text(e['titleTips'])).toList(),
                     children: List.generate(
                         Listartikel.length,
                         (index) => Padding(

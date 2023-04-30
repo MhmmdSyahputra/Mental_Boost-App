@@ -30,14 +30,7 @@ class _MyScheduleScreenState extends State<MyScheduleScreen> {
             child: ListView(
               children: ScheduleProvider.scheduleList.isNotEmpty
                   ? ScheduleProvider.scheduleList.map((allSchedule) {
-                      return WidgetMySchedule(
-                        profil: allSchedule.profilDokter,
-                        name: allSchedule.nameDokter,
-                        spesialis: allSchedule.spesialisDokter,
-                        color: allSchedule.color,
-                        date: allSchedule.date,
-                        time: allSchedule.time,
-                      );
+                      return WidgetMySchedule(data: allSchedule);
                     }).toList()
                   : [Text("data masih kosong!")],
             ),

@@ -3,21 +3,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 class WidgetMySchedule extends StatefulWidget {
-  final String profil;
-  final String name;
-  final String spesialis;
-  final Color color;
-  final String date;
-  final String time;
+  final data;
 
-  const WidgetMySchedule(
-      {super.key,
-      required this.profil,
-      required this.name,
-      required this.spesialis,
-      required this.color,
-      required this.date,
-      required this.time});
+  const WidgetMySchedule({super.key, this.data});
 
   @override
   State<WidgetMySchedule> createState() => _WidgetMyScheduleState();
@@ -33,7 +21,7 @@ class _WidgetMyScheduleState extends State<WidgetMySchedule> {
             color: Color.fromARGB(255, 243, 243, 243),
             border: Border(
               left: BorderSide(
-                color: widget.color,
+                color: widget.data.color,
                 width: 5,
               ),
             ),
@@ -59,9 +47,9 @@ class _WidgetMyScheduleState extends State<WidgetMySchedule> {
                       children: [
                         Container(
                           child: Text(
-                            '${widget.spesialis}',
+                            '${widget.data.spesialisDokter}',
                             style: TextStyle(
-                                color: widget.color,
+                                color: widget.data.color,
                                 fontWeight: FontWeight.w500),
                           ),
                         ),
@@ -69,7 +57,7 @@ class _WidgetMyScheduleState extends State<WidgetMySchedule> {
                           child: Align(
                               alignment: Alignment.centerRight,
                               child: Text(
-                                '${widget.date}',
+                                '${widget.data.date}',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               )),
                         )
@@ -77,7 +65,7 @@ class _WidgetMyScheduleState extends State<WidgetMySchedule> {
                     )),
                     Container(
                       child: Text(
-                        '${widget.name}',
+                        '${widget.data.nameDokter}',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15),
                       ),
@@ -91,12 +79,12 @@ class _WidgetMyScheduleState extends State<WidgetMySchedule> {
                         Container(
                           child: ElevatedButton(
                             onPressed: () {},
-                            child: Text('${widget.time}'),
+                            child: Text('${widget.data.time}'),
                             style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20),
                                 ),
-                                primary: widget.color),
+                                primary: widget.data.color),
                           ),
                         ),
                         Expanded(
