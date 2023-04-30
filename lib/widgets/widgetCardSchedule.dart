@@ -96,7 +96,7 @@ class _WidgetMyScheduleState extends State<WidgetMySchedule> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20),
                                 ),
-                                primary: Color(0xFF4E37A9)),
+                                primary: widget.color),
                           ),
                         ),
                         Expanded(

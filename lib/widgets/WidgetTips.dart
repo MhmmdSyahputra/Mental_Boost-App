@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 
 class WidgetTips extends StatefulWidget {
-  final id;
-  final coverTips;
-  final titleTips;
-  final contentTips;
-  final categoryTips;
-  const WidgetTips(
-      {super.key,
-      this.id,
-      this.coverTips,
-      this.titleTips,
-      this.contentTips,
-      this.categoryTips});
+  // final id;
+  // final coverTips;
+  // final titleTips;
+  // final contentTips;
+  // final categoryTips;
+  // const WidgetTips(
+  //     {super.key,
+  //     this.id,
+  //     this.coverTips,
+  //     this.titleTips,
+  //     this.contentTips,
+  //     this.categoryTips});
 
+  final data;
+  const WidgetTips({super.key, this.data});
   @override
   State<WidgetTips> createState() => _WidgetTipsState();
 }
@@ -45,7 +47,7 @@ class _WidgetTipsState extends State<WidgetTips> {
                 borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage(widget.coverTips),
+                  image: AssetImage(widget.data['coverTips']),
                 ),
               ),
             ),
@@ -55,7 +57,7 @@ class _WidgetTipsState extends State<WidgetTips> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    widget.titleTips,
+                    widget.data['titleTips'],
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
@@ -65,7 +67,7 @@ class _WidgetTipsState extends State<WidgetTips> {
                   Align(
                     alignment: Alignment.centerRight,
                     child: Text(
-                      widget.categoryTips,
+                      widget.data['categoryTips'],
                       style: TextStyle(fontSize: 15, color: Color(0xFF4E37A9)),
                     ),
                   ),
