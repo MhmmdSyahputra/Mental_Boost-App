@@ -3,18 +3,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 class WidgetBox extends StatefulWidget {
-  final String title;
-  final Icon icon;
-  final String category;
-  final Color color;
-  final bool displayCategory;
-  const WidgetBox(
-      {super.key,
-      required this.title,
-      required this.icon,
-      required this.category,
-      required this.color,
-      required this.displayCategory});
+  final data;
+  const WidgetBox({super.key, this.data});
 
   @override
   State<WidgetBox> createState() => _WidgetBoxState();
@@ -30,7 +20,7 @@ class _WidgetBoxState extends State<WidgetBox> {
         width: 140,
         height: 130,
         decoration: BoxDecoration(
-          color: widget.color.withOpacity(0.6),
+          color: widget.data['color'].withOpacity(0.6),
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
@@ -43,21 +33,21 @@ class _WidgetBoxState extends State<WidgetBox> {
         child: Stack(
           alignment: Alignment.topRight,
           children: [
-            widget.icon,
+            widget.data['icon'],
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  widget.title,
+                  widget.data['title'],
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: widget.displayCategory ? 15 : 17,
+                    fontSize: widget.data['displayCategory'] ? 15 : 17,
                     color: Colors.white,
                   ),
                 ),
                 Text(
-                  widget.displayCategory ? widget.category : '',
+                  widget.data['displayCategory'] ? widget.data['category'] : '',
                   style: TextStyle(fontSize: 15, color: Colors.white),
                 ),
               ],

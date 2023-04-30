@@ -4,16 +4,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 class WidgetQuizBox extends StatefulWidget {
-  final idQuiz;
-  final coverQuiz;
-  final titleQuiz;
-  final descripsiQuiz;
-  const WidgetQuizBox(
-      {super.key,
-      this.idQuiz,
-      this.coverQuiz,
-      this.titleQuiz,
-      this.descripsiQuiz});
+  final data;
+  const WidgetQuizBox({super.key, this.data});
 
   @override
   State<WidgetQuizBox> createState() => _WidgetQuizBoxState();
@@ -50,7 +42,7 @@ class _WidgetQuizBoxState extends State<WidgetQuizBox> {
                         borderRadius: BorderRadius.circular(10),
                         image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: AssetImage(widget.coverQuiz),
+                          image: AssetImage(widget.data['coverQuiz']),
                         ),
                       ),
                     ),
@@ -61,14 +53,14 @@ class _WidgetQuizBoxState extends State<WidgetQuizBox> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            widget.titleQuiz,
+                            widget.data['titleQuiz'],
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 15,
                             ),
                           ),
                           Text(
-                            widget.descripsiQuiz,
+                            widget.data['descripsiQuiz'],
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 15,

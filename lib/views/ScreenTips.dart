@@ -37,10 +37,10 @@ class TipsScreen extends StatelessWidget {
               Container(
                 child: Column(
                     children: List.generate(
-                        artikel.length,
+                        Listartikel.length,
                         (index) => Padding(
                               padding: EdgeInsets.all(0),
-                              child: WidgetTips(data: artikel[index]),
+                              child: WidgetTips(data: Listartikel[index]),
                             ))),
               ),
             ]),
