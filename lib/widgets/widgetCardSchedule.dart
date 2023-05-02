@@ -15,6 +15,10 @@ class WidgetMySchedule extends StatefulWidget {
 class _WidgetMyScheduleState extends State<WidgetMySchedule> {
   @override
   Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
+    String dateNow =
+        '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
+
     return GestureDetector(
       onTap: () => Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => DetailOrderScheduleScreen(data: widget.data))),
@@ -94,7 +98,10 @@ class _WidgetMyScheduleState extends State<WidgetMySchedule> {
                           Expanded(
                             child: Align(
                                 alignment: Alignment.centerRight,
-                                child: Text(checkStatus(widget.data.status))),
+                                child: dateNow == widget.data.date &&
+                                        widget.data.status != 0
+                                    ? Text('Waiting')
+                                    : Text(checkStatus(widget.data.status))),
                           )
                         ],
                       )),

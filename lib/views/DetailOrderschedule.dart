@@ -82,7 +82,10 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                                 Container(
                                   child: ElevatedButton(
                                     onPressed: () {},
-                                    child: Text(checkStatus(data.status)),
+                                    child:
+                                        dateNow == data.date && data.status != 0
+                                            ? Text('Waiting')
+                                            : Text(checkStatus(data.status)),
                                     style: ElevatedButton.styleFrom(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 30),
@@ -282,21 +285,36 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                   height: 15,
                 ),
                 Container(
-                    child: data.status == 2
+                    child: dateNow == data.date && data.status != 0
                         ? Row(children: [
                             Expanded(
                               child: ElevatedButton(
                                 onPressed: () {},
-                                child: Text('Cancel'),
+                                child: Text('Confirm'),
                                 style: ElevatedButton.styleFrom(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(20),
                                     ),
-                                    primary: Color(0xcce5383b)),
+                                    primary: Color(0xcc52b788)),
                               ),
                             )
                           ])
-                        : null)
+                        : data.status == 2
+                            ? Row(children: [
+                                Expanded(
+                                  child: ElevatedButton(
+                                    onPressed: () {},
+                                    child: Text('Cancel'),
+                                    style: ElevatedButton.styleFrom(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
+                                        primary: Color(0xcce5383b)),
+                                  ),
+                                )
+                              ])
+                            : null)
               ],
             ),
           ),
