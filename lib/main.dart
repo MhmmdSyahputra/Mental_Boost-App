@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/providers/ScheduleProvider.dart';
+import 'package:mentalboost/views/ScreenLogin.dart';
 import 'package:mentalboost/views/ScreenSuccess.dart';
 import 'package:provider/provider.dart';
 import 'views/mainMenu.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primaryColor: Color(0xFF4E37A9),
             ),
-            home: const BottomNavMain()));
+            // home: const BottomNavMain()));
+            home: const LoginScreen()));
   }
 }

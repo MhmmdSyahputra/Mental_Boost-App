@@ -61,7 +61,7 @@ List Listdokter = [
     'namaDokter': 'Dr. Putra, S.kom',
     'spesialis': 'Psikolog',
     'manyPasien': '6809',
-    'color': Color(0xcc006d77),
+    'color': Color(0xcc895737),
     'review': '10353',
     'pengalaman': '10+',
     'biografi':
