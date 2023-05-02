@@ -11,10 +11,11 @@ class ScheduleProvider with ChangeNotifier {
       spesialisDokter: 'spesialis 1',
       namePasien: 'pasien 1',
       agePasien: '25',
-      appointment: '2023-05-01 10:00',
+      appointment: 'Male',
       color: Colors.black,
       time: '10:00',
       date: '2023-05-01',
+      status: 0,
     ),
   ];
 

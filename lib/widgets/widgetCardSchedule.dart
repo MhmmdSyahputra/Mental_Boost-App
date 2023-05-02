@@ -94,7 +94,7 @@ class _WidgetMyScheduleState extends State<WidgetMySchedule> {
                           Expanded(
                             child: Align(
                                 alignment: Alignment.centerRight,
-                                child: Text('Pending')),
+                                child: Text(checkStatus(widget.data.status))),
                           )
                         ],
                       )),
@@ -105,5 +105,17 @@ class _WidgetMyScheduleState extends State<WidgetMySchedule> {
             ),
           )),
     );
+  }
+}
+
+String checkStatus(int value) {
+  if (value == 0) {
+    return 'Cancel';
+  } else if (value == 1) {
+    return 'Done';
+  } else if (value == 2) {
+    return 'Pending';
+  } else {
+    return 'Unknown status';
   }
 }
