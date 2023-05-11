@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/providers/ScheduleProvider.dart';
+import 'package:mentalboost/providers/UserLoginProvider.dart';
 import 'package:mentalboost/views/ScreenLogin.dart';
 import 'package:mentalboost/views/ScreenSuccess.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +18,9 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(
             create: (context) => ScheduleProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => UserLoginProvider(),
           )
         ],
         child: MaterialApp(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mentalboost/views/MySchedule.dart';
 import 'package:mentalboost/views/ScreenHome.dart';
 import 'package:mentalboost/views/ScreenKonseling.dart';
+import 'package:mentalboost/views/ScreenLogin.dart';
 import 'package:mentalboost/views/ScreenMeditasi.dart';
 import 'package:mentalboost/views/ScreenQuiz.dart';
 import 'package:mentalboost/views/ScreenTips.dart';
@@ -90,7 +91,10 @@ class _BottomNavMainState extends State<BottomNavMain> {
                       builder: (context) => const MeditasiScreen(),
                     ));
                   } else if (value == MenuItem.Pengaturan) {
-                  } else if (value == MenuItem.Logout) {}
+                  } else if (value == MenuItem.Logout) {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
+                  }
                 },
                 itemBuilder: (context) => [
                       PopupMenuItem(

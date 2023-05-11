@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:mentalboost/model/UserLoginModel.dart';
 import 'package:mentalboost/providers/UserLoginProvider.dart';
-import 'package:mentalboost/views/ScreenRegistrasi.dart';
+import 'package:mentalboost/views/ScreenLogin.dart';
 import 'package:mentalboost/views/mainMenu.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegistrasiScreen extends StatefulWidget {
+  const RegistrasiScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegistrasiScreen> createState() => _RegistrasiScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegistrasiScreenState extends State<RegistrasiScreen> {
+  final TextEditingController _inputUsernameController =
+      TextEditingController();
   final TextEditingController _inputEmailUserController =
       TextEditingController();
-  final TextEditingController _InputPasswordUserController =
+  final TextEditingController _inputNumberController = TextEditingController();
+  final TextEditingController _inputPasswordUserController =
       TextEditingController();
 
   void checkLogin(String email, String password) {
@@ -40,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Container(
                       child: Text(
-                    'Login',
+                    'Sign Up',
                     style: TextStyle(fontSize: 30),
                   )),
                   SizedBox(
@@ -69,8 +73,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Container(
                       child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 20),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
+                    child: TextField(
+                      controller: _inputUsernameController,
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.person),
+                        hintText: 'Username',
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                      ),
+                    ),
+                  )),
+                  Container(
+                      child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
                     child: TextField(
                       controller: _inputEmailUserController,
                       decoration: InputDecoration(
@@ -83,10 +101,25 @@ class _LoginScreenState extends State<LoginScreen> {
                   )),
                   Container(
                       child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 20),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
                     child: TextField(
-                      controller: _InputPasswordUserController,
+                      controller: _inputNumberController,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.phone_android_outlined),
+                        hintText: 'Number Phone',
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                      ),
+                    ),
+                  )),
+                  Container(
+                      child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
+                    child: TextField(
+                      controller: _inputPasswordUserController,
                       obscureText: mounted,
                       decoration: InputDecoration(
                         icon: Icon(Icons.lock),
@@ -104,23 +137,20 @@ class _LoginScreenState extends State<LoginScreen> {
                               horizontal: 20, vertical: 20),
                           child: ElevatedButton(
                             onPressed: () {
-                              final isFound = prov.userLoginList.any((user) =>
-                                  user.email ==
-                                      _inputEmailUserController.text &&
-                                  user.password ==
-                                      _InputPasswordUserController.text);
-                              if (isFound) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => BottomNavMain()),
-                                );
-                              } else {
-                                print('salah');
-                              }
+                              prov.Register(UserLoginModel(
+                                  id: '2',
+                                  username: _inputUsernameController.text,
+                                  email: _inputEmailUserController.text,
+                                  noHp: _inputNumberController.text,
+                                  password: _inputPasswordUserController.text));
+
+                              _inputUsernameController.text = '';
+                              _inputEmailUserController.text = '';
+                              _inputNumberController.text = '';
+                              _inputPasswordUserController.text = '';
                             },
                             child: Text(
-                              'Login',
+                              'Sign Up',
                               style: TextStyle(fontSize: 18),
                             ),
                             style: ElevatedButton.styleFrom(
@@ -137,7 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Container(
                       child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 20),
+                              horizontal: 20, vertical: 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
