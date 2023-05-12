@@ -1,10 +1,5 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
-
-bool randomBool() {
-  final random = Random();
-  return random.nextInt(2) == 0;
-}
+import 'package:mentalboost/utils/MyGlobalFunction.dart';
 
 List Listpopuler = [
   {

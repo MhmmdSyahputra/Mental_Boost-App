@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:mentalboost/views/ScreenQuiz.dart';
+import 'package:mentalboost/utils/Mycolor.dart';
 
 import 'AddSchedule.dart';
 
@@ -37,7 +35,7 @@ class _DetailDokterScreenState extends State<DetailDokterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF4E37A9),
+        backgroundColor: ColorConstants.primaryColor,
         toolbarHeight: 60,
         title: Text('Dokter'),
         centerTitle: true,

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:mentalboost/model/UserLoginModel.dart';
 import 'package:mentalboost/providers/UserLoginProvider.dart';
+import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/ScreenLogin.dart';
-import 'package:mentalboost/views/mainMenu.dart';
 import 'package:provider/provider.dart';
 
 class RegistrasiScreen extends StatefulWidget {
@@ -22,10 +20,6 @@ class _RegistrasiScreenState extends State<RegistrasiScreen> {
   final TextEditingController _inputNumberController = TextEditingController();
   final TextEditingController _inputPasswordUserController =
       TextEditingController();
-
-  void checkLogin(String email, String password) {
-    print('Tombol ditekan!');
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,18 +48,26 @@ class _RegistrasiScreenState extends State<RegistrasiScreen> {
                       child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      TextButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => LoginScreen()));
-                          },
-                          child: Text('Login')),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => RegistrasiScreen()));
-                          },
-                          child: Text('Registrasi')),
+                      Container(
+                        child: TextButton(
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => LoginScreen()));
+                            },
+                            child: Text('Login')),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(
+                                    color: ColorConstants.primaryColor))),
+                        child: TextButton(
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => RegistrasiScreen()));
+                            },
+                            child: Text('Registrasi')),
+                      ),
                     ],
                   )),
                   SizedBox(
@@ -157,7 +159,7 @@ class _RegistrasiScreenState extends State<RegistrasiScreen> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
-                                primary: Color(0xFF4E37A9)),
+                                primary: ColorConstants.primaryColor),
                           ))),
                   Container(
                       child: Padding(

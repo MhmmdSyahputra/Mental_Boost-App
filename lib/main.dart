@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/providers/ScheduleProvider.dart';
 import 'package:mentalboost/providers/UserLoginProvider.dart';
+import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/ScreenLogin.dart';
-import 'package:mentalboost/views/ScreenSuccess.dart';
 import 'package:provider/provider.dart';
-import 'views/mainMenu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,9 +26,8 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
             theme: ThemeData(
-              primaryColor: Color(0xFF4E37A9),
+              primaryColor: ColorConstants.primaryColor,
             ),
-            // home: const BottomNavMain()));
             home: const LoginScreen()));
   }
 }

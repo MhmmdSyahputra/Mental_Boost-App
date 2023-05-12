@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/providers/ScheduleProvider.dart';
+import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/MySchedule.dart';
 import 'package:mentalboost/views/mainMenu.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +30,7 @@ class SuccessScreen extends StatelessWidget {
                             'GREETINGS!',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color(0xFF4E37A9),
+                                color: ColorConstants.primaryColor,
                                 fontSize: 30),
                           ),
                         ),
@@ -38,7 +39,7 @@ class SuccessScreen extends StatelessWidget {
                             'You have ${ScheduleProvider.scheduleList.length} schedule',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color(0xFF4E37A9),
+                                color: ColorConstants.primaryColor,
                                 fontSize: 18),
                           ),
                         ),
@@ -62,7 +63,8 @@ class SuccessScreen extends StatelessWidget {
                               },
                               child: Text(
                                 "Home",
-                                style: TextStyle(color: Color(0xFF4E37A9)),
+                                style: TextStyle(
+                                    color: ColorConstants.primaryColor),
                               ),
                             )),
                             SizedBox(width: 20),
@@ -76,7 +78,7 @@ class SuccessScreen extends StatelessWidget {
                                     },
                                     child: Text("Lihat"),
                                     style: ElevatedButton.styleFrom(
-                                      primary: Color(0xFF4E37A9),
+                                      primary: ColorConstants.primaryColor,
                                     ))),
                           ]),
                         ),

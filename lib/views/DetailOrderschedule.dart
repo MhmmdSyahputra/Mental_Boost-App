@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:mentalboost/utils/Mycolor.dart';
+import '../utils/MyGlobalFunction.dart';
 
 class DetailOrderScheduleScreen extends StatelessWidget {
   final data;
@@ -14,7 +14,7 @@ class DetailOrderScheduleScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF4E37A9),
+        backgroundColor: ColorConstants.primaryColor,
         toolbarHeight: 60,
         title: Text('Order Detail'),
         centerTitle: true,
@@ -28,7 +28,7 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 243, 243, 243),
+                      color: ColorConstants.boxColor,
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.withOpacity(0.5),
@@ -82,10 +82,11 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                                 Container(
                                   child: ElevatedButton(
                                     onPressed: () {},
-                                    child:
-                                        dateNow == data.date && data.status != 0
-                                            ? Text('Waiting')
-                                            : Text(checkStatus(data.status)),
+                                    child: dateNow == data.date &&
+                                            data.status != 0
+                                        ? Text('Waiting')
+                                        : Text(
+                                            checkStatusSchedule(data.status)),
                                     style: ElevatedButton.styleFrom(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 30),
@@ -115,7 +116,7 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                 Container(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                     decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 243, 243, 243),
+                        color: ColorConstants.boxColor,
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.withOpacity(0.5),
@@ -321,17 +322,5 @@ class DetailOrderScheduleScreen extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-String checkStatus(int value) {
-  if (value == 0) {
-    return 'Cancel';
-  } else if (value == 1) {
-    return 'Done';
-  } else if (value == 2) {
-    return 'Pending';
-  } else {
-    return 'Unknown status';
   }
 }

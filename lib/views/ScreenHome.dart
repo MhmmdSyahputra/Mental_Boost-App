@@ -1,11 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:mentalboost/widgets/WidgetDokter.dart';
 import 'package:mentalboost/widgets/widgetBox.dart';
-
+import '../utils/MyGlobalFunction.dart';
 import '../utils/data.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -14,16 +10,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final hour = DateTime.now().hour;
-
-    // Determine greeting based on current hour
-    String greeting;
-    if (hour < 12) {
-      greeting = 'Good Morning';
-    } else if (hour < 18) {
-      greeting = 'Good Afternoon';
-    } else {
-      greeting = 'Good Evening';
-    }
 
     return Scaffold(
       body: ListView(
@@ -37,7 +23,7 @@ class HomeScreen extends StatelessWidget {
                       child: Row(
                     children: [
                       Text(
-                        '${greeting},',
+                        '${greeting(hour)},',
                         style: TextStyle(
                             fontWeight: FontWeight.w600, fontSize: 17),
                       )

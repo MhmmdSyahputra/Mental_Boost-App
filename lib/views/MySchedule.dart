@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/providers/ScheduleProvider.dart';
+import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/widgets/widgetCardSchedule.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +16,7 @@ class _MyScheduleScreenState extends State<MyScheduleScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFF4E37A9),
+          backgroundColor: ColorConstants.primaryColor,
           toolbarHeight: 60,
           title: Text('My Schedule'),
           centerTitle: true,

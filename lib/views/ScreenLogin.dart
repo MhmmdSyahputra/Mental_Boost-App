@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:mentalboost/providers/UserLoginProvider.dart';
+import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/ScreenRegistrasi.dart';
 import 'package:mentalboost/views/mainMenu.dart';
 import 'package:provider/provider.dart';
@@ -50,18 +49,26 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      TextButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => LoginScreen()));
-                          },
-                          child: Text('Login')),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => RegistrasiScreen()));
-                          },
-                          child: Text('Registrasi')),
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(
+                                    color: ColorConstants.primaryColor))),
+                        child: TextButton(
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => LoginScreen()));
+                            },
+                            child: Text('Login')),
+                      ),
+                      Container(
+                        child: TextButton(
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => RegistrasiScreen()));
+                            },
+                            child: Text('Registrasi')),
+                      ),
                     ],
                   )),
                   SizedBox(
@@ -116,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       builder: (context) => BottomNavMain()),
                                 );
                               } else {
-                                print('salah');
+                                //  showToast("Show Short Toast");
                               }
                             },
                             child: Text(
@@ -127,13 +134,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
-                                primary: Color(0xFF4E37A9)),
+                                primary: ColorConstants.primaryColor),
                           ))),
-                  Container(
-                      child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 0),
-                          child: Text('Or Login With'))),
                   Container(
                       child: Padding(
                           padding: const EdgeInsets.symmetric(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:mentalboost/utils/Mycolor.dart';
 
 class WidgetBox extends StatefulWidget {
   final data;
@@ -43,12 +42,13 @@ class _WidgetBoxState extends State<WidgetBox> {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: widget.data['displayCategory'] ? 15 : 17,
-                    color: Colors.white,
+                    color: ColorConstants.textColorLight,
                   ),
                 ),
                 Text(
                   widget.data['displayCategory'] ? widget.data['category'] : '',
-                  style: TextStyle(fontSize: 15, color: Colors.white),
+                  style: TextStyle(
+                      fontSize: 15, color: ColorConstants.textColorLight),
                 ),
               ],
             ),

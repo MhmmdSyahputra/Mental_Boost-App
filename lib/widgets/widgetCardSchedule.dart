@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:mentalboost/utils/MyGlobalFunction.dart';
+import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/DetailOrderschedule.dart';
 
 class WidgetMySchedule extends StatefulWidget {
@@ -26,7 +28,7 @@ class _WidgetMyScheduleState extends State<WidgetMySchedule> {
           padding: EdgeInsets.symmetric(vertical: 10),
           child: Container(
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 243, 243, 243),
+              color: ColorConstants.boxColor,
               border: Border(
                 left: BorderSide(
                   color: widget.data.color,
@@ -101,7 +103,8 @@ class _WidgetMyScheduleState extends State<WidgetMySchedule> {
                                 child: dateNow == widget.data.date &&
                                         widget.data.status != 0
                                     ? Text('Waiting')
-                                    : Text(checkStatus(widget.data.status))),
+                                    : Text(checkStatusSchedule(
+                                        widget.data.status))),
                           )
                         ],
                       )),
@@ -112,17 +115,5 @@ class _WidgetMyScheduleState extends State<WidgetMySchedule> {
             ),
           )),
     );
-  }
-}
-
-String checkStatus(int value) {
-  if (value == 0) {
-    return 'Cancel';
-  } else if (value == 1) {
-    return 'Done';
-  } else if (value == 2) {
-    return 'Pending';
-  } else {
-    return 'Unknown status';
   }
 }

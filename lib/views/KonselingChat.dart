@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:mentalboost/utils/Mycolor.dart';
 
 class ChatKonselingScreen extends StatefulWidget {
   final String title;
@@ -26,7 +27,7 @@ class _ChatKonselingScreenState extends State<ChatKonselingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF4E37A9),
+        backgroundColor: ColorConstants.primaryColor,
         toolbarHeight: 60,
         title: Text(widget.title),
         centerTitle: true,
@@ -51,7 +52,7 @@ class _ChatKonselingScreenState extends State<ChatKonselingScreen> {
                         decoration: BoxDecoration(
                           color: message['isUser']
                               ? Colors.grey[200]
-                              : Color(0xFF4E37A9),
+                              : ColorConstants.primaryColor,
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: Text(

@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:mentalboost/utils/data.dart';
-
-import '../widgets/WidgetDokter.dart';
 import '../widgets/WidgetTips.dart';
 
 class TipsScreen extends StatelessWidget {

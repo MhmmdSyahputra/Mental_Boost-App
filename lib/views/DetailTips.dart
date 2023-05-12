@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:mentalboost/utils/Mycolor.dart';
 
 class DetailTipsScreen extends StatelessWidget {
   final data;
@@ -15,7 +14,7 @@ class DetailTipsScreen extends StatelessWidget {
           maxLines: 2,
           style: TextStyle(fontSize: 16),
         ),
-        backgroundColor: Color(0xFF4E37A9),
+        backgroundColor: ColorConstants.primaryColor,
         toolbarHeight: 60,
       ),
       body: ListView(
