@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mentalboost/providers/UserLoginProvider.dart';
+import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
+import 'package:mentalboost/views/ScreenFormProfile.dart';
 import 'package:mentalboost/views/ScreenRegistrasi.dart';
 import 'package:mentalboost/views/mainMenu.dart';
 import 'package:provider/provider.dart';
@@ -127,10 +128,18 @@ class _LoginScreenState extends State<LoginScreen> {
                                   user.password ==
                                       _InputPasswordUserController.text);
                               if (isFound) {
+                                final user = prov.userLoginList.firstWhere(
+                                  (user) =>
+                                      user.email ==
+                                          _inputEmailUserController.text &&
+                                      user.password ==
+                                          _InputPasswordUserController.text,
+                                );
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => BottomNavMain()),
+                                      builder: (context) =>
+                                          FormProfileScreen(data: user)),
                                 );
                               } else {
                                 myNotif('Your Password or Email is incorrect',

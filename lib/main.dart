@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/providers/ScheduleProvider.dart';
-import 'package:mentalboost/providers/UserLoginProvider.dart';
+import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
+import 'package:mentalboost/views/ScreenFormProfile.dart';
 import 'package:mentalboost/views/ScreenLogin.dart';
 import 'package:provider/provider.dart';
 
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primaryColor: ColorConstants.primaryColor,
             ),
+            // home: const FormProfileScreen()));
             home: const LoginScreen()));
   }
 }

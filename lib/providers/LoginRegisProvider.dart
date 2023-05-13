@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/model/ScheduleModel.dart';
-import 'package:mentalboost/model/UserLoginModel.dart';
+import 'package:mentalboost/model/LoginModel.dart';
 
 class UserLoginProvider with ChangeNotifier {
   List<UserLoginModel> _userLoginList = [

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mentalboost/model/UserLoginModel.dart';
-import 'package:mentalboost/providers/UserLoginProvider.dart';
+import 'package:mentalboost/model/LoginModel.dart';
+import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/ScreenLogin.dart';
