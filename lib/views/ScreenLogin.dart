@@ -133,7 +133,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                       builder: (context) => BottomNavMain()),
                                 );
                               } else {
-                                Mynotif('Your Password or Email is incorrect');
+                                myNotif('Your Password or Email is incorrect',
+                                    Colors.red);
                               }
                             },
                             child: Text(

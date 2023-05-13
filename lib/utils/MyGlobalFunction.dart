@@ -30,12 +30,12 @@ String checkStatusSchedule(int value) {
   }
 }
 
-void Mynotif(String msg) {
+void myNotif(String msg, Color color) {
   Fluttertoast.showToast(
       msg: msg,
       gravity: ToastGravity.CENTER,
       timeInSecForIosWeb: 1,
-      backgroundColor: Colors.amber,
-      textColor: Colors.red,
+      backgroundColor: color,
+      textColor: Colors.black,
       fontSize: 16.0);
 }

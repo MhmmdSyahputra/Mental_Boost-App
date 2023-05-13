@@ -14,7 +14,7 @@ class UserLoginProvider with ChangeNotifier {
 
   List<UserLoginModel> get userLoginList => _userLoginList;
 
-  void Register(UserLoginModel user) {
+  void register(UserLoginModel user) {
     _userLoginList.add(user);
     notifyListeners();
   }

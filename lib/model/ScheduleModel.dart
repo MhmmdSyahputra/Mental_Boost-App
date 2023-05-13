@@ -10,6 +10,7 @@ class ScheduleModel {
   final String namePasien;
   final String agePasien;
   final String appointment;
+  final String orderDate;
   final String time;
   final String date;
   final int status;
@@ -24,6 +25,7 @@ class ScheduleModel {
     required this.namePasien,
     required this.agePasien,
     required this.appointment,
+    required this.orderDate,
     required this.time,
     required this.date,
     required this.status,

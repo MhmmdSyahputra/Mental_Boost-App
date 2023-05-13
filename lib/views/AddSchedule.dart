@@ -5,6 +5,7 @@ import 'package:mentalboost/providers/ScheduleProvider.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/ScreenSuccess.dart';
 import 'package:provider/provider.dart';
+import 'package:uuid/uuid.dart';
 
 class AddScheduleScreen extends StatefulWidget {
   final String profil;
@@ -35,13 +36,6 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
   final TextEditingController _nameInputController = TextEditingController();
   final TextEditingController _ageInputController = TextEditingController();
 
-  void _handleSubmit() {
-    setState(() {
-      nameInput = _nameInputController.text;
-      ageInput = _ageInputController.text;
-    });
-  }
-
   @override
   void dispose() {
     _nameInputController.dispose();
@@ -65,360 +59,348 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 10),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          padding: EdgeInsets.only(right: 10),
-                          child: Column(
+    var uuid = Uuid();
+
+    DateTime now = DateTime.now();
+    String dateNow =
+        '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
+
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(15),
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.only(right: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Name',
-                                    style: TextStyle(
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.bold),
+                              Text(
+                                'Name',
+                                style: TextStyle(
+                                    fontSize: 17, fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              TextField(
+                                controller: _nameInputController,
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    borderSide: BorderSide(
+                                        width: 10, color: Colors.black),
                                   ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  TextField(
-                                    controller: _nameInputController,
-                                    decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(20),
-                                        borderSide: BorderSide(
-                                            width: 10, color: Colors.black),
-                                      ),
-                                      hintText: 'Muhammad Syahputra',
-                                      contentPadding: EdgeInsets.symmetric(
-                                          horizontal: 15, vertical: 5),
-                                    ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: 100,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Age',
-                              style: TextStyle(
-                                  fontSize: 17, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            TextField(
-                              controller: _ageInputController,
-                              keyboardType: TextInputType.number,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(
-                                      width: 10, color: Colors.black),
+                                  hintText: 'Muhammad Syahputra',
+                                  contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 15, vertical: 5),
                                 ),
-                                hintText: '17',
-                                contentPadding: EdgeInsets.symmetric(
-                                    horizontal: 15, vertical: 5),
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 10),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Appointment For',
-                                style: TextStyle(
-                                    fontSize: 17, fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Container(
-                                  height: 50,
-                                  // color: Colors.orange,
-                                  child: GridView.count(
-                                    physics: NeverScrollableScrollPhysics(),
-                                    shrinkWrap: true,
-                                    crossAxisCount: 1,
-                                    children: [
-                                      Wrap(
-                                        spacing: 10.0,
-                                        children: genderOptions.map((gender) {
-                                          return ChoiceChip(
-                                            padding: EdgeInsets.symmetric(
-                                                vertical: 10, horizontal: 20),
-                                            label: Text(
-                                              gender,
-                                              style: TextStyle(
-                                                color: selectedGender == gender
-                                                    ? Colors.white
-                                                    : Colors.black,
-                                              ),
-                                            ),
-                                            selected: selectedGender == gender,
-                                            selectedColor:
-                                                ColorConstants.primaryColor,
-                                            onSelected: (selected) {
-                                              setState(() {
-                                                selectedGender =
-                                                    selected ? gender : null;
-                                              });
-                                            },
-                                          );
-                                        }).toList(),
-                                      )
-                                    ],
-                                  ))
                             ],
-                          ),
-                        ),
+                          )
+                        ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 10),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Time',
-                                style: TextStyle(
-                                    fontSize: 17, fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Container(
-                                  height: 100,
-                                  // color: Colors.orange,
-                                  child: GridView.count(
-                                    physics: NeverScrollableScrollPhysics(),
-                                    shrinkWrap: true,
-                                    crossAxisCount: 1,
-                                    children: [
-                                      Wrap(
-                                        spacing: 10.0,
-                                        children: timeOptions.map((time) {
-                                          return ChoiceChip(
-                                            padding: EdgeInsets.symmetric(
-                                                vertical: 10, horizontal: 10),
-                                            label: Text(
-                                              time,
-                                              style: TextStyle(
-                                                color: selectedTime == time
-                                                    ? Colors.white
-                                                    : Colors.black,
-                                              ),
-                                            ),
-                                            selected: selectedTime == time,
-                                            selectedColor:
-                                                ColorConstants.primaryColor,
-                                            onSelected: (selected) {
-                                              setState(() {
-                                                selectedTime =
-                                                    selected ? time : null;
-                                              });
-                                            },
-                                          );
-                                        }).toList(),
-                                      )
-                                    ],
-                                  ))
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 10),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Date',
-                                style: TextStyle(
-                                    fontSize: 17, fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Container(
-                                  child: DateTimePicker(
-                                icon: Icon(Icons.date_range),
-                                initialValue: '',
-                                firstDate: DateTime(2000),
-                                lastDate: DateTime(2100),
-                                onChanged: (val) => {dateInput = val},
-                                validator: (val) {
-                                  dateInput = val;
-                                  return null;
-                                },
-                                onSaved: (val) => {dateInput = val},
-                              ))
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Positioned(
-                  left: 0,
-                  bottom: 0,
-                  child: Container(
-                    margin: EdgeInsets.symmetric(vertical: 10),
-                    child: Row(
+                  Container(
+                    width: 100,
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
-                          child: Container(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: 50,
-                                  width: double
-                                      .infinity, // membuat button full width
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    child: Text(
-                                      'RP. ${widget.price}',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black),
-                                    ),
-                                    style: ButtonStyle(
-                                      shape: MaterialStateProperty.all<
-                                          RoundedRectangleBorder>(
-                                        RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(
-                                              10), // set radius sudut
-                                        ),
-                                      ),
-                                      backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                        Color(
-                                            0xFFDCDCDC), // set warna background
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                        Text(
+                          'Age',
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold),
                         ),
-                        Expanded(
-                          child: Container(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: 50,
-                                  width: double
-                                      .infinity, // membuat button full width
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      Provider.of<ScheduleProvider>(context,
-                                              listen: false)
-                                          .AddSchedule(ScheduleModel(
-                                              id: '1',
-                                              profilDokter: widget.profil,
-                                              nameDokter: widget.name,
-                                              priceDokter: widget.price,
-                                              spesialisDokter: widget.spesialis,
-                                              namePasien:
-                                                  _nameInputController.text,
-                                              agePasien:
-                                                  _ageInputController.text,
-                                              appointment:
-                                                  selectedGender.toString(),
-                                              color: widget.color,
-                                              time: selectedTime.toString(),
-                                              date: dateInput.toString(),
-                                              status: 2));
-                                      Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  SuccessScreen()));
-                                    },
-                                    child: Text(
-                                      'BUAT JADWAL',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    style: ButtonStyle(
-                                      shape: MaterialStateProperty.all<
-                                          RoundedRectangleBorder>(
-                                        RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(
-                                              10), // set radius sudut
-                                        ),
-                                      ),
-                                      backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                        Color(
-                                            0xFF4E37A9), // set warna background
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextField(
+                          controller: _ageInputController,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide:
+                                  BorderSide(width: 10, color: Colors.black),
                             ),
+                            hintText: '17',
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 5),
                           ),
                         ),
                       ],
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          )
-        ],
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Appointment For',
+                            style: TextStyle(
+                                fontSize: 17, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                              height: 50,
+                              // color: Colors.orange,
+                              child: GridView.count(
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                crossAxisCount: 1,
+                                children: [
+                                  Wrap(
+                                    spacing: 10.0,
+                                    children: genderOptions.map((gender) {
+                                      return ChoiceChip(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 10, horizontal: 20),
+                                        label: Text(
+                                          gender,
+                                          style: TextStyle(
+                                            color: selectedGender == gender
+                                                ? Colors.white
+                                                : Colors.black,
+                                          ),
+                                        ),
+                                        selected: selectedGender == gender,
+                                        selectedColor:
+                                            ColorConstants.primaryColor,
+                                        onSelected: (selected) {
+                                          setState(() {
+                                            selectedGender =
+                                                selected ? gender : null;
+                                          });
+                                        },
+                                      );
+                                    }).toList(),
+                                  )
+                                ],
+                              ))
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Time',
+                            style: TextStyle(
+                                fontSize: 17, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                              height: 100,
+                              // color: Colors.orange,
+                              child: GridView.count(
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                crossAxisCount: 1,
+                                children: [
+                                  Wrap(
+                                    spacing: 10.0,
+                                    children: timeOptions.map((time) {
+                                      return ChoiceChip(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 10, horizontal: 10),
+                                        label: Text(
+                                          time,
+                                          style: TextStyle(
+                                            color: selectedTime == time
+                                                ? Colors.white
+                                                : Colors.black,
+                                          ),
+                                        ),
+                                        selected: selectedTime == time,
+                                        selectedColor:
+                                            ColorConstants.primaryColor,
+                                        onSelected: (selected) {
+                                          setState(() {
+                                            selectedTime =
+                                                selected ? time : null;
+                                          });
+                                        },
+                                      );
+                                    }).toList(),
+                                  )
+                                ],
+                              ))
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Date',
+                            style: TextStyle(
+                                fontSize: 17, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                              child: DateTimePicker(
+                            icon: Icon(Icons.date_range),
+                            initialValue: '',
+                            firstDate: DateTime(2000),
+                            lastDate: DateTime(2100),
+                            onChanged: (val) => {dateInput = val},
+                            validator: (val) {
+                              dateInput = val;
+                              return null;
+                            },
+                            onSaved: (val) => {dateInput = val},
+                          ))
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 50,
+                            width: double.infinity, // membuat button full width
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: Text(
+                                'RP. ${widget.price}',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              ),
+                              style: ButtonStyle(
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(
+                                        10), // set radius sudut
+                                  ),
+                                ),
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                  Color(0xFFDCDCDC), // set warna background
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 50,
+                            width: double.infinity, // membuat button full width
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Provider.of<ScheduleProvider>(context,
+                                        listen: false)
+                                    .AddSchedule(ScheduleModel(
+                                        id: uuid.v1().substring(0, 8),
+                                        profilDokter: widget.profil,
+                                        nameDokter: widget.name,
+                                        priceDokter: widget.price,
+                                        spesialisDokter: widget.spesialis,
+                                        namePasien: _nameInputController.text,
+                                        agePasien: _ageInputController.text,
+                                        appointment: selectedGender.toString(),
+                                        orderDate: dateNow,
+                                        color: widget.color,
+                                        time: selectedTime.toString(),
+                                        date: dateInput.toString(),
+                                        status: 2));
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => SuccessScreen()));
+                              },
+                              child: Text(
+                                'BUAT JADWAL',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              style: ButtonStyle(
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(
+                                        10), // set radius sudut
+                                  ),
+                                ),
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                  Color(0xFF4E37A9), // set warna background
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

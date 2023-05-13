@@ -150,14 +150,15 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                             Container(
                               padding: EdgeInsets.symmetric(vertical: 5),
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
-                                    child: Text('Order ID'),
-                                  ),
-                                  Container(
-                                    child: Text('${data.id}'),
+                                    child: Text(
+                                      '${data.id}',
+                                      style: TextStyle(
+                                          fontSize: 80,
+                                          fontFamily: 'barcode39'),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -217,7 +218,7 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                                     child: Text('Order Date'),
                                   ),
                                   Container(
-                                    child: Text('blm ada'),
+                                    child: Text('${data.orderDate}'),
                                   ),
                                 ],
                               ),

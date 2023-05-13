@@ -5,6 +5,7 @@ import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/ScreenLogin.dart';
 import 'package:provider/provider.dart';
+import 'package:uuid/uuid.dart';
 
 class RegistrasiScreen extends StatefulWidget {
   const RegistrasiScreen({super.key});
@@ -25,6 +26,7 @@ class _RegistrasiScreenState extends State<RegistrasiScreen> {
   @override
   Widget build(BuildContext context) {
     final prov = Provider.of<UserLoginProvider>(context);
+    var uuid = Uuid();
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -152,19 +154,21 @@ class _RegistrasiScreenState extends State<RegistrasiScreen> {
                                   _inputEmailUserController.text != '' ||
                                   _inputNumberController.text != '' ||
                                   _inputPasswordUserController.text != '') {
-                                prov.Register(UserLoginModel(
-                                    id: '2',
+                                prov.register(UserLoginModel(
+                                    id: uuid.v1(),
                                     username: _inputUsernameController.text,
                                     email: _inputEmailUserController.text,
                                     noHp: _inputNumberController.text,
                                     password:
                                         _inputPasswordUserController.text));
 
-                                Mynotif('Your Account is Successfully Created');
+                                myNotif('Your Account is Successfully Created',
+                                    Colors.green);
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => LoginScreen()));
                               } else {
-                                Mynotif('Failed, Your Data is Not Complete');
+                                myNotif('Failed, Your Data is Not Complete',
+                                    Colors.red);
                               }
                             },
                             child: Text(

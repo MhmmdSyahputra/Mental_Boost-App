@@ -12,6 +12,7 @@ class ScheduleProvider with ChangeNotifier {
       namePasien: 'pasien 1',
       agePasien: '25',
       appointment: 'Male',
+      orderDate: '2023-04-10',
       color: Colors.black,
       time: '10:00',
       date: '2023-05-01',
