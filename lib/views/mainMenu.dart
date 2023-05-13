@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/MySchedule.dart';
 import 'package:mentalboost/views/ScreenHome.dart';
@@ -8,6 +9,7 @@ import 'package:mentalboost/views/ScreenMeditasi.dart';
 import 'package:mentalboost/views/ScreenProfil.dart';
 import 'package:mentalboost/views/ScreenQuiz.dart';
 import 'package:mentalboost/views/ScreenTips.dart';
+import 'package:provider/provider.dart';
 
 class BottomNavMain extends StatefulWidget {
   const BottomNavMain({super.key});
@@ -34,6 +36,8 @@ class _BottomNavMainState extends State<BottomNavMain> {
 
   @override
   Widget build(BuildContext context) {
+    final provIdUser = Provider.of<UserLoginProvider>(context);
+
     Widget body = _widgetOptions.elementAt(_selectedIndex);
     switch (_selectedIndex) {
       case 0:

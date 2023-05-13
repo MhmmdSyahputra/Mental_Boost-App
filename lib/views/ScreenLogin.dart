@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/providers/LoginRegisProvider.dart';
+import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/ScreenFormProfile.dart';
 import 'package:mentalboost/views/ScreenRegistrasi.dart';
 import 'package:mentalboost/views/mainMenu.dart';
 import 'package:provider/provider.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -27,7 +27,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final prov = Provider.of<UserLoginProvider>(context);
+    final provLogin = Provider.of<UserLoginProvider>(context);
+    final provUsers = Provider.of<UsersProvider>(context);
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -122,25 +123,49 @@ class _LoginScreenState extends State<LoginScreen> {
                               horizontal: 20, vertical: 20),
                           child: ElevatedButton(
                             onPressed: () {
-                              final isFound = prov.userLoginList.any((user) =>
-                                  user.email ==
-                                      _inputEmailUserController.text &&
-                                  user.password ==
-                                      _InputPasswordUserController.text);
+                              //cari userlogin apakah ada atau tidak
+                              final isFound = provLogin.userLoginList.any(
+                                  (user) =>
+                                      user.email ==
+                                          _inputEmailUserController.text &&
+                                      user.password ==
+                                          _InputPasswordUserController.text);
+                              //jika ada maka
                               if (isFound) {
-                                final user = prov.userLoginList.firstWhere(
+                                //ambil data yg login itu
+                                final dataUser =
+                                    provLogin.userLoginList.firstWhere(
                                   (user) =>
                                       user.email ==
                                           _inputEmailUserController.text &&
                                       user.password ==
                                           _InputPasswordUserController.text,
                                 );
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          FormProfileScreen(data: user)),
-                                );
+
+                                //simpan id user yg login
+                                provLogin.userDoLogin(dataUser.id);
+
+                                //cek apakah yg login sudah melengkapi profile nya
+                                //dengan cara bandingkan apakah idlogin sudah ada di users
+                                //*note idusers == idLoginUsers
+                                final findUser = provUsers.usersList
+                                    .any((user) => user.id == dataUser.id);
+
+                                //jika tidak, maka lempar dia kehalaman lengkapi profile
+                                if (!findUser) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            FormProfileScreen(data: dataUser)),
+                                  );
+                                  //jika sudah lengkap, maka lempar dia ke home langsung
+                                } else {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => BottomNavMain()));
+                                }
+
+                                //jika userlogin tidak ditemukan maka muncul notif
                               } else {
                                 myNotif('Your Password or Email is incorrect',
                                     Colors.red);

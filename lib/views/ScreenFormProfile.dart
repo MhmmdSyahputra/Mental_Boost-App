@@ -1,14 +1,15 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:mentalboost/model/UsersModel.dart';
+import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/ScreenLogin.dart';
+import 'package:mentalboost/views/mainMenu.dart';
+import 'package:provider/provider.dart';
 
 class FormProfileScreen extends StatefulWidget {
   final data;
-
   const FormProfileScreen({super.key, this.data});
 
   @override
@@ -33,6 +34,8 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final prov = Provider.of<UsersProvider>(context);
+
     final List<String> listGender = <String>['Male', 'Female'];
 
     return Scaffold(
@@ -247,6 +250,16 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
                       myNotif('Failed, Your data Not Complate', Colors.red);
                       return;
                     }
+                    prov.addUsers(UsersModel(
+                        id: widget.data.id,
+                        username: _inputUsernameController.text,
+                        email: _inputEmailController.text,
+                        noHp: _inputPonselController.text,
+                        gender: genderValue,
+                        dateOfBirth: dateofBirth.toString()));
+
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => BottomNavMain()));
                   },
                   child: Text('Save'),
                   style: ElevatedButton.styleFrom(
