@@ -1,5 +1,8 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
 String greeting(int hour) {
   if (hour < 12) {
     return 'Good Morning';
@@ -25,4 +28,14 @@ String checkStatusSchedule(int value) {
   } else {
     return 'Unknown status';
   }
+}
+
+void Mynotif(String msg) {
+  Fluttertoast.showToast(
+      msg: msg,
+      gravity: ToastGravity.CENTER,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.amber,
+      textColor: Colors.red,
+      fontSize: 16.0);
 }

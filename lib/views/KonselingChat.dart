@@ -14,8 +14,8 @@ class ChatKonselingScreen extends StatefulWidget {
 }
 
 class _ChatKonselingScreenState extends State<ChatKonselingScreen> {
-  String _inputText = '';
-  // TextEditingController _controller = TextEditingController(text: _inputText);
+  // String _inputText = '';
+  TextEditingController _inputMsgcontroller = TextEditingController();
   List<Map<String, dynamic>> _conversation = [
     {
       'text': "Masalah Apa yang anda hadapi? Cerita kan semua disini",
@@ -53,7 +53,15 @@ class _ChatKonselingScreenState extends State<ChatKonselingScreen> {
                           color: message['isUser']
                               ? Colors.grey[200]
                               : ColorConstants.primaryColor,
-                          borderRadius: BorderRadius.circular(8.0),
+                          borderRadius: message['isUser']
+                              ? BorderRadius.only(
+                                  bottomLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20),
+                                  topLeft: Radius.circular(20))
+                              : BorderRadius.only(
+                                  bottomLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20),
+                                  topRight: Radius.circular(20)),
                         ),
                         child: Text(
                           message['text'],
@@ -82,29 +90,26 @@ class _ChatKonselingScreenState extends State<ChatKonselingScreen> {
               children: [
                 Expanded(
                   child: TextField(
-                    onChanged: (text) {
-                      setState(() {
-                        _inputText = text;
-                      });
-                    },
+                    controller: _inputMsgcontroller,
                     decoration: const InputDecoration(
                       hintText: 'Ask a question',
                     ),
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: _inputText.isNotEmpty
-                      ? () async {
-                          final response = await getOpenAIResponse(_inputText);
-                          setState(() {
-                            _conversation
-                                .add({'text': _inputText, 'isUser': true});
-                            _conversation
-                                .add({'text': response, 'isUser': false});
-                            _inputText = '';
-                          });
-                        }
-                      : null,
+                  onPressed: () async {
+                    setState(() {
+                      _conversation.add(
+                          {'text': _inputMsgcontroller.text, 'isUser': true});
+                    });
+                    final response =
+                        await getOpenAIResponse(_inputMsgcontroller.text);
+                    setState(() {
+                      _conversation.add({'text': response, 'isUser': false});
+                      _inputMsgcontroller.text = '';
+                    });
+                    _inputMsgcontroller.text = '';
+                  },
                   child: Icon(Icons.send),
                 ),
               ],

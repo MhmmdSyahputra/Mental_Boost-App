@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/model/UserLoginModel.dart';
 import 'package:mentalboost/providers/UserLoginProvider.dart';
+import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/ScreenLogin.dart';
 import 'package:provider/provider.dart';
@@ -54,7 +55,11 @@ class _RegistrasiScreenState extends State<RegistrasiScreen> {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => LoginScreen()));
                             },
-                            child: Text('Login')),
+                            child: Text(
+                              'Login',
+                              style: TextStyle(
+                                  color: ColorConstants.textColorDark),
+                            )),
                       ),
                       Container(
                         decoration: BoxDecoration(
@@ -66,7 +71,11 @@ class _RegistrasiScreenState extends State<RegistrasiScreen> {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => RegistrasiScreen()));
                             },
-                            child: Text('Registrasi')),
+                            child: Text(
+                              'Registrasi',
+                              style:
+                                  TextStyle(color: ColorConstants.primaryColor),
+                            )),
                       ),
                     ],
                   )),
@@ -139,17 +148,24 @@ class _RegistrasiScreenState extends State<RegistrasiScreen> {
                               horizontal: 20, vertical: 20),
                           child: ElevatedButton(
                             onPressed: () {
-                              prov.Register(UserLoginModel(
-                                  id: '2',
-                                  username: _inputUsernameController.text,
-                                  email: _inputEmailUserController.text,
-                                  noHp: _inputNumberController.text,
-                                  password: _inputPasswordUserController.text));
+                              if (_inputUsernameController.text != '' ||
+                                  _inputEmailUserController.text != '' ||
+                                  _inputNumberController.text != '' ||
+                                  _inputPasswordUserController.text != '') {
+                                prov.Register(UserLoginModel(
+                                    id: '2',
+                                    username: _inputUsernameController.text,
+                                    email: _inputEmailUserController.text,
+                                    noHp: _inputNumberController.text,
+                                    password:
+                                        _inputPasswordUserController.text));
 
-                              _inputUsernameController.text = '';
-                              _inputEmailUserController.text = '';
-                              _inputNumberController.text = '';
-                              _inputPasswordUserController.text = '';
+                                Mynotif('Your Account is Successfully Created');
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => LoginScreen()));
+                              } else {
+                                Mynotif('Failed, Your Data is Not Complete');
+                              }
                             },
                             child: Text(
                               'Sign Up',
@@ -160,34 +176,6 @@ class _RegistrasiScreenState extends State<RegistrasiScreen> {
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 primary: ColorConstants.primaryColor),
-                          ))),
-                  Container(
-                      child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 0),
-                          child: Text('Or Login With'))),
-                  Container(
-                      child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                padding: EdgeInsets.symmetric(horizontal: 5),
-                                child: Image.asset(
-                                  'assets/images/logo-f.png',
-                                  width: 30,
-                                ),
-                              ),
-                              Container(
-                                padding: EdgeInsets.symmetric(horizontal: 5),
-                                child: Image.asset(
-                                  'assets/images/logo-G.png',
-                                  width: 50,
-                                ),
-                              ),
-                            ],
                           ))),
                 ],
               ),

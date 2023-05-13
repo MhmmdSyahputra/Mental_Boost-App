@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/providers/UserLoginProvider.dart';
+import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/ScreenRegistrasi.dart';
 import 'package:mentalboost/views/mainMenu.dart';
 import 'package:provider/provider.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -59,7 +61,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => LoginScreen()));
                             },
-                            child: Text('Login')),
+                            child: Text(
+                              'Login',
+                              style:
+                                  TextStyle(color: ColorConstants.primaryColor),
+                            )),
                       ),
                       Container(
                         child: TextButton(
@@ -67,7 +73,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => RegistrasiScreen()));
                             },
-                            child: Text('Registrasi')),
+                            child: Text(
+                              'Registrasi',
+                              style: TextStyle(
+                                  color: ColorConstants.textColorDark),
+                            )),
                       ),
                     ],
                   )),
@@ -123,7 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       builder: (context) => BottomNavMain()),
                                 );
                               } else {
-                                //  showToast("Show Short Toast");
+                                Mynotif('Your Password or Email is incorrect');
                               }
                             },
                             child: Text(
