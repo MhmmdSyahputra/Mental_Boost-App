@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
+import 'package:mentalboost/views/MySchedule.dart';
 import 'package:mentalboost/views/ScreenFormProfile.dart';
 import 'package:provider/provider.dart';
 
@@ -159,48 +160,54 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   crossAxisCount: 2,
                   childAspectRatio: 1.8,
                   children: [
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                      margin:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                      decoration: BoxDecoration(
-                          color: ColorConstants.boxColor,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 1,
-                              blurRadius: 12,
-                            ),
-                          ],
-                          borderRadius: BorderRadius.circular(20.0)),
-                      child: Row(
-                        children: [
-                          Expanded(
-                              child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                child: Row(
-                                  // mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.calendar_month),
-                                    SizedBox(
-                                      width: 20,
-                                    ),
-                                    Text(
-                                      'Shedule',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 17),
-                                    ),
-                                  ],
-                                ),
+                    GestureDetector(
+                      onTap: () => {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => MyScheduleScreen()))
+                      },
+                      child: Container(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                        margin:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                        decoration: BoxDecoration(
+                            color: ColorConstants.boxColor,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 1,
+                                blurRadius: 12,
                               ),
                             ],
-                          )),
-                        ],
+                            borderRadius: BorderRadius.circular(20.0)),
+                        child: Row(
+                          children: [
+                            Expanded(
+                                child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  child: Row(
+                                    // mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.calendar_month),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      Text(
+                                        'Shedule',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 17),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            )),
+                          ],
+                        ),
                       ),
                     ),
                     Container(

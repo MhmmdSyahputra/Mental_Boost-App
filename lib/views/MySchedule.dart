@@ -4,6 +4,9 @@ import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/widgets/widgetCardSchedule.dart';
 import 'package:provider/provider.dart';
 
+import '../providers/LoginRegisProvider.dart';
+import '../providers/UsersProviders.dart';
+
 class MyScheduleScreen extends StatefulWidget {
   const MyScheduleScreen({super.key});
 
@@ -14,6 +17,10 @@ class MyScheduleScreen extends StatefulWidget {
 class _MyScheduleScreenState extends State<MyScheduleScreen> {
   @override
   Widget build(BuildContext context) {
+    final provIdUser = Provider.of<UserLoginProvider>(context);
+    final user = Provider.of<UsersProvider>(context)
+        .getUserById(provIdUser.idUserDoLogin);
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: ColorConstants.primaryColor,
@@ -30,7 +37,9 @@ class _MyScheduleScreenState extends State<MyScheduleScreen> {
             padding: EdgeInsets.all(15),
             child: ListView(
               children: ScheduleProvider.scheduleList.isNotEmpty
-                  ? ScheduleProvider.scheduleList.map((allSchedule) {
+                  ? ScheduleProvider.scheduleList
+                      .where((allSchedule) => allSchedule.iduser == user.id)
+                      .map((allSchedule) {
                       return WidgetMySchedule(data: allSchedule);
                     }).toList()
                   : [Text("data masih kosong!")],

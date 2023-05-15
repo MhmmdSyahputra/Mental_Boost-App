@@ -9,6 +9,7 @@ class ScheduleProvider with ChangeNotifier {
       nameDokter: 'dokter 1',
       priceDokter: '100000',
       spesialisDokter: 'spesialis 1',
+      iduser: '0023923f',
       namePasien: 'pasien 1',
       agePasien: '25',
       appointment: 'Male',

@@ -233,6 +233,7 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
                                         nameDokter: widget.name,
                                         priceDokter: widget.price,
                                         spesialisDokter: widget.spesialis,
+                                        iduser: user.id,
                                         namePasien: user.username,
                                         agePasien: user.dateOfBirth,
                                         appointment: user.gender,
