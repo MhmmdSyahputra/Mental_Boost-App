@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
+import 'package:mentalboost/views/ScreenFormProfile.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/LoginRegisProvider.dart';
+import '../providers/UsersProviders.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -11,6 +16,10 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    final provIdUser = Provider.of<UserLoginProvider>(context);
+    final user = Provider.of<UsersProvider>(context)
+        .getUserById(provIdUser.idUserDoLogin);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorConstants.primaryColor,
@@ -56,20 +65,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     children: [
                       Container(
                         child: Text(
-                          'Muhammad Syahputra',
+                          '${user.username}',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 17),
                         ),
                       ),
                       Container(
                         child: Text(
-                          'xxxx',
+                          '${user.dateOfBirth}',
                         ),
                       ),
                     ],
                   )),
-                  Container(
-                    child: Icon(Icons.edit),
+                  GestureDetector(
+                    onTap: () => {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => FormProfileScreen(
+                                data: user,
+                                tipe: 'edit',
+                              )))
+                    },
+                    child: Container(
+                      child: Icon(Icons.edit),
+                    ),
                   )
                 ],
               ),

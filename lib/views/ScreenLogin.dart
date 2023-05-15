@@ -21,10 +21,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _InputPasswordUserController =
       TextEditingController();
 
-  void checkLogin(String email, String password) {
-    print('Tombol ditekan!');
-  }
-
   @override
   Widget build(BuildContext context) {
     final provLogin = Provider.of<UserLoginProvider>(context);
@@ -156,8 +152,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            FormProfileScreen(data: dataUser)),
+                                        builder: (context) => FormProfileScreen(
+                                              data: dataUser,
+                                              tipe: 'fill',
+                                            )),
                                   );
                                   //jika sudah lengkap, maka lempar dia ke home langsung
                                 } else {

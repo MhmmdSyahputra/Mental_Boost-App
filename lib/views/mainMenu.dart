@@ -11,6 +11,8 @@ import 'package:mentalboost/views/ScreenQuiz.dart';
 import 'package:mentalboost/views/ScreenTips.dart';
 import 'package:provider/provider.dart';
 
+import '../providers/UsersProviders.dart';
+
 class BottomNavMain extends StatefulWidget {
   const BottomNavMain({super.key});
 
@@ -37,6 +39,8 @@ class _BottomNavMainState extends State<BottomNavMain> {
   @override
   Widget build(BuildContext context) {
     final provIdUser = Provider.of<UserLoginProvider>(context);
+    final user = Provider.of<UsersProvider>(context)
+        .getUserById(provIdUser.idUserDoLogin);
 
     Widget body = _widgetOptions.elementAt(_selectedIndex);
     switch (_selectedIndex) {
@@ -83,7 +87,7 @@ class _BottomNavMainState extends State<BottomNavMain> {
                 SizedBox(
                   width: 20,
                 ),
-                Expanded(child: Text('Novita')),
+                Expanded(child: Text('${user.username}')),
               ],
             ),
           ),

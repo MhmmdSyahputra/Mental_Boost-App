@@ -5,12 +5,14 @@ import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/ScreenLogin.dart';
+import 'package:mentalboost/views/ScreenProfil.dart';
 import 'package:mentalboost/views/mainMenu.dart';
 import 'package:provider/provider.dart';
 
 class FormProfileScreen extends StatefulWidget {
   final data;
-  const FormProfileScreen({super.key, this.data});
+  final String tipe;
+  const FormProfileScreen({super.key, this.data, required this.tipe});
 
   @override
   State<FormProfileScreen> createState() => _FormProfileScreenState();
@@ -30,6 +32,8 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
     _inputUsernameController.text = widget.data.username ?? '';
     _inputEmailController.text = widget.data.email ?? '';
     _inputPonselController.text = widget.data.noHp ?? '';
+    dateofBirth = widget.tipe == 'fill' ? null : widget.data.dateOfBirth;
+    genderValue = widget.tipe == 'fill' ? 'Male' : widget.data.gender;
   }
 
   @override
@@ -41,12 +45,18 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorConstants.primaryColor,
-        title: Text('Complate Profile'),
+        title:
+            Text(widget.tipe == 'fill' ? 'Complate Profile' : 'Update Profil'),
         actions: [
           TextButton(
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => LoginScreen()));
+                if (widget.tipe == 'fill') {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => LoginScreen()));
+                } else {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => ProfileScreen()));
+                }
               },
               child: Text(
                 'Cancel',
@@ -219,7 +229,7 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
                                   child: DateTimePicker(
                                     decoration: InputDecoration(
                                         border: InputBorder.none),
-                                    initialValue: '',
+                                    initialValue: dateofBirth,
                                     timeHintText: 'dateofBirth',
                                     firstDate: DateTime(2000),
                                     lastDate: DateTime(2100),
@@ -250,16 +260,32 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
                       myNotif('Failed, Your data Not Complate', Colors.red);
                       return;
                     }
-                    prov.addUsers(UsersModel(
-                        id: widget.data.id,
-                        username: _inputUsernameController.text,
-                        email: _inputEmailController.text,
-                        noHp: _inputPonselController.text,
-                        gender: genderValue,
-                        dateOfBirth: dateofBirth.toString()));
 
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => BottomNavMain()));
+                    if (widget.tipe == 'fill') {
+                      prov.addUsers(UsersModel(
+                          id: widget.data.id,
+                          username: _inputUsernameController.text,
+                          email: _inputEmailController.text,
+                          noHp: _inputPonselController.text,
+                          gender: genderValue,
+                          dateOfBirth: dateofBirth.toString()));
+
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => BottomNavMain()));
+                    } else {
+                      prov.updateUser(
+                          widget.data.id,
+                          UsersModel(
+                              id: widget.data.id,
+                              username: _inputUsernameController.text,
+                              email: _inputEmailController.text,
+                              noHp: _inputPonselController.text,
+                              gender: genderValue,
+                              dateOfBirth: dateofBirth.toString()));
+
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => ProfileScreen()));
+                    }
                   },
                   child: Text('Save'),
                   style: ElevatedButton.styleFrom(

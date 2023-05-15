@@ -7,6 +7,9 @@ import 'package:mentalboost/views/ScreenSuccess.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
+import '../providers/LoginRegisProvider.dart';
+import '../providers/UsersProviders.dart';
+
 class AddScheduleScreen extends StatefulWidget {
   final String profil;
   final String name;
@@ -64,147 +67,15 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
     DateTime now = DateTime.now();
     String dateNow =
         '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
+    final provIdUser = Provider.of<UserLoginProvider>(context);
+    final user = Provider.of<UsersProvider>(context)
+        .getUserById(provIdUser.idUserDoLogin);
 
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(15),
         child: Column(
           children: [
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 10),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.only(right: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Name',
-                                style: TextStyle(
-                                    fontSize: 17, fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              TextField(
-                                controller: _nameInputController,
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                    borderSide: BorderSide(
-                                        width: 10, color: Colors.black),
-                                  ),
-                                  hintText: 'Muhammad Syahputra',
-                                  contentPadding: EdgeInsets.symmetric(
-                                      horizontal: 15, vertical: 5),
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: 100,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Age',
-                          style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        TextField(
-                          controller: _ageInputController,
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              borderSide:
-                                  BorderSide(width: 10, color: Colors.black),
-                            ),
-                            hintText: '17',
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 5),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 10),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Appointment For',
-                            style: TextStyle(
-                                fontSize: 17, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Container(
-                              height: 50,
-                              // color: Colors.orange,
-                              child: GridView.count(
-                                physics: NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                crossAxisCount: 1,
-                                children: [
-                                  Wrap(
-                                    spacing: 10.0,
-                                    children: genderOptions.map((gender) {
-                                      return ChoiceChip(
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: 10, horizontal: 20),
-                                        label: Text(
-                                          gender,
-                                          style: TextStyle(
-                                            color: selectedGender == gender
-                                                ? Colors.white
-                                                : Colors.black,
-                                          ),
-                                        ),
-                                        selected: selectedGender == gender,
-                                        selectedColor:
-                                            ColorConstants.primaryColor,
-                                        onSelected: (selected) {
-                                          setState(() {
-                                            selectedGender =
-                                                selected ? gender : null;
-                                          });
-                                        },
-                                      );
-                                    }).toList(),
-                                  )
-                                ],
-                              ))
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
             Container(
               margin: EdgeInsets.symmetric(vertical: 10),
               child: Row(
@@ -362,9 +233,9 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
                                         nameDokter: widget.name,
                                         priceDokter: widget.price,
                                         spesialisDokter: widget.spesialis,
-                                        namePasien: _nameInputController.text,
-                                        agePasien: _ageInputController.text,
-                                        appointment: selectedGender.toString(),
+                                        namePasien: user.username,
+                                        agePasien: user.dateOfBirth,
+                                        appointment: user.gender,
                                         orderDate: dateNow,
                                         color: widget.color,
                                         time: selectedTime.toString(),
