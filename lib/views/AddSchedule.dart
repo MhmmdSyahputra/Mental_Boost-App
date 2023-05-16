@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:mentalboost/model/ScheduleModel.dart';
 import 'package:mentalboost/providers/ScheduleProvider.dart';
+import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/ScreenSuccess.dart';
 import 'package:provider/provider.dart';
@@ -235,7 +236,8 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
                                         spesialisDokter: widget.spesialis,
                                         iduser: user.id,
                                         namePasien: user.username,
-                                        agePasien: user.dateOfBirth,
+                                        agePasien:
+                                            getOld(user.dateOfBirth).toString(),
                                         appointment: user.gender,
                                         orderDate: dateNow,
                                         color: widget.color,

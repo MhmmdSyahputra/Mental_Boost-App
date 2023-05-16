@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/widgets/WidgetDokter.dart';
 import 'package:mentalboost/widgets/widgetBox.dart';
+import 'package:provider/provider.dart';
+import '../providers/LoginRegisProvider.dart';
+import '../providers/UsersProviders.dart';
 import '../utils/MyGlobalFunction.dart';
 import '../utils/data.dart';
 
@@ -9,6 +12,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provIdUser = Provider.of<UserLoginProvider>(context);
+    final user = Provider.of<UsersProvider>(context)
+        .getUserById(provIdUser.idUserDoLogin);
+
     final hour = DateTime.now().hour;
 
     return Scaffold(
@@ -36,10 +43,13 @@ class HomeScreen extends StatelessWidget {
                   Expanded(
                       child: Row(
                     children: [
-                      Text(
-                        'Novita',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 17),
+                      Container(
+                        width: 250,
+                        child: Text(
+                          '${user.username}',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 17),
+                        ),
                       )
                     ],
                   )),

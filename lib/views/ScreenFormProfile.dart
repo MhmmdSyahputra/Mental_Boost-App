@@ -142,7 +142,9 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
                               child: Container(
                                   alignment: Alignment.centerRight,
                                   child: TextField(
+                                    style: TextStyle(color: Colors.grey),
                                     controller: _inputEmailController,
+                                    enabled: false,
                                     textAlign: TextAlign.right,
                                     decoration: InputDecoration(
                                       border: InputBorder.none,

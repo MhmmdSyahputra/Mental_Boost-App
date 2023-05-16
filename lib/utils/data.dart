@@ -108,7 +108,28 @@ List Listartikel = [
     'id': 1,
     'coverTips': 'assets/images/tips/tips-1.png',
     'titleTips': 'Menjaga Kesehatan Mental Selama Pandemi',
-    'contentTips': 'lorem ipsum',
+    'contentTips': '''
+# Menjaga Kesehatan Mental Selama Pandemi
+![Gambar Tips](assets/images/tips/tips-1.png)
+Pandemi COVID-19 telah menghadirkan berbagai tantangan baru dalam kehidupan sehari-hari kita. Selain merugikan secara fisik, pandemi juga dapat berdampak negatif pada kesehatan mental kita. Untuk menjaga kesehatan mental selama pandemi, berikut adalah beberapa tips yang dapat membantu:
+
+1. Tetap terhubung secara sosial: Meskipun kita harus menjaga jarak fisik, tetaplah terhubung dengan orang-orang terdekat melalui telepon, pesan teks, atau panggilan video. Menjaga interaksi sosial dapat membantu mengurangi rasa kesepian dan stres.
+
+2. Tetap teratur dan menciptakan rutinitas: Dalam situasi yang tidak pasti seperti ini, menciptakan rutinitas harian dapat memberikan perasaan stabilitas dan kontrol. Tetapkan jadwal tidur yang konsisten, waktu untuk bekerja, beristirahat, dan beraktivitas fisik.
+
+3. Lakukan aktivitas fisik secara teratur: Olahraga memiliki banyak manfaat bagi kesehatan mental. Meskipun gym dan tempat olahraga mungkin ditutup, Anda masih bisa berolahraga di rumah. Coba rutin melakukan latihan aerobik, yoga, atau jalan-jalan di luar rumah dengan tetap mematuhi protokol kesehatan.
+
+4. Kelola informasi dengan bijak: Terlalu banyak terpapar informasi tentang pandemi dapat membuat stres dan cemas bertambah. Batasi waktu yang Anda habiskan untuk membaca berita, pastikan informasi yang Anda terima berasal dari sumber yang terpercaya, dan aturlah batasan bagi diri sendiri.
+
+5. Temukan hobi atau kegiatan yang menyenangkan: Manfaatkan waktu luang Anda untuk mengeksplorasi hobi baru atau mengembangkan kegiatan yang telah lama Anda minati. Membaca, menulis, memasak, atau mendengarkan musik dapat menjadi kegiatan yang menenangkan dan membantu mengalihkan pikiran dari situasi yang sulit.
+
+6. Jaga pola makan dan tidur yang sehat: Makan makanan bergizi dan tidur yang cukup sangat penting bagi kesehatan mental. Hindari makanan cepat saji yang kurang sehat dan usahakan untuk tidur setidaknya 7-8 jam setiap malam.
+
+7. Jangan ragu untuk mencari bantuan: Jika Anda merasa terlalu kewalahan atau mengalami gejala-gejala yang mengganggu, jangan ragu untuk mencari bantuan profesional. Konsultasikan perasaan dan masalah Anda kepada psikolog atau konselor yang berpengalaman.
+
+Menjaga kesehatan mental selama pandemi adalah hal yang penting. Dengan menerapkan tips di atas, Anda dapat membangun ketahanan mental dan menghadapi tantangan ini dengan lebih baik. Ingatlah bahwa Anda tidak sendirian, dan ada sumber daya dan dukungan yang tersedia untuk membantu Anda melewati masa-masa sulit ini.
+
+''',
     'categoryTips': 'Kesehatan',
   },
   {

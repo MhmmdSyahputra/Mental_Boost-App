@@ -6,10 +6,10 @@ class UserLoginProvider with ChangeNotifier {
   List<UserLoginModel> _userLoginList = [
     UserLoginModel(
         id: '1',
-        username: 'Novita',
-        email: 'Novita@gmail.com',
+        username: 'putra',
+        email: 'putra@gmail.com',
         noHp: '082366369129',
-        password: 'novita123'),
+        password: '123'),
   ];
 
   List<UserLoginModel> get userLoginList => _userLoginList;

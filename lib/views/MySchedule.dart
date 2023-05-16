@@ -20,6 +20,14 @@ class _MyScheduleScreenState extends State<MyScheduleScreen> {
     final user = Provider.of<UsersProvider>(context)
         .getUserById(provIdUser.idUserDoLogin);
 
+    final provMySchedule = Provider.of<ScheduleProvider>(context);
+
+    bool checkMyShedule() {
+      final isFound = provMySchedule.scheduleList
+          .any((schedule) => schedule.iduser == user.id);
+      return isFound;
+    }
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: ColorConstants.primaryColor,
@@ -35,13 +43,35 @@ class _MyScheduleScreenState extends State<MyScheduleScreen> {
           return Padding(
             padding: EdgeInsets.all(15),
             child: ListView(
-              children: ScheduleProvider.scheduleList.isNotEmpty
+              children: checkMyShedule()
                   ? ScheduleProvider.scheduleList
                       .where((allSchedule) => allSchedule.iduser == user.id)
                       .map((allSchedule) {
                       return WidgetMySchedule(data: allSchedule);
                     }).toList()
-                  : [Text("data masih kosong!")],
+                  : [
+                      Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(top: 50),
+                            child: Text(
+                              'Your Schedule is Empty',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: ColorConstants.primaryColor,
+                                  fontSize: 18),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            child: Image.asset(
+                                'assets/images/ilustration-empty.png'),
+                          )
+                        ],
+                      )
+                    ],
             ),
           );
         }));

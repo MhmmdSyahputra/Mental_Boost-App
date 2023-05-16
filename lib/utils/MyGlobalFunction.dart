@@ -1,10 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:provider/provider.dart';
-import '../model/UsersModel.dart';
-import '../providers/LoginRegisProvider.dart';
-import '../providers/UsersProviders.dart';
+import 'package:intl/intl.dart';
 
 String greeting(int hour) {
   if (hour < 12) {
@@ -16,19 +13,16 @@ String greeting(int hour) {
   }
 }
 
-// int getOld(String dateBirth) {
-//   DateTime now = DateTime.now();
-//   String dateNow =
-//       '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
-//   DateTime today = DateTime.now();
-//   DateTime dob = dateNow.parse(dateBirth);
-//   int umur = today.year - dob.year;
-//   if (today.month < dob.month ||
-//       (today.month == dob.month && today.day < dob.day)) {
-//     umur--;
-//   }
-//   return umur;
-// }
+int getOld(String dateBirth) {
+  DateTime today = DateTime.now();
+  DateTime dob = DateFormat("yyyy-MM-dd").parse(dateBirth);
+  int umur = today.year - dob.year;
+  if (today.month < dob.month ||
+      (today.month == dob.month && today.day < dob.day)) {
+    umur--;
+  }
+  return umur;
+}
 
 bool randomBool() {
   final random = Random();

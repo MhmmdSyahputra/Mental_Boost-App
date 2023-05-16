@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/LoginRegisProvider.dart';
 import '../providers/UsersProviders.dart';
+import '../utils/MyGlobalFunction.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -78,7 +79,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                             Container(
                               child: Text(
-                                '${user.dateOfBirth}',
+                                '${getOld(user.dateOfBirth)} Tahun',
                               ),
                             ),
                           ],
