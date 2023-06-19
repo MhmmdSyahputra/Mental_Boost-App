@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/DetailDokter.dart';
+import 'package:mentalboost/views/schedule/DetailDokter.dart';
 
 class WidgetDokter extends StatefulWidget {
   final data;

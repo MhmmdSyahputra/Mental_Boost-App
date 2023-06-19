@@ -3,8 +3,7 @@ import 'package:mentalboost/providers/ScheduleProvider.dart';
 import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/ScreenFormProfile.dart';
-import 'package:mentalboost/views/ScreenLogin.dart';
+import 'package:mentalboost/views/signin/ScreenLogin.dart';
 import 'package:provider/provider.dart';
 
 void main() {

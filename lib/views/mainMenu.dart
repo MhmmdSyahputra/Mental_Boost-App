@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/MySchedule.dart';
-import 'package:mentalboost/views/ScreenHome.dart';
-import 'package:mentalboost/views/ScreenKonseling.dart';
-import 'package:mentalboost/views/ScreenLogin.dart';
-import 'package:mentalboost/views/ScreenMeditasi.dart';
-import 'package:mentalboost/views/ScreenProfil.dart';
-import 'package:mentalboost/views/ScreenQuiz.dart';
-import 'package:mentalboost/views/ScreenTips.dart';
+import 'package:mentalboost/views/schedule/MySchedule.dart';
+import 'package:mentalboost/views/home/ScreenHome.dart';
+import 'package:mentalboost/views/konseling/ScreenKonseling.dart';
+import 'package:mentalboost/views/signin/ScreenLogin.dart';
+import 'package:mentalboost/views/meditasi/ScreenMeditasi.dart';
+import 'package:mentalboost/views/profile/ScreenProfil.dart';
+import 'package:mentalboost/views/quiz/ScreenQuiz.dart';
+import 'package:mentalboost/views/tips/ScreenTips.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/UsersProviders.dart';

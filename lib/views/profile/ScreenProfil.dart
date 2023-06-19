@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/MySchedule.dart';
-import 'package:mentalboost/views/ScreenFormProfile.dart';
-import 'package:mentalboost/views/ScreenLogin.dart';
+import 'package:mentalboost/views/schedule/MySchedule.dart';
+import 'package:mentalboost/views/profile/ScreenFormProfile.dart';
+import 'package:mentalboost/views/signin/ScreenLogin.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/LoginRegisProvider.dart';
-import '../providers/UsersProviders.dart';
-import '../utils/MyGlobalFunction.dart';
+import '../../providers/LoginRegisProvider.dart';
+import '../../providers/UsersProviders.dart';
+import '../../utils/MyGlobalFunction.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -219,48 +219,55 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                           ),
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 10),
-                            margin: EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 10),
-                            decoration: BoxDecoration(
-                                color: ColorConstants.boxColor,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    spreadRadius: 1,
-                                    blurRadius: 12,
-                                  ),
-                                ],
-                                borderRadius: BorderRadius.circular(20.0)),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                    child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      child: Row(
-                                        // mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          Icon(Icons.update),
-                                          SizedBox(
-                                            width: 20,
-                                          ),
-                                          Text(
-                                            'History',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 17),
-                                          ),
-                                        ],
-                                      ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => MyScheduleScreen()));
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 10),
+                              margin: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 10),
+                              decoration: BoxDecoration(
+                                  color: ColorConstants.boxColor,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      spreadRadius: 1,
+                                      blurRadius: 12,
                                     ),
                                   ],
-                                )),
-                              ],
+                                  borderRadius: BorderRadius.circular(20.0)),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        child: Row(
+                                          // mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Icon(Icons.update),
+                                            SizedBox(
+                                              width: 20,
+                                            ),
+                                            Text(
+                                              'History',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 17),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                                ],
+                              ),
                             ),
                           ),
                           Container(

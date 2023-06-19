@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mentalboost/utils/data.dart';
-import '../widgets/WidgetTips.dart';
+import '../../utils/data.dart';
+import '../../widgets/widgetQuizBox.dart';
 
-class TipsScreen extends StatelessWidget {
-  const TipsScreen({super.key});
+class QuizScreen extends StatelessWidget {
+  const QuizScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class TipsScreen extends StatelessWidget {
                       child: Row(
                     children: [
                       Text(
-                        'Sebuah Tips Untuk mu',
+                        'Quiz Penenang Untuk mu',
                         style: TextStyle(
                             fontWeight: FontWeight.w600, fontSize: 17),
                       )
@@ -32,13 +32,11 @@ class TipsScreen extends StatelessWidget {
               ),
               Container(
                 child: Column(
-                    // children:
-                    //     Listartikel.map((e) => Text(e['titleTips'])).toList(),
                     children: List.generate(
-                        Listartikel.length,
+                        Listquiz.length,
                         (index) => Padding(
                               padding: EdgeInsets.all(0),
-                              child: WidgetTips(data: Listartikel[index]),
+                              child: WidgetQuizBox(data: Listquiz[index]),
                             ))),
               ),
             ]),

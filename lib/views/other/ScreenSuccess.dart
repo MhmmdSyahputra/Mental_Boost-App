@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/providers/ScheduleProvider.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/MySchedule.dart';
+import 'package:mentalboost/views/schedule/MySchedule.dart';
 import 'package:mentalboost/views/mainMenu.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/LoginRegisProvider.dart';
-import '../providers/UsersProviders.dart';
+import '../../providers/LoginRegisProvider.dart';
+import '../../providers/UsersProviders.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen({super.key});

@@ -3,8 +3,8 @@ import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/ScreenFormProfile.dart';
-import 'package:mentalboost/views/ScreenRegistrasi.dart';
+import 'package:mentalboost/views/profile/ScreenFormProfile.dart';
+import 'package:mentalboost/views/signup/ScreenRegistrasi.dart';
 import 'package:mentalboost/views/mainMenu.dart';
 import 'package:provider/provider.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import '../utils/MyGlobalFunction.dart';
+import '../../utils/MyGlobalFunction.dart';
 
 class DetailOrderScheduleScreen extends StatelessWidget {
   final data;

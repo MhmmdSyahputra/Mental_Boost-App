@@ -3,7 +3,7 @@ import 'package:mentalboost/model/LoginModel.dart';
 import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/ScreenLogin.dart';
+import 'package:mentalboost/views/signin/ScreenLogin.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
