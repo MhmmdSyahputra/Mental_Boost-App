@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
+import 'package:mentalboost/views/quiz/detailQuiz.dart';
 
 class WidgetQuizBox extends StatefulWidget {
   final data;
@@ -12,8 +13,13 @@ class WidgetQuizBox extends StatefulWidget {
 class _WidgetQuizBoxState extends State<WidgetQuizBox> {
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      Container(
+    return GestureDetector(
+      onTap: () => {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) =>
+                DetailQuizScreen(category: widget.data['categoryQuiz'])))
+      },
+      child: Container(
         child: Column(
           children: <Widget>[
             Padding(
@@ -87,6 +93,6 @@ class _WidgetQuizBoxState extends State<WidgetQuizBox> {
           ],
         ),
       ),
-    ]);
+    );
   }
 }

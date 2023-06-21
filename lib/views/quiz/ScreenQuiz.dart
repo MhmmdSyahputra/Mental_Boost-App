@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:mentalboost/views/quiz/detailQuiz.dart';
 import '../../utils/data.dart';
 import '../../widgets/widgetQuizBox.dart';
 
-class QuizScreen extends StatelessWidget {
+class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
 
+  @override
+  State<QuizScreen> createState() => _QuizScreenState();
+}
+
+class _QuizScreenState extends State<QuizScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,13 +37,15 @@ class QuizScreen extends StatelessWidget {
                 height: 15,
               ),
               Container(
-                child: Column(
-                    children: List.generate(
-                        Listquiz.length,
-                        (index) => Padding(
-                              padding: EdgeInsets.all(0),
-                              child: WidgetQuizBox(data: Listquiz[index]),
-                            ))),
+                child: GestureDetector(
+                  child: Column(
+                      children: List.generate(
+                          Listquiz.length,
+                          (index) => Padding(
+                                padding: EdgeInsets.all(0),
+                                child: WidgetQuizBox(data: Listquiz[index]),
+                              ))),
+                ),
               ),
             ]),
           )
