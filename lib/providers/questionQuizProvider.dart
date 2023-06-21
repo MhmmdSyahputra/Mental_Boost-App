@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:mentalboost/model/ScheduleModel.dart';
-import 'package:mentalboost/model/LoginModel.dart';
+import 'package:mentalboost/model/questionQuiz.dart';
 
-class UserLoginProvider with ChangeNotifier {
-  List<UserLoginModel> _userLoginList = [];
+class QuestionQuizProvider with ChangeNotifier {
+  List<QuestionQuizModel> _myAnswerList = [];
 
-  List<UserLoginModel> get userLoginList => _userLoginList;
+  List<QuestionQuizModel> get myAnswerList => _myAnswerList;
 
-  String _idUserDoLogin = '';
-  String get idUserDoLogin => _idUserDoLogin;
-
-  void userDoLogin(id) {
-    _idUserDoLogin = id;
+  void saveAnswer(QuestionQuizModel data) {
+    _myAnswerList.add(data);
     notifyListeners();
   }
 
-  void register(UserLoginModel user) {
-    _userLoginList.add(user);
+  void cleanAnswer() {
+    _myAnswerList.clear();
     notifyListeners();
   }
 }

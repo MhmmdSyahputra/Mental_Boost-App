@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mentalboost/model/questionQuiz.dart';
+import 'package:mentalboost/providers/questionQuizProvider.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/utils/data.dart';
+import 'package:mentalboost/views/quiz/resultQuiz.dart';
 import 'package:mentalboost/widgets/widgetQuestion.dart';
+import 'package:provider/provider.dart';
 
 class DetailQuizScreen extends StatefulWidget {
   final String? category;
@@ -40,6 +44,8 @@ class _DetailQuizScreenState extends State<DetailQuizScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final prov = Provider.of<QuestionQuizProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorConstants.primaryColor,
@@ -55,7 +61,7 @@ class _DetailQuizScreenState extends State<DetailQuizScreen> {
               margin: EdgeInsets.only(top: 30),
               child: ListTile(
                 leading: Text(
-                  'Kuiz',
+                  'Quiz-${indexQuestion} ${dataQuestion.length - 1}',
                   style: TextStyle(fontSize: 16),
                 ),
                 trailing: Text(
@@ -69,9 +75,61 @@ class _DetailQuizScreenState extends State<DetailQuizScreen> {
             ),
             Column(
               children: [
-                WidgerQuestion(
-                  question: dataQuestion[indexQuestion]['question'],
-                  optionAns: dataQuestion[indexQuestion]['option'],
+                // WidgerQuestion(
+                //   question: dataQuestion[indexQuestion]['question'],
+                //   optionAns: dataQuestion[indexQuestion]['option'],
+                // )
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                        margin:
+                            EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                        child: Text(dataQuestion[indexQuestion]['question'])),
+                    Column(
+                      children: (dataQuestion[indexQuestion]['option']
+                              as List<List<dynamic>>)
+                          .map((option) {
+                        return Container(
+                            margin: EdgeInsets.symmetric(vertical: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: ColorConstants.boxColor,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 1,
+                                  blurRadius: 5,
+                                ),
+                              ],
+                            ),
+                            child: ChoiceChip(
+                              selected: selectedAnswer == option[1],
+                              onSelected: (selected) {
+                                setState(() {
+                                  selectedAnswer =
+                                      selected ? option[1].toString() : null;
+                                });
+                              },
+                              padding: EdgeInsets.all(10),
+                              label: Row(
+                                children: [
+                                  CircleAvatar(
+                                    backgroundColor:
+                                        ColorConstants.primaryColor,
+                                    child: Text('${option[0]}'),
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Expanded(child: Text('${option[1]}'))
+                                ],
+                              ),
+                            ));
+                      }).toList(),
+                      // ],
+                    ),
+                  ],
                 )
               ],
             ),
@@ -82,7 +140,31 @@ class _DetailQuizScreenState extends State<DetailQuizScreen> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: ElevatedButton(
-                  onPressed: nextQuestion,
+                  onPressed: () {
+                    // nextQuestion();
+                    setState(() {
+                      if (indexQuestion >= dataQuestion.length - 1) {
+                        List<Map<String, dynamic>> resultData =
+                            prov.myAnswerList.map((res) {
+                          return {
+                            'question': res.question,
+                            'answer': res.answer,
+                          };
+                        }).toList();
+
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>
+                              ResultQuizScreen(data: resultData),
+                        ));
+                        prov.cleanAnswer();
+                        return;
+                      }
+                      indexQuestion++;
+                      prov.saveAnswer(QuestionQuizModel(
+                          question: dataQuestion[indexQuestion]['question'],
+                          answer: selectedAnswer.toString()));
+                    });
+                  },
                   child: Text(
                     'Next',
                     style: TextStyle(fontSize: 18),
