@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:mentalboost/utils/Mycolor.dart';
+import 'package:mentalboost/views/quiz/detailQuiz.dart';
 
 class WidgetQuizBox extends StatefulWidget {
   final data;
@@ -14,8 +13,13 @@ class WidgetQuizBox extends StatefulWidget {
 class _WidgetQuizBoxState extends State<WidgetQuizBox> {
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      Container(
+    return GestureDetector(
+      onTap: () => {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) =>
+                DetailQuizScreen(category: widget.data['categoryQuiz'])))
+      },
+      child: Container(
         child: Column(
           children: <Widget>[
             Padding(
@@ -24,7 +28,7 @@ class _WidgetQuizBoxState extends State<WidgetQuizBox> {
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Color.fromARGB(255, 243, 243, 243),
+                  color: ColorConstants.boxColor,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
@@ -79,7 +83,7 @@ class _WidgetQuizBoxState extends State<WidgetQuizBox> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            primary: Color(0xFF4E37A9)),
+                            primary: ColorConstants.primaryColor),
                       ),
                     ),
                   ],
@@ -89,6 +93,6 @@ class _WidgetQuizBoxState extends State<WidgetQuizBox> {
           ],
         ),
       ),
-    ]);
+    );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:mentalboost/utils/Mycolor.dart';
+import '../../utils/MyGlobalFunction.dart';
 
 class DetailOrderScheduleScreen extends StatelessWidget {
   final data;
@@ -8,9 +8,13 @@ class DetailOrderScheduleScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
+    String dateNow =
+        '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF4E37A9),
+        backgroundColor: ColorConstants.primaryColor,
         toolbarHeight: 60,
         title: Text('Order Detail'),
         centerTitle: true,
@@ -22,9 +26,9 @@ class DetailOrderScheduleScreen extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 243, 243, 243),
+                      color: ColorConstants.boxColor,
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.withOpacity(0.5),
@@ -70,11 +74,19 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Container(child: Text('Your Status')),
+                                Container(
+                                    child: Text(
+                                  'Status',
+                                  style: TextStyle(fontSize: 12),
+                                )),
                                 Container(
                                   child: ElevatedButton(
                                     onPressed: () {},
-                                    child: Text('Done'),
+                                    child: dateNow == data.date &&
+                                            data.status != 0
+                                        ? Text('Waiting')
+                                        : Text(
+                                            checkStatusSchedule(data.status)),
                                     style: ElevatedButton.styleFrom(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 30),
@@ -82,7 +94,12 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(20),
                                         ),
-                                        primary: Color(0xCC74c69d)),
+                                        primary: data.status == 0
+                                            ? Color(0xcce5383b)
+                                            : data.status == 1
+                                                ? Color(0xcc52b788)
+                                                : Color(0xccf77f00)),
+                                    // primary: Color(0xCC74c69d)),
                                   ),
                                 ),
                               ],
@@ -99,7 +116,7 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                 Container(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                     decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 243, 243, 243),
+                        color: ColorConstants.boxColor,
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.withOpacity(0.5),
@@ -133,14 +150,15 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                             Container(
                               padding: EdgeInsets.symmetric(vertical: 5),
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
-                                    child: Text('Order ID'),
-                                  ),
-                                  Container(
-                                    child: Text('${data.id}'),
+                                    child: Text(
+                                      '${data.id}',
+                                      style: TextStyle(
+                                          fontSize: 80,
+                                          fontFamily: 'barcode39'),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -200,7 +218,7 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                                     child: Text('Order Date'),
                                   ),
                                   Container(
-                                    child: Text('blm ada'),
+                                    child: Text('${data.orderDate}'),
                                   ),
                                 ],
                               ),
@@ -264,7 +282,41 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                           ],
                         ))
                       ],
-                    ))
+                    )),
+                SizedBox(
+                  height: 15,
+                ),
+                Container(
+                    child: dateNow == data.date && data.status != 0
+                        ? Row(children: [
+                            Expanded(
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                child: Text('Confirm'),
+                                style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    primary: Color(0xcc52b788)),
+                              ),
+                            )
+                          ])
+                        : data.status == 2
+                            ? Row(children: [
+                                Expanded(
+                                  child: ElevatedButton(
+                                    onPressed: () {},
+                                    child: Text('Cancel'),
+                                    style: ElevatedButton.styleFrom(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
+                                        primary: Color(0xcce5383b)),
+                                  ),
+                                )
+                              ])
+                            : null)
               ],
             ),
           ),

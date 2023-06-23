@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import '../utils/data.dart';
-import '../widgets/widgetQuizBox.dart';
+import 'package:mentalboost/utils/data.dart';
+import '../../widgets/widgetBox.dart';
 
-class QuizScreen extends StatelessWidget {
-  const QuizScreen({super.key});
+class MeditasiScreen extends StatelessWidget {
+  const MeditasiScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +19,7 @@ class QuizScreen extends StatelessWidget {
                       child: Row(
                     children: [
                       Text(
-                        'Quiz Penenang Untuk mu',
+                        "Topik Meditasi Untuk mu!",
                         style: TextStyle(
                             fontWeight: FontWeight.w600, fontSize: 17),
                       )
@@ -33,14 +31,18 @@ class QuizScreen extends StatelessWidget {
                 height: 15,
               ),
               Container(
-                child: Column(
-                    children: List.generate(
-                        Listquiz.length,
-                        (index) => Padding(
-                              padding: EdgeInsets.all(0),
-                              child: WidgetQuizBox(data: Listquiz[index]),
-                            ))),
-              ),
+                child: GridView.count(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  crossAxisCount: 2,
+                  children: List.generate(
+                      Listmeditasi.length,
+                      (index) => Padding(
+                            padding: EdgeInsets.all(0),
+                            child: WidgetBox(data: Listmeditasi[index]),
+                          )),
+                ),
+              )
             ]),
           )
         ],

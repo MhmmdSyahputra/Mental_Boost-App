@@ -8,10 +8,13 @@ class ScheduleModel {
   final String spesialisDokter;
   final Color color;
   final String namePasien;
+  final String iduser;
   final String agePasien;
   final String appointment;
+  final String orderDate;
   final String time;
   final String date;
+  final int status;
 
   ScheduleModel({
     required this.id,
@@ -20,10 +23,13 @@ class ScheduleModel {
     required this.priceDokter,
     required this.spesialisDokter,
     required this.color,
+    required this.iduser,
     required this.namePasien,
     required this.agePasien,
     required this.appointment,
+    required this.orderDate,
     required this.time,
     required this.date,
+    required this.status,
   });
 }

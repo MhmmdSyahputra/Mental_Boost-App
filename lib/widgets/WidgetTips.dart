@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mentalboost/views/DetailTips.dart';
+import 'package:mentalboost/utils/Mycolor.dart';
+import 'package:mentalboost/views/tips/DetailTips.dart';
 
 class WidgetTips extends StatefulWidget {
   final data;
@@ -20,7 +21,7 @@ class _WidgetTipsState extends State<WidgetTips> {
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: Color.fromARGB(255, 243, 243, 243),
+            color: ColorConstants.boxColor,
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
@@ -59,8 +60,8 @@ class _WidgetTipsState extends State<WidgetTips> {
                       alignment: Alignment.centerRight,
                       child: Text(
                         widget.data['categoryTips'],
-                        style:
-                            TextStyle(fontSize: 15, color: Color(0xFF4E37A9)),
+                        style: TextStyle(
+                            fontSize: 15, color: ColorConstants.primaryColor),
                       ),
                     ),
                   ],

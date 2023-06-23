@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:mentalboost/utils/data.dart';
+import 'package:mentalboost/views/quiz/detailQuiz.dart';
+import '../../utils/data.dart';
+import '../../widgets/widgetQuizBox.dart';
 
-import '../widgets/WidgetDokter.dart';
-import '../widgets/WidgetTips.dart';
+class QuizScreen extends StatefulWidget {
+  const QuizScreen({super.key});
 
-class TipsScreen extends StatelessWidget {
-  const TipsScreen({super.key});
+  @override
+  State<QuizScreen> createState() => _QuizScreenState();
+}
 
+class _QuizScreenState extends State<QuizScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +25,7 @@ class TipsScreen extends StatelessWidget {
                       child: Row(
                     children: [
                       Text(
-                        'Sebuah Tips Untuk mu',
+                        'Quiz Penenang Untuk mu',
                         style: TextStyle(
                             fontWeight: FontWeight.w600, fontSize: 17),
                       )
@@ -35,15 +37,15 @@ class TipsScreen extends StatelessWidget {
                 height: 15,
               ),
               Container(
-                child: Column(
-                    // children:
-                    //     Listartikel.map((e) => Text(e['titleTips'])).toList(),
-                    children: List.generate(
-                        Listartikel.length,
-                        (index) => Padding(
-                              padding: EdgeInsets.all(0),
-                              child: WidgetTips(data: Listartikel[index]),
-                            ))),
+                child: GestureDetector(
+                  child: Column(
+                      children: List.generate(
+                          Listquiz.length,
+                          (index) => Padding(
+                                padding: EdgeInsets.all(0),
+                                child: WidgetQuizBox(data: Listquiz[index]),
+                              ))),
+                ),
               ),
             ]),
           )

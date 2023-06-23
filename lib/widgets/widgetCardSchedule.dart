@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:mentalboost/views/DetailOrderschedule.dart';
+import 'package:mentalboost/utils/MyGlobalFunction.dart';
+import 'package:mentalboost/utils/Mycolor.dart';
+import 'package:mentalboost/views/schedule/DetailOrderschedule.dart';
 
 class WidgetMySchedule extends StatefulWidget {
   final data;
@@ -15,6 +17,10 @@ class WidgetMySchedule extends StatefulWidget {
 class _WidgetMyScheduleState extends State<WidgetMySchedule> {
   @override
   Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
+    String dateNow =
+        '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
+
     return GestureDetector(
       onTap: () => Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => DetailOrderScheduleScreen(data: widget.data))),
@@ -22,7 +28,7 @@ class _WidgetMyScheduleState extends State<WidgetMySchedule> {
           padding: EdgeInsets.symmetric(vertical: 10),
           child: Container(
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 243, 243, 243),
+              color: ColorConstants.boxColor,
               border: Border(
                 left: BorderSide(
                   color: widget.data.color,
@@ -94,7 +100,11 @@ class _WidgetMyScheduleState extends State<WidgetMySchedule> {
                           Expanded(
                             child: Align(
                                 alignment: Alignment.centerRight,
-                                child: Text('Pending')),
+                                child: dateNow == widget.data.date &&
+                                        widget.data.status != 0
+                                    ? Text('Waiting')
+                                    : Text(checkStatusSchedule(
+                                        widget.data.status))),
                           )
                         ],
                       )),

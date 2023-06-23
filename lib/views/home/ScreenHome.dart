@@ -1,29 +1,22 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:mentalboost/widgets/WidgetDokter.dart';
 import 'package:mentalboost/widgets/widgetBox.dart';
-
-import '../utils/data.dart';
+import 'package:provider/provider.dart';
+import '../../providers/LoginRegisProvider.dart';
+import '../../providers/UsersProviders.dart';
+import '../../utils/MyGlobalFunction.dart';
+import '../../utils/data.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final hour = DateTime.now().hour;
+    final provIdUser = Provider.of<UserLoginProvider>(context);
+    final user = Provider.of<UsersProvider>(context)
+        .getUserById(provIdUser.idUserDoLogin);
 
-    // Determine greeting based on current hour
-    String greeting;
-    if (hour < 12) {
-      greeting = 'Good Morning';
-    } else if (hour < 18) {
-      greeting = 'Good Afternoon';
-    } else {
-      greeting = 'Good Evening';
-    }
+    final hour = DateTime.now().hour;
 
     return Scaffold(
       body: ListView(
@@ -37,7 +30,7 @@ class HomeScreen extends StatelessWidget {
                       child: Row(
                     children: [
                       Text(
-                        '${greeting},',
+                        '${greeting(hour)},',
                         style: TextStyle(
                             fontWeight: FontWeight.w600, fontSize: 17),
                       )
@@ -50,10 +43,13 @@ class HomeScreen extends StatelessWidget {
                   Expanded(
                       child: Row(
                     children: [
-                      Text(
-                        'Novita',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 17),
+                      Container(
+                        width: 250,
+                        child: Text(
+                          '${user.username}',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 17),
+                        ),
                       )
                     ],
                   )),

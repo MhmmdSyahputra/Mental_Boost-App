@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:mentalboost/utils/Mycolor.dart';
 
 class ChatKonselingScreen extends StatefulWidget {
   final String title;
@@ -13,8 +14,8 @@ class ChatKonselingScreen extends StatefulWidget {
 }
 
 class _ChatKonselingScreenState extends State<ChatKonselingScreen> {
-  String _inputText = '';
-  // TextEditingController _controller = TextEditingController(text: _inputText);
+  // String _inputText = '';
+  TextEditingController _inputMsgcontroller = TextEditingController();
   List<Map<String, dynamic>> _conversation = [
     {
       'text': "Masalah Apa yang anda hadapi? Cerita kan semua disini",
@@ -26,7 +27,7 @@ class _ChatKonselingScreenState extends State<ChatKonselingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF4E37A9),
+        backgroundColor: ColorConstants.primaryColor,
         toolbarHeight: 60,
         title: Text(widget.title),
         centerTitle: true,
@@ -51,8 +52,16 @@ class _ChatKonselingScreenState extends State<ChatKonselingScreen> {
                         decoration: BoxDecoration(
                           color: message['isUser']
                               ? Colors.grey[200]
-                              : Color(0xFF4E37A9),
-                          borderRadius: BorderRadius.circular(8.0),
+                              : ColorConstants.primaryColor,
+                          borderRadius: message['isUser']
+                              ? BorderRadius.only(
+                                  bottomLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20),
+                                  topLeft: Radius.circular(20))
+                              : BorderRadius.only(
+                                  bottomLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20),
+                                  topRight: Radius.circular(20)),
                         ),
                         child: Text(
                           message['text'],
@@ -81,29 +90,26 @@ class _ChatKonselingScreenState extends State<ChatKonselingScreen> {
               children: [
                 Expanded(
                   child: TextField(
-                    onChanged: (text) {
-                      setState(() {
-                        _inputText = text;
-                      });
-                    },
+                    controller: _inputMsgcontroller,
                     decoration: const InputDecoration(
                       hintText: 'Ask a question',
                     ),
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: _inputText.isNotEmpty
-                      ? () async {
-                          final response = await getOpenAIResponse(_inputText);
-                          setState(() {
-                            _conversation
-                                .add({'text': _inputText, 'isUser': true});
-                            _conversation
-                                .add({'text': response, 'isUser': false});
-                            _inputText = '';
-                          });
-                        }
-                      : null,
+                  onPressed: () async {
+                    setState(() {
+                      _conversation.add(
+                          {'text': _inputMsgcontroller.text, 'isUser': true});
+                    });
+                    final response =
+                        await getOpenAIResponse(_inputMsgcontroller.text);
+                    setState(() {
+                      _conversation.add({'text': response, 'isUser': false});
+                      _inputMsgcontroller.text = '';
+                    });
+                    _inputMsgcontroller.text = '';
+                  },
                   child: Icon(Icons.send),
                 ),
               ],
@@ -120,7 +126,8 @@ Future<String> getOpenAIResponse(String input) async {
       Uri.parse('https://api.openai.com/v1/completions'),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer APIKEY' // Ganti dengan API Key Anda
+        'Authorization':
+            'Bearer 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' // Ganti dengan API Key Anda
       },
       body:
           '{"prompt": "$input", "max_tokens": 100, "model": "text-davinci-003"}');

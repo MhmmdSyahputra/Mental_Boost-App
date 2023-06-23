@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mentalboost/views/DetailDokter.dart';
+import 'package:mentalboost/utils/Mycolor.dart';
+import 'package:mentalboost/views/schedule/DetailDokter.dart';
 
 class WidgetDokter extends StatefulWidget {
   final data;
@@ -32,7 +33,7 @@ class _WidgetDokterState extends State<WidgetDokter> {
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: Color.fromARGB(255, 243, 243, 243),
+            color: ColorConstants.boxColor,
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
@@ -78,7 +79,7 @@ class _WidgetDokterState extends State<WidgetDokter> {
                     Text(
                       "RP ${widget.data['price']}",
                       style: TextStyle(
-                        color: Color(0xFF4E37A9),
+                        color: ColorConstants.primaryColor,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -105,7 +106,7 @@ class _WidgetDokterState extends State<WidgetDokter> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      primary: Color(0xFF4E37A9)),
+                      primary: ColorConstants.primaryColor),
                 ),
               ),
             ],

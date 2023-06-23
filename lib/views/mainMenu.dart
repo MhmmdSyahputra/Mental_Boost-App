@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:mentalboost/views/MySchedule.dart';
-import 'package:mentalboost/views/ScreenHome.dart';
-import 'package:mentalboost/views/ScreenKonseling.dart';
-import 'package:mentalboost/views/ScreenMeditasi.dart';
-import 'package:mentalboost/views/ScreenQuiz.dart';
-import 'package:mentalboost/views/ScreenTips.dart';
+import 'package:mentalboost/providers/LoginRegisProvider.dart';
+import 'package:mentalboost/utils/Mycolor.dart';
+import 'package:mentalboost/views/schedule/MySchedule.dart';
+import 'package:mentalboost/views/home/ScreenHome.dart';
+import 'package:mentalboost/views/konseling/ScreenKonseling.dart';
+import 'package:mentalboost/views/signin/ScreenLogin.dart';
+import 'package:mentalboost/views/meditasi/ScreenMeditasi.dart';
+import 'package:mentalboost/views/profile/ScreenProfil.dart';
+import 'package:mentalboost/views/quiz/ScreenQuiz.dart';
+import 'package:mentalboost/views/tips/ScreenTips.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/UsersProviders.dart';
 
 class BottomNavMain extends StatefulWidget {
   const BottomNavMain({super.key});
@@ -31,6 +38,10 @@ class _BottomNavMainState extends State<BottomNavMain> {
 
   @override
   Widget build(BuildContext context) {
+    final provIdUser = Provider.of<UserLoginProvider>(context);
+    final user = Provider.of<UsersProvider>(context)
+        .getUserById(provIdUser.idUserDoLogin);
+
     Widget body = _widgetOptions.elementAt(_selectedIndex);
     switch (_selectedIndex) {
       case 0:
@@ -53,28 +64,32 @@ class _BottomNavMainState extends State<BottomNavMain> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFF4E37A9),
+          backgroundColor: ColorConstants.primaryColor,
           toolbarHeight: 60,
-          title: Row(
-            children: [
-              Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(
-                      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80',
+          title: GestureDetector(
+            onTap: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => ProfileScreen())),
+            child: Row(
+              children: [
+                Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(
+                        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80',
+                      ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Expanded(child: Text('Novita')),
-            ],
+                SizedBox(
+                  width: 20,
+                ),
+                Expanded(child: Text('${user.username}')),
+              ],
+            ),
           ),
           actions: [
             IconButton(
@@ -87,10 +102,13 @@ class _BottomNavMainState extends State<BottomNavMain> {
                 onSelected: (value) {
                   if (value == MenuItem.Profil) {
                     Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const MeditasiScreen(),
+                      builder: (context) => const ProfileScreen(),
                     ));
                   } else if (value == MenuItem.Pengaturan) {
-                  } else if (value == MenuItem.Logout) {}
+                  } else if (value == MenuItem.Logout) {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
+                  }
                 },
                 itemBuilder: (context) => [
                       PopupMenuItem(
