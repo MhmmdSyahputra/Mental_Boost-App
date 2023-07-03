@@ -4,7 +4,7 @@ import 'package:mentalboost/model/ScheduleModel.dart';
 import 'package:mentalboost/providers/ScheduleProvider.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/other/ScreenSuccess.dart';
+import 'package:mentalboost/views/schedule/ScreenSuccess.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 

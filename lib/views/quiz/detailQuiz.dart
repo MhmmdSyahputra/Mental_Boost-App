@@ -4,7 +4,6 @@ import 'package:mentalboost/providers/questionQuizProvider.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/utils/data.dart';
 import 'package:mentalboost/views/quiz/resultQuiz.dart';
-import 'package:mentalboost/widgets/widgetQuestion.dart';
 import 'package:provider/provider.dart';
 
 class DetailQuizScreen extends StatefulWidget {
@@ -18,6 +17,15 @@ class DetailQuizScreen extends StatefulWidget {
 class _DetailQuizScreenState extends State<DetailQuizScreen> {
   String? selectedAnswer;
   int indexQuestion = 0;
+
+  bool showBanner = false;
+  void showHideBanner() {
+    setState(() {
+      showBanner = showBanner ? showBanner : !showBanner;
+      // showBanner = !showBanner;
+    });
+  }
+
   List<Map<String, dynamic>> dataQuestion = [];
 
   @override
@@ -52,33 +60,39 @@ class _DetailQuizScreenState extends State<DetailQuizScreen> {
         toolbarHeight: 60,
         title: Text('Quiz ${widget.category}'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Container(
-              margin: EdgeInsets.only(top: 30),
-              child: ListTile(
-                leading: Text(
-                  'Quiz-${indexQuestion} ${dataQuestion.length - 1}',
-                  style: TextStyle(fontSize: 16),
-                ),
-                trailing: Text(
-                  'Soal ${indexQuestion + 1}',
-                  style: TextStyle(fontSize: 16),
-                ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          if (showBanner)
+            MaterialBanner(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                backgroundColor: Color(0xCCFFE7A0),
+                content: Text(
+                    'Pilihan jawaban belum dipilih. Tolong pilih salah satu'),
+                leading: CircleAvatar(child: Icon(Icons.warning)),
+                actions: [
+                  TextButton(onPressed: showHideBanner, child: Text('Oke')),
+                ]),
+          Container(
+            margin: EdgeInsets.only(top: 30),
+            child: ListTile(
+              leading: Text(
+                'Quiz-${indexQuestion} ${dataQuestion.length - 1}',
+                style: TextStyle(fontSize: 16),
+              ),
+              trailing: Text(
+                'Soal ${indexQuestion + 1}',
+                style: TextStyle(fontSize: 16),
               ),
             ),
-            Divider(
-              color: Colors.black,
-            ),
-            Column(
+          ),
+          Divider(
+            color: Colors.black,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            child: Column(
               children: [
-                // WidgerQuestion(
-                //   question: dataQuestion[indexQuestion]['question'],
-                //   optionAns: dataQuestion[indexQuestion]['option'],
-                // )
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -133,52 +147,55 @@ class _DetailQuizScreenState extends State<DetailQuizScreen> {
                 )
               ],
             ),
-            Container(
-              width: 200,
-              height: 90,
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                child: ElevatedButton(
-                  onPressed: () {
-                    // nextQuestion();
-                    setState(() {
-                      if (indexQuestion >= dataQuestion.length - 1) {
-                        List<Map<String, dynamic>> resultData =
-                            prov.myAnswerList.map((res) {
-                          return {
-                            'question': res.question,
-                            'answer': res.answer,
-                          };
-                        }).toList();
+          ),
+          Container(
+            width: 200,
+            height: 90,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    selectedAnswer == null ? showHideBanner() : '';
+                    if (indexQuestion >= dataQuestion.length - 1) {
+                      List<Map<String, dynamic>> resultData =
+                          prov.myAnswerList.map((res) {
+                        return {
+                          'question': res.question,
+                          'answer': res.answer,
+                        };
+                      }).toList();
 
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              ResultQuizScreen(data: resultData),
-                        ));
-                        prov.cleanAnswer();
-                        return;
-                      }
-                      indexQuestion++;
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            ResultQuizScreen(data: resultData),
+                      ));
+                      prov.cleanAnswer();
+                      return;
+                    }
+                    if (selectedAnswer!.isNotEmpty) {
                       prov.saveAnswer(QuestionQuizModel(
                           question: dataQuestion[indexQuestion]['question'],
                           answer: selectedAnswer.toString()));
-                    });
-                  },
-                  child: Text(
-                    'Next',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      primary: ColorConstants.primaryColor),
+                      selectedAnswer = null;
+                      indexQuestion++;
+                      return;
+                    }
+                  });
+                },
+                child: Text(
+                  'Next',
+                  style: TextStyle(fontSize: 18),
                 ),
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    primary: ColorConstants.primaryColor),
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }

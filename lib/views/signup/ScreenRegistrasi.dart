@@ -4,8 +4,20 @@ import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/signin/ScreenLogin.dart';
+import 'package:mentalboost/widgets/customDialog.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
+
+void showCustomDialog(BuildContext context, String title, String subtile,
+    Color color, Icon icon) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return CustomDialog(
+          title: title, subtile: subtile, color: color, icon: icon);
+    },
+  );
+}
 
 class RegistrasiScreen extends StatefulWidget {
   const RegistrasiScreen({super.key});
@@ -42,7 +54,7 @@ class _RegistrasiScreenState extends State<RegistrasiScreen> {
                   Container(
                       child: Text(
                     'Sign Up',
-                    style: TextStyle(fontSize: 30),
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   )),
                   SizedBox(
                     height: 20,
@@ -161,14 +173,27 @@ class _RegistrasiScreenState extends State<RegistrasiScreen> {
                                     noHp: _inputNumberController.text,
                                     password:
                                         _inputPasswordUserController.text));
-
-                                myNotif('Your Account is Successfully Created',
-                                    Colors.green);
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => LoginScreen()));
+                                showCustomDialog(
+                                    context,
+                                    'Success',
+                                    'Your Account is Successfully Created',
+                                    Colors.green,
+                                    Icon(
+                                      Icons.done,
+                                      color: ColorConstants.textColorLight,
+                                    ));
                               } else {
-                                myNotif('Failed, Your Data is Not Complete',
-                                    Colors.red);
+                                showCustomDialog(
+                                    context,
+                                    'Failed',
+                                    'Your Data is Not Complete',
+                                    Colors.orange,
+                                    Icon(
+                                      Icons.warning,
+                                      color: ColorConstants.textColorLight,
+                                    ));
                               }
                             },
                             child: Text(

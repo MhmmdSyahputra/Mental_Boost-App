@@ -38,10 +38,9 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 children: [
                   Container(
-                      child: Text(
-                    'Login',
-                    style: TextStyle(fontSize: 30),
-                  )),
+                      child: Text('Login',
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold))),
                   SizedBox(
                     height: 20,
                   ),

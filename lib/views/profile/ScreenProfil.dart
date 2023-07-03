@@ -4,7 +4,6 @@ import 'package:mentalboost/views/schedule/MySchedule.dart';
 import 'package:mentalboost/views/profile/ScreenFormProfile.dart';
 import 'package:mentalboost/views/signin/ScreenLogin.dart';
 import 'package:provider/provider.dart';
-
 import '../../providers/LoginRegisProvider.dart';
 import '../../providers/UsersProviders.dart';
 import '../../utils/MyGlobalFunction.dart';
@@ -134,7 +133,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               onPressed: () => {},
                                               child: Text('Good'),
                                               style: ElevatedButton.styleFrom(
-                                                  backgroundColor: Colors.red,
+                                                  backgroundColor: Colors.green,
                                                   shape: RoundedRectangleBorder(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -148,7 +147,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               onPressed: () => {},
                                               child: Text('Not Good'),
                                               style: ElevatedButton.styleFrom(
-                                                  backgroundColor: Colors.green,
+                                                  backgroundColor: Colors.red,
                                                   shape: RoundedRectangleBorder(
                                                       borderRadius:
                                                           BorderRadius.circular(
