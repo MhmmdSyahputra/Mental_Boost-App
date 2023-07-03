@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/utils/data.dart';
-import '../../widgets/WidgetTips.dart';
+import '../../../widgets/widgetBox.dart';
 
-class TipsScreen extends StatelessWidget {
-  const TipsScreen({super.key});
+class MeditasiScreen extends StatelessWidget {
+  const MeditasiScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class TipsScreen extends StatelessWidget {
                       child: Row(
                     children: [
                       Text(
-                        'Sebuah Tips Untuk mu',
+                        "Topik Meditasi Untuk mu!",
                         style: TextStyle(
                             fontWeight: FontWeight.w600, fontSize: 17),
                       )
@@ -31,16 +31,18 @@ class TipsScreen extends StatelessWidget {
                 height: 15,
               ),
               Container(
-                child: Column(
-                    // children:
-                    //     Listartikel.map((e) => Text(e['titleTips'])).toList(),
-                    children: List.generate(
-                        Listartikel.length,
-                        (index) => Padding(
-                              padding: EdgeInsets.all(0),
-                              child: WidgetTips(data: Listartikel[index]),
-                            ))),
-              ),
+                child: GridView.count(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  crossAxisCount: 2,
+                  children: List.generate(
+                      Listmeditasi.length,
+                      (index) => Padding(
+                            padding: EdgeInsets.all(0),
+                            child: WidgetBox(data: Listmeditasi[index]),
+                          )),
+                ),
+              )
             ]),
           )
         ],

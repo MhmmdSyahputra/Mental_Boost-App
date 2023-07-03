@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/quiz/detailQuiz.dart';
+import 'package:mentalboost/views/user/quiz/detailQuiz.dart';
 
 class WidgetQuizBox extends StatefulWidget {
   final data;

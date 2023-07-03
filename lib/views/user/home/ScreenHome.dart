@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mentalboost/providers/LoginRegisProvider.dart';
+import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/widgets/WidgetDokter.dart';
 import 'package:mentalboost/widgets/widgetBox.dart';
 import 'package:provider/provider.dart';
-import '../../providers/LoginRegisProvider.dart';
-import '../../providers/UsersProviders.dart';
-import '../../utils/MyGlobalFunction.dart';
-import '../../utils/data.dart';
+import '../../../utils/MyGlobalFunction.dart';
+import '../../../utils/data.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

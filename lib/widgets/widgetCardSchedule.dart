@@ -3,7 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/schedule/DetailOrderschedule.dart';
+import 'package:mentalboost/views/user/schedule/DetailOrderschedule.dart';
 
 class WidgetMySchedule extends StatefulWidget {
   final data;

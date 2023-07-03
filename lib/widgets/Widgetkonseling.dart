@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mentalboost/views/konseling/KonselingChat.dart';
+import 'package:mentalboost/views/user/konseling/KonselingChat.dart';
 
 class Widgetkoseling extends StatefulWidget {
   final data;

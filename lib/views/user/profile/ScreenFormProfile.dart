@@ -5,8 +5,8 @@ import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/signin/ScreenLogin.dart';
-import 'package:mentalboost/views/profile/ScreenProfil.dart';
-import 'package:mentalboost/views/mainMenu.dart';
+import 'package:mentalboost/views/user/mainMenu.dart';
+import 'package:mentalboost/views/user/profile/ScreenProfil.dart';
 import 'package:provider/provider.dart';
 
 class FormProfileScreen extends StatefulWidget {

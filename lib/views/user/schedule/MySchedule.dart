@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/providers/ScheduleProvider.dart';
+import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/widgets/widgetCardSchedule.dart';
 import 'package:provider/provider.dart';
-import '../../providers/LoginRegisProvider.dart';
-import '../../providers/UsersProviders.dart';
 
 class MyScheduleScreen extends StatefulWidget {
   const MyScheduleScreen({super.key});

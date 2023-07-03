@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mentalboost/providers/LoginRegisProvider.dart';
+import 'package:mentalboost/providers/UsersProviders.dart';
+import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/schedule/MySchedule.dart';
-import 'package:mentalboost/views/profile/ScreenFormProfile.dart';
 import 'package:mentalboost/views/signin/ScreenLogin.dart';
+import 'package:mentalboost/views/user/profile/ScreenFormProfile.dart';
+import 'package:mentalboost/views/user/schedule/MySchedule.dart';
 import 'package:provider/provider.dart';
-import '../../providers/LoginRegisProvider.dart';
-import '../../providers/UsersProviders.dart';
-import '../../utils/MyGlobalFunction.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

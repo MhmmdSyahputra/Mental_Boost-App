@@ -3,7 +3,7 @@ import 'package:mentalboost/model/questionQuiz.dart';
 import 'package:mentalboost/providers/questionQuizProvider.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/utils/data.dart';
-import 'package:mentalboost/views/quiz/resultQuiz.dart';
+import 'package:mentalboost/views/user/quiz/resultQuiz.dart';
 import 'package:provider/provider.dart';
 
 class DetailQuizScreen extends StatefulWidget {

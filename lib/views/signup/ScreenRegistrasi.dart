@@ -167,12 +167,13 @@ class _RegistrasiScreenState extends State<RegistrasiScreen> {
                                   _inputNumberController.text != '' ||
                                   _inputPasswordUserController.text != '') {
                                 prov.register(UserLoginModel(
-                                    id: uuid.v1(),
-                                    username: _inputUsernameController.text,
-                                    email: _inputEmailUserController.text,
-                                    noHp: _inputNumberController.text,
-                                    password:
-                                        _inputPasswordUserController.text));
+                                  id: uuid.v1(),
+                                  username: _inputUsernameController.text,
+                                  email: _inputEmailUserController.text,
+                                  noHp: _inputNumberController.text,
+                                  password: _inputPasswordUserController.text,
+                                  tipe: 'user',
+                                ));
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => LoginScreen()));
                                 showCustomDialog(

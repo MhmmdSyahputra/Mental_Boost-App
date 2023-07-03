@@ -3,9 +3,10 @@ import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/profile/ScreenFormProfile.dart';
+import 'package:mentalboost/views/dokter/mainMenu.dart';
 import 'package:mentalboost/views/signup/ScreenRegistrasi.dart';
-import 'package:mentalboost/views/mainMenu.dart';
+import 'package:mentalboost/views/user/mainMenu.dart';
+import 'package:mentalboost/views/user/profile/ScreenFormProfile.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -142,25 +143,47 @@ class _LoginScreenState extends State<LoginScreen> {
 
                                 //cek apakah yg login sudah melengkapi profile nya
                                 //dengan cara bandingkan apakah idlogin sudah ada di users
-                                //*note idusers == idLoginUsers
-                                final findUser = provUsers.usersList
-                                    .any((user) => user.id == dataUser.id);
 
-                                //jika tidak, maka lempar dia kehalaman lengkapi profile
-                                if (!findUser) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => FormProfileScreen(
-                                              data: dataUser,
-                                              tipe: 'fill',
-                                            )),
-                                  );
-                                  //jika sudah lengkap, maka lempar dia ke home langsung
-                                } else {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => BottomNavMain()));
-                                }
+                                // cek yg login dokter atau user
+                                provLogin.userLoginList
+                                    .where((user) =>
+                                        user.email ==
+                                            _inputEmailUserController.text &&
+                                        user.password ==
+                                            _InputPasswordUserController.text)
+                                    .map((data) {
+                                  // jika user
+                                  if (data.tipe == 'user') {
+                                    //*note idusers == idLoginUsers
+                                    final findUser = provUsers.usersList
+                                        .any((user) => user.id == dataUser.id);
+
+                                    //jika tidak, maka lempar dia kehalaman lengkapi profile
+                                    if (!findUser) {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                FormProfileScreen(
+                                                  data: dataUser,
+                                                  tipe: 'fill',
+                                                )),
+                                      );
+                                      //jika sudah lengkap, maka lempar dia ke home langsung
+                                    } else {
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  BottomNavMain()));
+                                    }
+                                    // jika dokter
+                                  } else {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                TabBarDokter()));
+                                  }
+                                }).toList();
 
                                 //jika userlogin tidak ditemukan maka muncul notif
                               } else {

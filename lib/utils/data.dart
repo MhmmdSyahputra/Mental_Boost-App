@@ -1,6 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 
+List listAkunDokter = [
+  {
+    'id': '2fys643567',
+    'username': '',
+    'email': 'tiara@gmail.com',
+    'noHp': '085463723546',
+    'password': 'tiara',
+    'tipe': 'dokter'
+  },
+  {
+    'id': 'd7547yhkop',
+    'username': '',
+    'email': 'putra@gmail.com',
+    'noHp': '087874563789',
+    'password': 'putra',
+    'tipe': 'dokter'
+  },
+  {
+    'id': '7r53gf8lao',
+    'username': '',
+    'email': 'aldi@gmail.com',
+    'noHp': '084698123456',
+    'password': 'aldi',
+    'tipe': 'dokter'
+  },
+  {
+    'id': '374ftscxmb',
+    'username': '',
+    'email': 'filbert@gmail.com',
+    'noHp': '089898564781',
+    'password': 'filbert',
+    'tipe': 'dokter'
+  },
+];
+
 List Listpopuler = [
   {
     'icon': Icon(
@@ -39,6 +74,7 @@ List Listpopuler = [
 
 List Listdokter = [
   {
+    'id': '2fys643567',
     'fotoProfile': 'assets/images/dokter/dokter-1.png',
     'namaDokter': 'Dr Tiara S.Pd',
     'spesialis': 'Psikiater',
@@ -52,6 +88,7 @@ List Listdokter = [
     'price': '40000',
   },
   {
+    'id': 'd7547yhkop',
     'fotoProfile': 'assets/images/dokter/dokter-2.png',
     'namaDokter': 'Dr. Putra, S.kom',
     'spesialis': 'Psikolog',
@@ -65,6 +102,7 @@ List Listdokter = [
     'price': '100000',
   },
   {
+    'id': '7r53gf8lao',
     'fotoProfile': 'assets/images/dokter/dokter-3.png',
     'namaDokter': 'Dr. Aldi, S.kom',
     'spesialis': 'Terapis',
@@ -78,6 +116,7 @@ List Listdokter = [
     'price': '65000',
   },
   {
+    'id': '374ftscxmb',
     'fotoProfile': 'assets/images/dokter/dokter-4.png',
     'namaDokter': 'Dr. Filber, SI.kom',
     'spesialis': 'Konselor',

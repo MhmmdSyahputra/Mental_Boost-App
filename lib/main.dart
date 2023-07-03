@@ -5,7 +5,6 @@ import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/providers/questionQuizProvider.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/signin/ScreenLogin.dart';
-import 'package:mentalboost/views/signin/ScreenLogintes.dart';
 import 'package:provider/provider.dart';
 
 void main() {
