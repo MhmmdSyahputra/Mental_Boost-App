@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class UsersModel {
   final String id;
+  final ImageProvider? profile;
   final String username;
   final String email;
   final String noHp;
@@ -10,6 +11,7 @@ class UsersModel {
 
   UsersModel(
       {required this.id,
+      this.profile,
       required this.username,
       required this.email,
       required this.noHp,

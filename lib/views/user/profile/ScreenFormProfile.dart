@@ -8,6 +8,7 @@ import 'package:mentalboost/views/signin/ScreenLogin.dart';
 import 'package:mentalboost/views/user/mainMenu.dart';
 import 'package:mentalboost/views/user/profile/ScreenProfil.dart';
 import 'package:provider/provider.dart';
+import 'package:image_picker/image_picker.dart';
 
 class FormProfileScreen extends StatefulWidget {
   final data;
@@ -25,13 +26,29 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
   final TextEditingController _inputPonselController = TextEditingController();
   String genderValue = 'Male';
   String? dateofBirth;
+  ImageProvider? gambar;
+
+  getFromGallery() async {
+    XFile? pickedFile = await ImagePicker().pickImage(
+      source: ImageSource.gallery,
+    );
+    if (pickedFile != null) {
+      final bytes = await pickedFile.readAsBytes();
+      setState(() {
+        gambar = MemoryImage(bytes);
+      });
+    }
+  }
 
   @override
   void initState() {
     super.initState();
-    _inputUsernameController.text = widget.data.username ?? '';
-    _inputEmailController.text = widget.data.email ?? '';
-    _inputPonselController.text = widget.data.noHp ?? '';
+    if (widget.tipe != 'fill') {
+      gambar = widget.data.profile;
+    }
+    _inputUsernameController.text = widget.data.username;
+    _inputEmailController.text = widget.data.email;
+    _inputPonselController.text = widget.data.noHp;
     dateofBirth = widget.tipe == 'fill' ? null : widget.data.dateOfBirth;
     genderValue = widget.tipe == 'fill' ? 'Male' : widget.data.gender;
   }
@@ -89,18 +106,42 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Container(
-                              width: 150,
-                              height: 150,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: NetworkImage(
-                                      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'),
-                                ),
-                              ),
-                            ),
+                            // widget.data.profile == null || widget.data ==null
+                            gambar == null
+                                ? InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        getFromGallery();
+                                      });
+                                    },
+                                    child: Container(
+                                      width: 150,
+                                      height: 150,
+                                      child: CircleAvatar(
+                                        child: Icon(
+                                          Icons.person,
+                                          size: 120,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                : InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        getFromGallery();
+                                      });
+                                    },
+                                    child: Container(
+                                      width: 150,
+                                      height: 150,
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image: gambar!,
+                                          )),
+                                    ),
+                                  ),
                           ]),
                     ),
                     Container(
@@ -266,6 +307,7 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
                     if (widget.tipe == 'fill') {
                       prov.addUsers(UsersModel(
                           id: widget.data.id,
+                          profile: gambar,
                           username: _inputUsernameController.text,
                           email: _inputEmailController.text,
                           noHp: _inputPonselController.text,
@@ -279,14 +321,14 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
                           widget.data.id,
                           UsersModel(
                               id: widget.data.id,
+                              profile: gambar,
                               username: _inputUsernameController.text,
                               email: _inputEmailController.text,
                               noHp: _inputPonselController.text,
                               gender: genderValue,
                               dateOfBirth: dateofBirth.toString()));
 
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => ProfileScreen()));
+                      Navigator.of(context).pop();
                     }
                   },
                   child: Text('Save'),

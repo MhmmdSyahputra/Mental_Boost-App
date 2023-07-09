@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mentalboost/providers/DoktersProvider.dart';
 import 'package:mentalboost/providers/ScheduleProvider.dart';
 import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/providers/UsersProviders.dart';
@@ -28,7 +29,10 @@ class MyApp extends StatelessWidget {
           ),
           ChangeNotifierProvider(
             create: (context) => QuestionQuizProvider(),
-          )
+          ),
+          ChangeNotifierProvider(
+            create: (context) => DoktersProvider(),
+          ),
         ],
         child: MaterialApp(
             debugShowCheckedModeBanner: false,

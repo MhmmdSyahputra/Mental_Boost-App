@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:mentalboost/providers/DoktersProvider.dart';
+import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/providers/ScheduleProvider.dart';
+import 'package:mentalboost/providers/UsersProviders.dart';
+import 'package:mentalboost/utils/data.dart';
 import 'package:provider/provider.dart';
 
 class PageAppointmentDokter extends StatefulWidget {
@@ -13,9 +15,14 @@ class _PageAppointmentDokterState extends State<PageAppointmentDokter> {
   @override
   Widget build(BuildContext context) {
     final provMySchedule = Provider.of<ScheduleProvider>(context);
+    final provIdDokter = Provider.of<UserLoginProvider>(context);
+
+    final dataDokter = Listdokter.firstWhere(
+        (user) => user['id'] == provIdDokter.idUserDoLogin);
 
     return Column(
       children: [
+        // Text(user.id),
         Container(
           child: Column(
             children: provMySchedule.scheduleList.map((res) {
@@ -47,7 +54,7 @@ class _PageAppointmentDokterState extends State<PageAppointmentDokter> {
                                 ),
                                 Container(
                                     margin: EdgeInsets.only(top: 10),
-                                    child: Text('Time')),
+                                    child: Text('${res.date}  -  ${res.time}')),
                                 Divider(
                                   color: Colors.black,
                                 ),
@@ -60,14 +67,16 @@ class _PageAppointmentDokterState extends State<PageAppointmentDokter> {
                                         children: [
                                           Container(
                                             margin: EdgeInsets.only(top: 20),
-                                            child: Text('Type of examination'),
+                                            child: Text(
+                                              '${res.namePasien}',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
                                           ),
                                           Container(
                                             margin: EdgeInsets.only(top: 10),
                                             child: Text(
-                                              'nama',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
+                                              '${res.agePasien} Tahun',
                                             ),
                                           ),
                                         ],

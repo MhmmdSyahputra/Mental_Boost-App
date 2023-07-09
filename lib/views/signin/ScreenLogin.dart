@@ -139,51 +139,44 @@ class _LoginScreenState extends State<LoginScreen> {
                                 );
 
                                 //simpan id user yg login
+                                provLogin.userDoLogin('');
                                 provLogin.userDoLogin(dataUser.id);
 
-                                //cek apakah yg login sudah melengkapi profile nya
-                                //dengan cara bandingkan apakah idlogin sudah ada di users
+                                if (dataUser.tipe == 'dokter') {
+                                  print('dokter');
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => TabBarDokter()),
+                                  );
+                                  return;
+                                } else {
+                                  print('user');
+                                  //cek apakah yg login sudah melengkapi profile nya
+                                  //dengan cara bandingkan apakah idlogin sudah ada di users
+                                  //*note idusers == idLoginUsers
+                                  final findUser = provUsers.usersList
+                                      .any((user) => user.id == dataUser.id);
 
-                                // cek yg login dokter atau user
-                                provLogin.userLoginList
-                                    .where((user) =>
-                                        user.email ==
-                                            _inputEmailUserController.text &&
-                                        user.password ==
-                                            _InputPasswordUserController.text)
-                                    .map((data) {
-                                  // jika user
-                                  if (data.tipe == 'user') {
-                                    //*note idusers == idLoginUsers
-                                    final findUser = provUsers.usersList
-                                        .any((user) => user.id == dataUser.id);
-
-                                    //jika tidak, maka lempar dia kehalaman lengkapi profile
-                                    if (!findUser) {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                FormProfileScreen(
-                                                  data: dataUser,
-                                                  tipe: 'fill',
-                                                )),
-                                      );
-                                      //jika sudah lengkap, maka lempar dia ke home langsung
-                                    } else {
-                                      Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  BottomNavMain()));
-                                    }
-                                    // jika dokter
+                                  //jika tidak, maka lempar dia kehalaman lengkapi profile
+                                  if (!findUser) {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              FormProfileScreen(
+                                                data: dataUser,
+                                                tipe: 'fill',
+                                              )),
+                                    );
+                                    //jika sudah lengkap, maka lempar dia ke home langsung
                                   } else {
-                                    Navigator.of(context).push(
+                                    Navigator.of(context).pushReplacement(
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                TabBarDokter()));
+                                                BottomNavMain()));
                                   }
-                                }).toList();
+                                }
 
                                 //jika userlogin tidak ditemukan maka muncul notif
                               } else {

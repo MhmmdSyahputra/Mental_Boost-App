@@ -25,6 +25,7 @@ class UserLoginProvider with ChangeNotifier {
   String get idUserDoLogin => _idUserDoLogin;
 
   void userDoLogin(id) {
+    _idUserDoLogin = '';
     _idUserDoLogin = id;
     notifyListeners();
   }
