@@ -1,7 +1,11 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
+import 'package:mentalboost/widgets/customDialog2.dart';
+
+import '../widgets/customDialog.dart';
 
 String greeting(int hour) {
   if (hour < 12) {
@@ -49,4 +53,54 @@ void myNotif(String msg, Color color) {
       backgroundColor: color,
       textColor: Colors.black,
       fontSize: 16.0);
+}
+
+void showCustomDialog(BuildContext context, String title, String subtile,
+    Color color, Icon icon) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return CustomDialog(
+          title: title, subtile: subtile, color: color, icon: icon);
+    },
+  );
+}
+
+void showCustomDialog2(BuildContext context, String title, String subtile,
+    Color color, Icon icon) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return CustomDialogPromt(
+          title: title, subtile: subtile, color: color, icon: icon);
+    },
+  );
+}
+
+SnackBar createSnackBar(String text, Color color, String label) {
+  return SnackBar(
+    backgroundColor: color,
+    content: Text(
+      text,
+      style: const TextStyle(color: Colors.black),
+    ),
+    action: SnackBarAction(
+      label: label,
+      onPressed: () {
+        // Tambahkan aksi yang ingin Anda lakukan saat tombol pada SnackBar ditekan
+      },
+    ),
+  );
+}
+
+Widget globalSpinKit() {
+  return SpinKitFadingCircle(
+    itemBuilder: (BuildContext context, int index) {
+      return DecoratedBox(
+        decoration: BoxDecoration(
+          color: index.isEven ? Colors.red : Colors.green,
+        ),
+      );
+    },
+  );
 }

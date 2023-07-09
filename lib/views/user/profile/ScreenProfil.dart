@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
@@ -7,6 +10,7 @@ import 'package:mentalboost/views/signin/ScreenLogin.dart';
 import 'package:mentalboost/views/user/profile/ScreenFormProfile.dart';
 import 'package:mentalboost/views/user/schedule/MySchedule.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -14,6 +18,8 @@ class ProfileScreen extends StatefulWidget {
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
+
+bool valLoading = false;
 
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
@@ -35,9 +41,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
               height: MediaQuery.of(context).size.height - 220,
               child: Column(
                 children: [
+                  valLoading
+                      ? SpinKitFadingCircle(
+                          color: Colors.red,
+                          size: 50.0,
+                        )
+                      : SizedBox(),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                    margin: EdgeInsets.symmetric(vertical: 10),
+                    margin: EdgeInsets.only(bottom: 10),
                     decoration: BoxDecoration(
                         color: ColorConstants.boxColor,
                         boxShadow: [
@@ -129,7 +141,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           margin: EdgeInsets.symmetric(
                                               horizontal: 10),
                                           child: ElevatedButton(
-                                              onPressed: () => {},
+                                              onPressed: () async {
+                                                setState(() {
+                                                  valLoading = true;
+                                                });
+                                                String response =
+                                                    await getOpenAIResponse(
+                                                        'baik');
+                                                setState(() {
+                                                  valLoading = false;
+                                                  showCustomDialog2(
+                                                      context,
+                                                      'Good',
+                                                      '${response}',
+                                                      Colors.orange,
+                                                      Icon(
+                                                        Icons.warning,
+                                                        color: ColorConstants
+                                                            .textColorLight,
+                                                      ));
+                                                });
+                                              },
                                               child: Text('Good'),
                                               style: ElevatedButton.styleFrom(
                                                   backgroundColor: Colors.green,
@@ -143,7 +175,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           margin: EdgeInsets.symmetric(
                                               horizontal: 10),
                                           child: ElevatedButton(
-                                              onPressed: () => {},
+                                              onPressed: () async {
+                                                setState(() {
+                                                  valLoading = true;
+                                                });
+                                                String response =
+                                                    await getOpenAIResponse(
+                                                        'tidak baik');
+                                                setState(() {
+                                                  valLoading = false;
+                                                  showCustomDialog2(
+                                                      context,
+                                                      'Not Good',
+                                                      '${response}',
+                                                      Colors.orange,
+                                                      Icon(
+                                                        Icons.warning,
+                                                        color: ColorConstants
+                                                            .textColorLight,
+                                                      ));
+                                                });
+                                              },
                                               child: Text('Not Good'),
                                               style: ElevatedButton.styleFrom(
                                                   backgroundColor: Colors.red,
@@ -438,5 +490,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
     );
+  }
+}
+
+Future<String> getOpenAIResponse(String input) async {
+  final response = await http.post(
+      Uri.parse('https://api.openai.com/v1/completions'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization':
+            'Bearer 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' // Ganti dengan API Key Anda
+      },
+      body:
+          '{"prompt": "hidup saya sedang $input. bisa berikan motivasi dengan singkat dan padat agar saya lebih semangat jaani hidup", "max_tokens": 200, "model": "text-davinci-003"}');
+
+  if (response.statusCode == 200) {
+    final jsonResponse = json.decode(response.body);
+    final botResponse = jsonResponse['choices'][0]['text'];
+    return botResponse;
+    // return response.body;
+  } else {
+    return 'Error: ${response.statusCode}';
   }
 }

@@ -4,20 +4,8 @@ import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/signin/ScreenLogin.dart';
-import 'package:mentalboost/widgets/customDialog.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
-
-void showCustomDialog(BuildContext context, String title, String subtile,
-    Color color, Icon icon) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return CustomDialog(
-          title: title, subtile: subtile, color: color, icon: icon);
-    },
-  );
-}
 
 class RegistrasiScreen extends StatefulWidget {
   const RegistrasiScreen({super.key});
@@ -162,9 +150,9 @@ class _RegistrasiScreenState extends State<RegistrasiScreen> {
                               horizontal: 20, vertical: 20),
                           child: ElevatedButton(
                             onPressed: () {
-                              if (_inputUsernameController.text != '' ||
-                                  _inputEmailUserController.text != '' ||
-                                  _inputNumberController.text != '' ||
+                              if (_inputUsernameController.text != '' &&
+                                  _inputEmailUserController.text != '' &&
+                                  _inputNumberController.text != '' &&
                                   _inputPasswordUserController.text != '') {
                                 prov.register(UserLoginModel(
                                   id: uuid.v1(),
@@ -176,25 +164,19 @@ class _RegistrasiScreenState extends State<RegistrasiScreen> {
                                 ));
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => LoginScreen()));
-                                showCustomDialog(
-                                    context,
-                                    'Success',
+                                final snackBar = createSnackBar(
                                     'Your Account is Successfully Created',
                                     Colors.green,
-                                    Icon(
-                                      Icons.done,
-                                      color: ColorConstants.textColorLight,
-                                    ));
+                                    'Oke');
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
                               } else {
-                                showCustomDialog(
-                                    context,
-                                    'Failed',
+                                final snackBar = createSnackBar(
                                     'Your Data is Not Complete',
                                     Colors.orange,
-                                    Icon(
-                                      Icons.warning,
-                                      color: ColorConstants.textColorLight,
-                                    ));
+                                    'Oke');
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
                               }
                             },
                             child: Text(
