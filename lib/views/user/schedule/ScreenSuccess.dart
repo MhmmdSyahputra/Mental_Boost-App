@@ -67,8 +67,9 @@ class SuccessScreen extends StatelessWidget {
                           Expanded(
                               child: OutlinedButton(
                             onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => BottomNavMain()));
+                              Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                      builder: (context) => BottomNavMain()));
                             },
                             child: Text(
                               "Home",
@@ -80,7 +81,7 @@ class SuccessScreen extends StatelessWidget {
                           Expanded(
                               child: ElevatedButton(
                                   onPressed: () {
-                                    Navigator.of(context).push(
+                                    Navigator.of(context).pushReplacement(
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 MyScheduleScreen()));

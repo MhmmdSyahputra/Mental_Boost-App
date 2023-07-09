@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:mentalboost/providers/questionQuizProvider.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +16,7 @@ class ResultQuizScreen extends StatefulWidget {
 
 class _ResultQuizScreenState extends State<ResultQuizScreen> {
   late String _openAIResponse = '';
+  bool valLoading = false;
   @override
   Widget build(BuildContext context) {
     final prov = Provider.of<QuestionQuizProvider>(context);
@@ -36,20 +38,29 @@ class _ResultQuizScreenState extends State<ResultQuizScreen> {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
+            valLoading
+                ? SpinKitFadingCircle(
+                    color: ColorConstants.primaryColor,
+                    size: 50.0,
+                  )
+                : SizedBox(),
             Container(
                 width: 400,
                 child: Image.asset('assets/images/ilustration-predictive.png')),
-            Text(_openAIResponse),
+            Text(textAlign: TextAlign.center, _openAIResponse),
             ElevatedButton(
               onPressed: () async {
+                setState(() {
+                  valLoading = true;
+                });
                 String response = await getOpenAIResponse(dataString);
                 setState(() {
-                  _openAIResponse =
-                      response; // Memperbarui nilai _openAIResponse
+                  valLoading = false;
+                  _openAIResponse = response;
                 });
               },
               child: Text(
-                'Home',
+                'Lihat Hasil',
                 style: TextStyle(fontSize: 18),
               ),
               style: ElevatedButton.styleFrom(

@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:mentalboost/providers/LoginRegisProvider.dart';
@@ -43,7 +42,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   valLoading
                       ? SpinKitFadingCircle(
-                          color: Colors.red,
+                          color: ColorConstants.primaryColor,
                           size: 50.0,
                         )
                       : SizedBox(),
@@ -69,7 +68,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: user.profile!,
+                              image: getProfile(user.profile, user.gender),
                             ),
                           ),
                         ),

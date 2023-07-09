@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/providers/UsersProviders.dart';
+import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/signin/ScreenLogin.dart';
 import 'package:mentalboost/views/user/home/ScreenHome.dart';
@@ -76,7 +77,8 @@ class _BottomNavMainState extends State<BottomNavMain> {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        fit: BoxFit.cover, image: user.profile!),
+                        fit: BoxFit.cover,
+                        image: getProfile(user.profile, user.gender)),
                   ),
                 ),
                 SizedBox(

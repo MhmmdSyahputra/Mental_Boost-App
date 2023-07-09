@@ -19,10 +19,9 @@ class _DetailQuizScreenState extends State<DetailQuizScreen> {
   int indexQuestion = 0;
 
   bool showBanner = false;
-  void showHideBanner() {
+  showHideBanner(val) {
     setState(() {
-      showBanner = showBanner ? showBanner : !showBanner;
-      // showBanner = !showBanner;
+      showBanner = !val;
     });
   }
 
@@ -71,7 +70,9 @@ class _DetailQuizScreenState extends State<DetailQuizScreen> {
                     'Pilihan jawaban belum dipilih. Tolong pilih salah satu'),
                 leading: CircleAvatar(child: Icon(Icons.warning)),
                 actions: [
-                  TextButton(onPressed: showHideBanner, child: Text('Oke')),
+                  TextButton(
+                      onPressed: showHideBanner(showBanner),
+                      child: Text('Oke')),
                 ]),
           Container(
             margin: EdgeInsets.only(top: 30),
@@ -156,7 +157,7 @@ class _DetailQuizScreenState extends State<DetailQuizScreen> {
               child: ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    selectedAnswer == null ? showHideBanner() : '';
+                    selectedAnswer == null ? showHideBanner(showBanner) : '';
                     if (indexQuestion >= dataQuestion.length - 1) {
                       List<Map<String, dynamic>> resultData =
                           prov.myAnswerList.map((res) {
@@ -166,7 +167,7 @@ class _DetailQuizScreenState extends State<DetailQuizScreen> {
                         };
                       }).toList();
 
-                      Navigator.of(context).push(MaterialPageRoute(
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) =>
                             ResultQuizScreen(data: resultData),
                       ));

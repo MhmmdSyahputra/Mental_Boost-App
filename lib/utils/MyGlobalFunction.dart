@@ -104,3 +104,14 @@ Widget globalSpinKit() {
     },
   );
 }
+
+dynamic getProfile(image, gender) {
+  if (image != null) {
+    return image;
+  } else {
+    if (gender == 'Male') {
+      return AssetImage('assets/images/noprofile_male.png');
+    }
+    return AssetImage('assets/images/noprofile_female.png');
+  }
+}

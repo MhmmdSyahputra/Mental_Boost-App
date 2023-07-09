@@ -68,10 +68,10 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
           TextButton(
               onPressed: () {
                 if (widget.tipe == 'fill') {
-                  Navigator.of(context).push(
+                  Navigator.of(context).pushReplacement(
                       MaterialPageRoute(builder: (context) => LoginScreen()));
                 } else {
-                  Navigator.of(context).push(
+                  Navigator.of(context).pushReplacement(
                       MaterialPageRoute(builder: (context) => ProfileScreen()));
                 }
               },
@@ -106,42 +106,23 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // widget.data.profile == null || widget.data ==null
-                            gambar == null
-                                ? InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        getFromGallery();
-                                      });
-                                    },
-                                    child: Container(
-                                      width: 150,
-                                      height: 150,
-                                      child: CircleAvatar(
-                                        child: Icon(
-                                          Icons.person,
-                                          size: 120,
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                : InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        getFromGallery();
-                                      });
-                                    },
-                                    child: Container(
-                                      width: 150,
-                                      height: 150,
-                                      decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          image: DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image: gambar!,
-                                          )),
-                                    ),
-                                  ),
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  getFromGallery();
+                                });
+                              },
+                              child: Container(
+                                width: 150,
+                                height: 150,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image:
+                                            getProfile(gambar, genderValue))),
+                              ),
+                            )
                           ]),
                     ),
                     Container(
@@ -314,7 +295,7 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
                           gender: genderValue,
                           dateOfBirth: dateofBirth.toString()));
 
-                      Navigator.of(context).push(MaterialPageRoute(
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) => BottomNavMain()));
                     } else {
                       prov.updateUser(
