@@ -34,6 +34,14 @@ List listAkunDokter = [
     'password': 'filbert',
     'tipe': 'dokter'
   },
+  {
+    'id': 'ewfref343',
+    'username': 'novita',
+    'email': 'novita@gmail.com',
+    'noHp': '083465789834',
+    'password': 'novita',
+    'tipe': 'user'
+  },
 ];
 
 List Listpopuler = [
@@ -176,23 +184,24 @@ Menjaga kesehatan mental selama pandemi adalah hal yang penting. Dengan menerapk
     'coverTips': 'assets/images/tips/tips-2.png',
     'titleTips': 'Tips Memilih Mainan Anak yang Aman dan Sehat',
     'contentTips': '''
-    # Tips Memilih Mainan Anak yang Aman dan Sehat
-    ![Gambar Tips](assets/images/tips/tips-2.png)
-    Memilih mainan yang aman dan sehat untuk anak adalah penting untuk memastikan keselamatan dan kesejahteraan mereka. Berikut adalah beberapa tips yang dapat membantu Anda memilih mainan yang tepat:
+# Tips Memilih Mainan Anak yang Aman dan Sehat
+![Gambar Tips](assets/images/tips/tips-2.png)
+Memilih mainan yang aman dan sehat untuk anak adalah penting untuk memastikan keselamatan dan kesejahteraan mereka. Berikut adalah beberapa tips yang dapatmembantu Anda memilih mainan yang tepat:
 
-    1. Baca label dan petunjuk: Pastikan untuk membaca label pada mainan dan petunjuk penggunaan yang disertakan. Perhatikan usia yang direkomendasikan, bahan yang digunakan, dan petunjuk keamanan lainnya.
+1. Baca label dan petunjuk: Pastikan untuk membaca label pada mainan dan petunjuk penggunaan yang disertakan. Perhatikan usia yang direkomendasikan, bahan yang digunakan, dan petunjuk keamanan lainnya.
 
-    2. Pilih mainan yang sesuai dengan usia anak: Setiap mainan memiliki usia yang direkomendasikan. Pilih mainan yang sesuai dengan usia anak untuk menghindari risiko cedera atau kecelakaan.
+2. Pilih mainan yang sesuai dengan usia anak: Setiap mainan memiliki usia yang direkomendasikan. Pilih mainan yang sesuai dengan usia anak untuk menghindari risiko cedera atau kecelakaan.
 
-    3. Perhatikan bahan yang digunakan: Pastikan mainan terbuat dari bahan yang aman dan non-toksik. Hindari mainan yang mengandung bahan berbahaya seperti timah atau ftalat.
+3. Perhatikan bahan yang digunakan: Pastikan mainan terbuat dari bahan yang aman dan non-toksik. Hindari mainan yang mengandung bahan berbahaya seperti timah atau ftalat.
 
-    4. Periksa keamanan mainan: Periksa apakah mainan memiliki bagian kecil yang dapat terlepas dan menjadi tersedak. Pastikan mainan tidak memiliki tepi yang tajam atau potongan yang bisa melukai anak.
+4. Periksa keamanan mainan: Periksa apakah mainan memiliki bagian kecil yang dapat terlepas dan menjadi tersedak. Pastikan mainan tidak memiliki tepi yang tajam atau potongan yang bisa melukai anak.
 
-    5. Pastikan mainan tahan lama: Pilih mainan yang terbuat dari bahan yang kuat dan tahan lama. Hindari mainan yang mudah rusak atau pecah.
+5. Pastikan mainan tahan lama: Pilih mainan yang terbuat dari bahan yang kuat dan tahan lama. Hindari mainan yang mudah rusak atau pecah.
 
-    6. Pertimbangkan faktor kesehatan: Beberapa mainan dapat berkontribusi pada kesehatan anak, seperti mainan yang mendorong aktivitas fisik atau mainan edukatif. Pertimbangkan faktor kesehatan saat memilih mainan.
+6. Pertimbangkan faktor kesehatan: Beberapa mainan dapat berkontribusi pada kesehatan anak, seperti mainan yang mendorong aktivitas fisik atau mainan edukatif. Pertimbangkan faktor kesehatan saat memilih mainan.
 
-    Dengan memperhatikan tips di atas, Anda dapat memilih mainan yang aman dan sehat untuk anak-anak Anda. Jangan lupa untuk selalu mengawasi anak saat bermain dengan mainan dan periksa secara berkala apakah ada kerusakan atau bahaya potensial pada mainan tersebut.
+Dengan memperhatikan tips di atas, Anda dapat memilih mainan yang aman dan sehat untuk anak-anak Anda. Jangan lupa untuk selalu mengawasi anak saat bermain dengan mainan dan periksa secara berkala apakah ada kerusakan atau bahaya potensial pada mainan tersebut.
+
     ''',
     'categoryTips': 'Keluarga',
   },
@@ -201,23 +210,24 @@ Menjaga kesehatan mental selama pandemi adalah hal yang penting. Dengan menerapk
     'coverTips': 'assets/images/tips/tips-3.png',
     'titleTips': 'Tips Mengatasi Masalah Tidur atau Insomnia',
     'contentTips': '''
-    # Tips Mengatasi Masalah Tidur atau Insomnia
-    ![Gambar Tips](assets/images/tips/tips-3.png)
-    Mengalami masalah tidur atau insomnia dapat berdampak buruk pada kesehatan dan kualitas hidup kita. Berikut adalah beberapa tips yang dapat membantu mengatasi masalah tidur atau insomnia:
+# Tips Mengatasi Masalah Tidur atau Insomnia
+![Gambar Tips](assets/images/tips/tips-3.png)
+Mengalami masalah tidur atau insomnia dapat berdampak buruk pada kesehatan dan kualitas hidup kita. Berikut adalah beberapa tips yang dapat membantu mengatasi masalah tidur atau insomnia:
 
-    1. Tetapkan jadwal tidur yang teratur: Cobalah untuk tidur dan bangun pada jam yang sama setiap hari, termasuk akhir pekan. Menjaga jadwal tidur yang konsisten membantu mengatur ritme tidur Anda.
+1. Tetapkan jadwal tidur yang teratur: Cobalah untuk tidur dan bangun pada jam yang sama setiap hari, termasuk akhir pekan. Menjaga jadwal tidur yang konsisten membantu mengatur ritme tidur Anda.
 
-    2. Ciptakan lingkungan tidur yang nyaman: Pastikan tempat tidur Anda nyaman dan gelap. Gunakan bantal, selimut, dan perlengkapan tidur lainnya yang sesuai dengan preferensi Anda.
+2. Ciptakan lingkungan tidur yang nyaman: Pastikan tempat tidur Anda nyaman dan gelap. Gunakan bantal, selimut, dan perlengkapan tidur lainnya yang sesuai dengan preferensi Anda.
 
-    3. Hindari stimulan sebelum tidur: Hindari minum kafein atau minuman beralkohol beberapa jam sebelum tidur. Stimulan tersebut dapat mengganggu kualitas tidur Anda.
+3. Hindari stimulan sebelum tidur: Hindari minum kafein atau minuman beralkohol beberapa jam sebelum tidur. Stimulan tersebut dapat mengganggu kualitas tidur Anda.
 
-    4. Buat rutinitas sebelum tidur: Ciptakan rutinitas yang menenangkan sebelum tidur, seperti mandi hangat atau membaca buku. Hindari aktivitas yang merangsang seperti menonton televisi atau menggunakan perangkat elektronik yang terang.
+4. Buat rutinitas sebelum tidur: Ciptakan rutinitas yang menenangkan sebelum tidur, seperti mandi hangat atau membaca buku. Hindari aktivitas yang merangsang seperti menonton televisi atau menggunakan perangkat elektronik yang terang.
 
-    5. Olahraga secara teratur: Melakukan aktivitas fisik secara teratur dapat membantu meningkatkan kualitas tidur. Namun, hindari berolahraga terlalu dekat dengan waktu tidur karena dapat membuat Anda tetap terjaga.
+5. Olahraga secara teratur: Melakukan aktivitas fisik secara teratur dapat membantu meningkatkan kualitas tidur. Namun, hindari berolahraga terlalu dekat dengan waktu tidur karena dapat membuat Anda tetap terjaga.
 
-    6. Kelola stres dengan baik: Stres dapat menjadi salah satu penyebab masalah tidur. Coba praktikkan teknik relaksasi seperti meditasi, pernapasan dalam, atau yoga untuk mengurangi stres sebelum tidur.
+6. Kelola stres dengan baik: Stres dapat menjadi salah satu penyebab masalah tidur. Coba praktikkan teknik relaksasi seperti meditasi, pernapasan dalam, atau yoga untuk mengurangi stres sebelum tidur.
 
-    Jika masalah tidur atau insomnia terus berlanjut dan mengganggu aktivitas sehari-hari Anda, penting untuk berkonsultasi dengan dokter atau ahli tidur untuk evaluasi lebih lanjut dan penanganan yang tepat.
+Jika masalah tidur atau insomnia terus berlanjut dan mengganggu aktivitas sehari-hari Anda, penting untuk berkonsultasi dengan dokter atau ahli tidur untuk evaluasi lebih lanjut dan penanganan yang tepat.
+
     ''',
     'categoryTips': 'Kesehatan',
   },
@@ -226,23 +236,24 @@ Menjaga kesehatan mental selama pandemi adalah hal yang penting. Dengan menerapk
     'coverTips': 'assets/images/tips/tips-4.png',
     'titleTips': 'Kiat Mengatasi Stres dan Kecemasan Secara Alami',
     'contentTips': '''
-    # Kiat Mengatasi Stres dan Kecemasan Secara Alami
-    ![Gambar Tips](assets/images/tips/tips-4.png)
-    Menghadapi stres dan kecemasan adalah bagian normal dari kehidupan, tetapi terlalu banyak stres dapat berdampak buruk pada kesehatan dan kesejahteraan kita. Berikut adalah beberapa kiat yang dapat membantu mengatasi stres dan kecemasan secara alami:
+# Kiat Mengatasi Stres dan Kecemasan Secara Alami
+![Gambar Tips](assets/images/tips/tips-4.png)
+Menghadapi stres dan kecemasan adalah bagian normal dari kehidupan, tetapi terlalu banyak stres dapat berdampak buruk pada kesehatan dan kesejahteraan kita. Berikut adalah beberapa kiat yang dapat membantu mengatasi stres dan kecemasan secara alami:
 
-    1. Olahraga secara teratur: Olahraga merupakan salah satu cara efektif untuk mengurangi stres. Lakukan aktivitas fisik secara teratur seperti berjalan kaki, berlari, atau yoga.
+1. Olahraga secara teratur: Olahraga merupakan salah satu cara efektif untuk mengurangi stres. Lakukan aktivitas fisik secara teratur seperti berjalan kaki, berlari, atau yoga.
 
-    2. Praktikkan teknik relaksasi: Teknik seperti meditasi, pernapasan dalam, atau yoga dapat membantu menenangkan pikiran dan tubuh, mengurangi stres, dan meningkatkan kesejahteraan secara keseluruhan.
+2. Praktikkan teknik relaksasi: Teknik seperti meditasi, pernapasan dalam, atau yoga dapat membantu menenangkan pikiran dan tubuh, mengurangi stres, dan meningkatkan kesejahteraan secara keseluruhan.
 
-    3. Jaga pola tidur yang sehat: Tidur yang cukup dan berkualitas adalah penting untuk mengatasi stres. Pastikan Anda mendapatkan tidur yang cukup setiap malam dan menjaga rutinitas tidur yang teratur.
+3. Jaga pola tidur yang sehat: Tidur yang cukup dan berkualitas adalah penting untuk mengatasi stres. Pastikan Anda mendapatkan tidur yang cukup setiap malam dan menjaga rutinitas tidur yang teratur.
 
-    4. Kelola waktu dengan baik: Aturlah waktu Anda dengan baik dan prioritaskan tugas yang penting. Mengatur waktu dengan baik dapat membantu mengurangi stres akibat jadwal yang padat.
+4. Kelola waktu dengan baik: Aturlah waktu Anda dengan baik dan prioritaskan tugas yang penting. Mengatur waktu dengan baik dapat membantu mengurangi stres akibat jadwal yang padat.
 
-    5. Berbagi dengan orang terdekat: Berbicara dengan orang terdekat tentang stres dan kecemasan yang Anda alami dapat membantu mengurangi beban yang Anda rasakan. Dukungan sosial dapat memberikan rasa lega dan membantu mengatasi stres.
+5. Berbagi dengan orang terdekat: Berbicara dengan orang terdekat tentang stres dan kecemasan yang Anda alami dapat membantu mengurangi beban yang Anda rasakan. Dukungan sosial dapat memberikan rasa lega dan membantu mengatasi stres.
 
-    6. Jaga gaya hidup sehat: Makan makanan sehat, minum cukup air, dan hindari kebiasaan buruk seperti merokok atau mengkonsumsi alkohol secara berlebihan. Gaya hidup sehat dapat membantu menjaga keseimbangan mental dan fisik.
+6. Jaga gaya hidup sehat: Makan makanan sehat, minum cukup air, dan hindari kebiasaan buruk seperti merokok atau mengkonsumsi alkohol secara berlebihan. Gaya hidup sehat dapat membantu menjaga keseimbangan mental dan fisik.
 
-    Selain kiat di atas, penting juga untuk mengenali tanda-tanda stres berlebih dan mencari bantuan jika diperlukan. Jika stres dan kecemasan terus mengganggu kesejahteraan Anda, konsultasikan dengan profesional kesehatan atau ahli terkait untuk bantuan lebih lanjut.
+Selain kiat di atas, penting juga untuk mengenali tanda-tanda stres berlebih dan mencari bantuan jika diperlukan. Jika stres dan kecemasan terus mengganggu kesejahteraan Anda, konsultasikan dengan profesional kesehatan atau ahli terkait untuk bantuan lebih lanjut.
+
     ''',
     'categoryTips': 'Kesehatan',
   },
@@ -252,23 +263,23 @@ Menjaga kesehatan mental selama pandemi adalah hal yang penting. Dengan menerapk
     'titleTips':
         'Pentingnya Menjaga Kesehatan Mental Keluarga dalam Keseharian',
     'contentTips': '''
-    # Pentingnya Menjaga Kesehatan Mental Keluarga dalam Keseharian
-    ![Gambar Tips](assets/images/tips/tips-5.png)
-    Kesehatan mental keluarga memiliki peran yang sangat penting dalam kesejahteraan dan kebahagiaan setiap anggota keluarga. Berikut adalah beberapa hal yang dapat dilakukan untuk menjaga kesehatan mental keluarga dalam keseharian:
+# Pentingnya Menjaga Kesehatan Mental Keluarga dalam Keseharian
+![Gambar Tips](assets/images/tips/tips-5.png)
+Kesehatan mental keluarga memiliki peran yang sangat penting dalam kesejahteraan dan kebahagiaan setiap anggota keluarga. Berikut adalah beberapa hal yang dapat dilakukan untuk menjaga kesehatan mental keluarga dalam keseharian:
 
-    1. Komunikasi yang terbuka: Membuka saluran komunikasi yang baik antara anggota keluarga adalah kunci untuk menjaga kesehatan mental. Berbicaralah dengan anggota keluarga tentang perasaan, masalah, dan harapan masing-masing.
+1. Komunikasi yang terbuka: Membuka saluran komunikasi yang baik antara anggota keluarga adalah kunci untuk menjaga kesehatan mental. Berbicaralah dengan anggota keluarga tentang perasaan, masalah, dan harapan masing-masing.
 
-    2. Luangkan waktu berkualitas bersama: Sediakan waktu khusus untuk berkumpul dan melakukan kegiatan bersama sebagai keluarga. Aktivitas seperti bermain game, makan malam bersama, atau berjalan-jalan dapat memperkuat ikatan keluarga dan mengurangi stres.
+2. Luangkan waktu berkualitas bersama: Sediakan waktu khusus untuk berkumpul dan melakukan kegiatan bersama sebagai keluarga. Aktivitas seperti bermain game, makan malam bersama, atau berjalan-jalan dapat memperkuat ikatan keluarga dan mengurangi stres.
 
-    3. Dukung satu sama lain: Dukung dan hargai satu sama lain dalam keluarga. Berikan dukungan emosional dan fisik saat anggota keluarga menghadapi tantangan atau kesulitan.
+3. Dukung satu sama lain: Dukung dan hargai satu sama lain dalam keluarga. Berikan dukungan emosional dan fisik saat anggota keluarga menghadapi tantangan atau kesulitan.
 
-    4. Jadwalkan waktu istirahat: Penting untuk memberikan waktu istirahat yang cukup bagi setiap anggota keluarga. Istirahat yang cukup membantu mengurangi stres dan memulihkan energi.
+4. Jadwalkan waktu istirahat: Penting untuk memberikan waktu istirahat yang cukup bagi setiap anggota keluarga. Istirahat yang cukup membantu mengurangi stres dan memulihkan energi.
 
-    5. Jaga pola makan dan tidur yang sehat: Pola makan dan tidur yang sehat berdampak langsung pada kesehatan mental. Pastikan setiap anggota keluarga mendapatkan nutrisi yang cukup dan tidur yang berkualitas.
+5. Jaga pola makan dan tidur yang sehat: Pola makan dan tidur yang sehat berdampak langsung pada kesehatan mental. Pastikan setiap anggota keluarga mendapatkan nutrisi yang cukup dan tidur yang berkualitas.
 
-    6. Hargai keunikan masing-masing: Setiap anggota keluarga memiliki keunikan dan minat yang berbeda. Hargai keunikan tersebut dan dukung setiap individu untuk mengejar minat dan tujuan mereka.
+6. Hargai keunikan masing-masing: Setiap anggota keluarga memiliki keunikan dan minat yang berbeda. Hargai keunikan tersebut dan dukung setiap individu untuk mengejar minat dan tujuan mereka.
 
-    Dengan menjaga kesehatan mental keluarga, Anda dapat menciptakan lingkungan yang harmonis, mendukung, dan bahagia. Ingatlah bahwa setiap keluarga memiliki dinamika yang berbeda, jadi temukan cara yang paling sesuai dengan kebutuhan dan nilai-nilai keluarga Anda.
+Dengan menjaga kesehatan mental keluarga, Anda dapat menciptakan lingkungan yang harmonis, mendukung, dan bahagia. Ingatlah bahwa setiap keluarga memiliki dinamika yang berbeda, jadi temukan cara yang paling sesuai dengan kebutuhan dan nilai-nilai keluarga Anda.
     ''',
     'categoryTips': 'Kesehatan',
   }

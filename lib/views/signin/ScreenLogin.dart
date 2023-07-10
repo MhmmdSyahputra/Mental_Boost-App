@@ -139,7 +139,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 );
 
                                 //simpan id user yg login
-                                provLogin.userDoLogin('');
                                 provLogin.userDoLogin(dataUser.id);
 
                                 if (dataUser.tipe == 'dokter') {

@@ -15,28 +15,7 @@ class _PageProfileDokterState extends State<PageProfileDokter> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        ElevatedButton(
-          onPressed: () {
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(
-                builder: (context) => LoginScreen(),
-              ),
-              (route) => false,
-            );
-          },
-          child: Text(
-            'Logout',
-            style: TextStyle(fontSize: 18),
-          ),
-          style: ElevatedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              primary: ColorConstants.primaryColor),
-        )
-      ],
+      children: [Text('Profile')],
     );
   }
 }
