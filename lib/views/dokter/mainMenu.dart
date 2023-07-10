@@ -26,7 +26,24 @@ class TabBarDokter extends StatelessWidget {
             return [
               SliverAppBar(
                 backgroundColor: ColorConstants.primaryColor,
-                title: Text('${dataDokter['namaDokter']}'),
+                title: Row(
+                  children: [
+                    Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage(dataDokter['fotoProfile'])),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Text('${dataDokter['namaDokter']}'),
+                  ],
+                ),
                 actions: [
                   IconButton(
                       onPressed: () {
