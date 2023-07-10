@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
+import 'package:mentalboost/utils/data.dart';
 
 class DetailOrderScheduleScreen extends StatelessWidget {
   final data;
@@ -11,6 +12,9 @@ class DetailOrderScheduleScreen extends StatelessWidget {
     DateTime now = DateTime.now();
     String dateNow =
         '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
+
+    final dataDokter =
+        Listdokter.firstWhere((user) => user['id'] == data.idDokter);
 
     return Scaffold(
       appBar: AppBar(
@@ -46,7 +50,7 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                           shape: BoxShape.circle,
                           image: DecorationImage(
                             fit: BoxFit.cover,
-                            image: AssetImage(data.profilDokter),
+                            image: AssetImage(dataDokter['fotoProfile']),
                           ),
                         ),
                       ),
@@ -59,13 +63,13 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                         children: [
                           Container(
                             child: Text(
-                              '${data.nameDokter}',
+                              '${dataDokter['namaDokter']}',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 17),
                             ),
                           ),
                           Container(
-                            child: Text('${data.spesialisDokter}'),
+                            child: Text('${dataDokter['spesialis']}'),
                           ),
                           SizedBox(
                             height: 30,
@@ -270,7 +274,7 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                                   ),
                                   Container(
                                     child: Text(
-                                      'Rp ${data.priceDokter}',
+                                      'Rp ${dataDokter['priceDokter']}',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 18),

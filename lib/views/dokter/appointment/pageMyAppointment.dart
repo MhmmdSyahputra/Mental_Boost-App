@@ -25,7 +25,9 @@ class _PageAppointmentDokterState extends State<PageAppointmentDokter> {
         // Text(user.id),
         Container(
           child: Column(
-            children: provMySchedule.scheduleList.map((res) {
+            children: provMySchedule.scheduleList
+                .where((dokter) => dokter.idDokter == dataDokter['id'])
+                .map((res) {
               return Container(
                 margin: EdgeInsets.only(top: 20),
                 child: Row(
@@ -90,7 +92,7 @@ class _PageAppointmentDokterState extends State<PageAppointmentDokter> {
                                             borderRadius:
                                                 BorderRadius.circular(20),
                                           ),
-                                          primary: Colors.white,
+                                          primary: Colors.orange,
                                         ),
                                         child: Text(
                                           'Approved',

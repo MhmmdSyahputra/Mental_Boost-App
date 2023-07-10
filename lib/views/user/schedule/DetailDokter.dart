@@ -4,27 +4,12 @@ import 'package:mentalboost/utils/Mycolor.dart';
 import 'AddSchedule.dart';
 
 class DetailDokterScreen extends StatefulWidget {
-  final String profil;
-  final String name;
-  final String price;
-  final String biografi;
-  final String spesialis;
-  final String manyPasien;
-  final Color color;
-  final String pengalaman;
-  final String review;
+  final data;
 
-  const DetailDokterScreen(
-      {super.key,
-      required this.profil,
-      required this.name,
-      required this.price,
-      required this.biografi,
-      required this.spesialis,
-      required this.color,
-      required this.manyPasien,
-      required this.pengalaman,
-      required this.review});
+  const DetailDokterScreen({
+    super.key,
+    this.data,
+  });
 
   @override
   State<DetailDokterScreen> createState() => _DetailDokterScreenState();
@@ -52,7 +37,7 @@ class _DetailDokterScreenState extends State<DetailDokterScreen> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage(widget.profil),
+                        image: AssetImage(widget.data['fotoProfile']),
                       ),
                     ),
                   ),
@@ -124,13 +109,13 @@ class _DetailDokterScreenState extends State<DetailDokterScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    widget.name,
+                                    widget.data['namaDokter'],
                                     style: TextStyle(
                                         fontSize: 17,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
-                                    widget.spesialis,
+                                    widget.data['spesialis'],
                                     style: TextStyle(
                                         fontSize: 17,
                                         fontWeight: FontWeight.w400),
@@ -161,7 +146,7 @@ class _DetailDokterScreenState extends State<DetailDokterScreen> {
                                         color: Color(0xCC6D6D6D)),
                                   ),
                                   Text(
-                                    widget.manyPasien,
+                                    widget.data['manyPasien'],
                                     style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500),
@@ -182,7 +167,7 @@ class _DetailDokterScreenState extends State<DetailDokterScreen> {
                                         color: Color(0xCC6D6D6D)),
                                   ),
                                   Text(
-                                    "${widget.pengalaman} Tahun",
+                                    "${widget.data['pengalaman']} Tahun",
                                     style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500),
@@ -203,7 +188,7 @@ class _DetailDokterScreenState extends State<DetailDokterScreen> {
                                         color: Color(0xCC6D6D6D)),
                                   ),
                                   Text(
-                                    widget.review,
+                                    widget.data['review'],
                                     style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500),
@@ -237,7 +222,7 @@ class _DetailDokterScreenState extends State<DetailDokterScreen> {
                                     height: 5,
                                   ),
                                   Text(
-                                    widget.biografi,
+                                    widget.data['biografi'],
                                     style: TextStyle(
                                         fontSize: 17,
                                         fontWeight: FontWeight.w400),
@@ -269,11 +254,8 @@ class _DetailDokterScreenState extends State<DetailDokterScreen> {
                                           context: context,
                                           builder: (BuildContext context) {
                                             return AddScheduleScreen(
-                                                profil: widget.profil,
-                                                name: widget.name,
-                                                price: widget.price,
-                                                color: widget.color,
-                                                spesialis: widget.spesialis);
+                                              data: widget.data,
+                                            );
                                           },
                                         );
                                       },

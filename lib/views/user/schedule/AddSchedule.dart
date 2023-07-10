@@ -6,24 +6,18 @@ import 'package:mentalboost/providers/ScheduleProvider.dart';
 import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
+import 'package:mentalboost/utils/data.dart';
 import 'package:mentalboost/views/user/schedule/ScreenSuccess.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
 class AddScheduleScreen extends StatefulWidget {
-  final String profil;
-  final String name;
-  final String price;
-  final Color color;
-  final String spesialis;
+  final data;
 
-  const AddScheduleScreen(
-      {super.key,
-      required this.profil,
-      required this.name,
-      required this.price,
-      required this.color,
-      required this.spesialis});
+  const AddScheduleScreen({
+    super.key,
+    this.data,
+  });
 
   @override
   State<AddScheduleScreen> createState() => _AddScheduleScreenState();
@@ -191,7 +185,7 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
                             child: ElevatedButton(
                               onPressed: () {},
                               child: Text(
-                                'RP. ${widget.price}',
+                                'RP. ${widget.data['price']}',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black),
@@ -229,17 +223,14 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
                                         listen: false)
                                     .AddSchedule(ScheduleModel(
                                         id: uuid.v1().substring(0, 8),
-                                        profilDokter: widget.profil,
-                                        nameDokter: widget.name,
-                                        priceDokter: widget.price,
-                                        spesialisDokter: widget.spesialis,
+                                        idDokter: widget.data['id'],
                                         iduser: user.id,
                                         namePasien: user.username,
                                         agePasien:
                                             getOld(user.dateOfBirth).toString(),
                                         appointment: user.gender,
                                         orderDate: dateNow,
-                                        color: widget.color,
+                                        color: widget.data['color'],
                                         time: selectedTime.toString(),
                                         date: dateInput.toString(),
                                         status: 2));

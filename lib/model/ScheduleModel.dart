@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 class ScheduleModel {
   final String id;
-  final String profilDokter;
-  final String nameDokter;
-  final String priceDokter;
-  final String spesialisDokter;
+  final String idDokter;
+  // final String profilDokter;
+  // final String nameDokter;
+  // final String priceDokter;
+  // final String spesialisDokter;
   final Color color;
   final String namePasien;
   final String iduser;
@@ -18,10 +19,11 @@ class ScheduleModel {
 
   ScheduleModel({
     required this.id,
-    required this.profilDokter,
-    required this.nameDokter,
-    required this.priceDokter,
-    required this.spesialisDokter,
+    required this.idDokter,
+    // required this.profilDokter,
+    // required this.nameDokter,
+    // required this.priceDokter,
+    // required this.spesialisDokter,
     required this.color,
     required this.iduser,
     required this.namePasien,
