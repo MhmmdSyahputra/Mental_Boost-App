@@ -233,9 +233,10 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
                                         color: widget.data['color'],
                                         time: selectedTime.toString(),
                                         date: dateInput.toString(),
-                                        status: 2));
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => SuccessScreen()));
+                                        status: 0));
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (context) => SuccessScreen()));
                               },
                               child: Text(
                                 'BUAT JADWAL',

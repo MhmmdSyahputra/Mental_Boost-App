@@ -35,13 +35,29 @@ bool randomBool() {
 
 String checkStatusSchedule(int value) {
   if (value == 0) {
-    return 'Cancel';
+    return 'Waiting';
   } else if (value == 1) {
-    return 'Done';
+    return 'Proses';
   } else if (value == 2) {
-    return 'Pending';
+    return 'Cancel';
+  } else if (value == 3) {
+    return 'Done';
   } else {
-    return 'Unknown status';
+    return 'Unknow';
+  }
+}
+
+Color getColorStatusSchedule(int value) {
+  if (value == 0) {
+    return Colors.yellow;
+  } else if (value == 1) {
+    return Colors.blue;
+  } else if (value == 2) {
+    return Colors.red;
+  } else if (value == 3) {
+    return Colors.green;
+  } else {
+    return Colors.grey;
   }
 }
 

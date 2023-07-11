@@ -104,11 +104,13 @@ class _WidgetMyScheduleState extends State<WidgetMySchedule> {
                           Expanded(
                             child: Align(
                                 alignment: Alignment.centerRight,
-                                child: dateNow == widget.data.date &&
-                                        widget.data.status != 0
-                                    ? Text('Waiting')
-                                    : Text(checkStatusSchedule(
-                                        widget.data.status))),
+                                child: Text(
+                                  checkStatusSchedule(widget.data.status),
+                                  style: TextStyle(
+                                      color: getColorStatusSchedule(
+                                          widget.data.status),
+                                      fontWeight: FontWeight.bold),
+                                )),
                           )
                         ],
                       )),

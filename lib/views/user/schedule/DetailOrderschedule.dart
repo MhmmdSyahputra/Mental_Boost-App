@@ -86,11 +86,11 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                                 Container(
                                   child: ElevatedButton(
                                     onPressed: () {},
-                                    child: dateNow == data.date &&
-                                            data.status != 0
-                                        ? Text('Waiting')
-                                        : Text(
-                                            checkStatusSchedule(data.status)),
+                                    child: Text(
+                                      checkStatusSchedule(data.status),
+                                      style: TextStyle(
+                                          color: ColorConstants.textColorDark),
+                                    ),
                                     style: ElevatedButton.styleFrom(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 30),
@@ -98,11 +98,8 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(20),
                                         ),
-                                        primary: data.status == 0
-                                            ? Color(0xcce5383b)
-                                            : data.status == 1
-                                                ? Color(0xcc52b788)
-                                                : Color(0xccf77f00)),
+                                        primary: getColorStatusSchedule(
+                                            data.status)),
                                     // primary: Color(0xCC74c69d)),
                                   ),
                                 ),
