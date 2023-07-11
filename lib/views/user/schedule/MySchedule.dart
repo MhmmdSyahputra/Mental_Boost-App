@@ -22,58 +22,215 @@ class _MyScheduleScreenState extends State<MyScheduleScreen> {
 
     final provMySchedule = Provider.of<ScheduleProvider>(context);
 
-    bool checkMyShedule() {
-      final isFound = provMySchedule.scheduleList
-          .any((schedule) => schedule.iduser == user.id);
+    bool checkMyShedule(int status) {
+      final isFound = provMySchedule.scheduleList.any((schedule) =>
+          schedule.iduser == user.id && schedule.status == status);
       return isFound;
     }
 
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: ColorConstants.primaryColor,
-          toolbarHeight: 60,
-          title: Text('My Schedule'),
-          centerTitle: true,
-        ),
-        body: Consumer<ScheduleProvider>(builder: (
-          context,
-          ScheduleProvider,
-          child,
-        ) {
-          return Padding(
-            padding: EdgeInsets.all(15),
-            child: ListView(
-              children: checkMyShedule()
-                  ? ScheduleProvider.scheduleList
-                      .where((allSchedule) => allSchedule.iduser == user.id)
-                      .map((allSchedule) {
-                      return WidgetMySchedule(data: allSchedule);
-                    }).toList()
-                  : [
-                      Column(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(top: 50),
-                            child: Text(
-                              'Your Schedule is Empty',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: ColorConstants.primaryColor,
-                                  fontSize: 18),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Container(
-                            child: Image.asset(
-                                'assets/images/ilustration-empty.png'),
-                          )
-                        ],
-                      )
-                    ],
+        body: DefaultTabController(
+      length: 4,
+      child: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
+            SliverAppBar(
+              backgroundColor: ColorConstants.primaryColor,
+              floating: true,
+              pinned: true,
+              snap: true,
+              toolbarHeight: 60,
+              title: Text('My Schedule'),
+              centerTitle: true,
+              bottom: TabBar(
+                tabs: [
+                  Tab(icon: Icon(Icons.hourglass_empty)),
+                  Tab(icon: Icon(Icons.cached)),
+                  Tab(icon: Icon(Icons.done)),
+                  Tab(icon: Icon(Icons.delete)),
+                ],
+              ),
             ),
-          );
-        }));
+          ];
+        },
+        body: Padding(
+          padding: const EdgeInsets.all(15),
+          child: TabBarView(
+            children: [
+              // Halaman pertama
+              SingleChildScrollView(
+                child: Container(
+                  child: Column(
+                    children: checkMyShedule(0)
+                        ? provMySchedule.scheduleList
+                            .where((allSchedule) =>
+                                allSchedule.iduser == user.id &&
+                                allSchedule.status == 0)
+                            .map((allSchedule) {
+                            return Row(
+                              children: [
+                                Expanded(
+                                    child: WidgetMySchedule(data: allSchedule)),
+                              ],
+                            );
+                          }).toList()
+                        : [
+                            Column(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(top: 50),
+                                  child: Text(
+                                    'Your Schedule is Empty',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: ColorConstants.primaryColor,
+                                        fontSize: 18),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Container(
+                                  child: Image.asset(
+                                      'assets/images/ilustration-empty.png'),
+                                )
+                              ],
+                            )
+                          ],
+                  ),
+                ),
+              ),
+
+              SingleChildScrollView(
+                child: Container(
+                  child: Column(
+                    children: checkMyShedule(1)
+                        ? provMySchedule.scheduleList
+                            .where((allSchedule) =>
+                                allSchedule.iduser == user.id &&
+                                allSchedule.status == 1)
+                            .map((allSchedule) {
+                            return Row(
+                              children: [
+                                Expanded(
+                                    child: WidgetMySchedule(data: allSchedule)),
+                              ],
+                            );
+                          }).toList()
+                        : [
+                            Column(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(top: 50),
+                                  child: Text(
+                                    'Your Schedule is Empty',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: ColorConstants.primaryColor,
+                                        fontSize: 18),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Container(
+                                  child: Image.asset(
+                                      'assets/images/ilustration-empty.png'),
+                                )
+                              ],
+                            )
+                          ],
+                  ),
+                ),
+              ),
+              SingleChildScrollView(
+                child: Container(
+                  child: Column(
+                    children: checkMyShedule(3)
+                        ? provMySchedule.scheduleList
+                            .where((allSchedule) =>
+                                allSchedule.iduser == user.id &&
+                                allSchedule.status == 3)
+                            .map((allSchedule) {
+                            return Row(
+                              children: [
+                                Expanded(
+                                    child: WidgetMySchedule(data: allSchedule)),
+                              ],
+                            );
+                          }).toList()
+                        : [
+                            Column(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(top: 50),
+                                  child: Text(
+                                    'Your Schedule is Empty',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: ColorConstants.primaryColor,
+                                        fontSize: 18),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Container(
+                                  child: Image.asset(
+                                      'assets/images/ilustration-empty.png'),
+                                )
+                              ],
+                            )
+                          ],
+                  ),
+                ),
+              ),
+              SingleChildScrollView(
+                child: Container(
+                  child: Column(
+                    children: checkMyShedule(2)
+                        ? provMySchedule.scheduleList
+                            .where((allSchedule) =>
+                                allSchedule.iduser == user.id &&
+                                allSchedule.status == 2)
+                            .map((allSchedule) {
+                            return Row(
+                              children: [
+                                Expanded(
+                                    child: WidgetMySchedule(data: allSchedule)),
+                              ],
+                            );
+                          }).toList()
+                        : [
+                            Column(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(top: 50),
+                                  child: Text(
+                                    'Your Schedule is Empty',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: ColorConstants.primaryColor,
+                                        fontSize: 18),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Container(
+                                  child: Image.asset(
+                                      'assets/images/ilustration-empty.png'),
+                                )
+                              ],
+                            )
+                          ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ));
   }
 }

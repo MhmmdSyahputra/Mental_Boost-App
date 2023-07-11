@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mentalboost/model/ScheduleModel.dart';
+import 'package:mentalboost/providers/ScheduleProvider.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/utils/data.dart';
+import 'package:provider/provider.dart';
 
 class DetailOrderScheduleScreen extends StatelessWidget {
   final data;
@@ -12,6 +15,8 @@ class DetailOrderScheduleScreen extends StatelessWidget {
     DateTime now = DateTime.now();
     String dateNow =
         '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
+
+    final provSchedule = Provider.of<ScheduleProvider>(context);
 
     final dataDokter =
         Listdokter.firstWhere((user) => user['id'] == data.idDokter);
@@ -271,7 +276,7 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                                   ),
                                   Container(
                                     child: Text(
-                                      'Rp ${dataDokter['priceDokter']}',
+                                      'Rp ${dataDokter['price']}',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 18),
@@ -287,37 +292,23 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                 SizedBox(
                   height: 15,
                 ),
-                Container(
-                    child: dateNow == data.date && data.status != 0
-                        ? Row(children: [
-                            Expanded(
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                child: Text('Confirm'),
-                                style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    primary: Color(0xcc52b788)),
-                              ),
-                            )
-                          ])
-                        : data.status == 2
-                            ? Row(children: [
-                                Expanded(
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    child: Text('Cancel'),
-                                    style: ElevatedButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                        primary: Color(0xcce5383b)),
-                                  ),
-                                )
-                              ])
-                            : null)
+                Row(children: [
+                  data.status == 0
+                      ? Expanded(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              provSchedule.updateStatusSchedule(data.id, 2);
+                            },
+                            child: Text('Cancel'),
+                            style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                primary: Color(0xcce5383b)),
+                          ),
+                        )
+                      : Text('')
+                ])
               ],
             ),
           ),

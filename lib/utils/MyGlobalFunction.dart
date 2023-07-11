@@ -4,7 +4,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:mentalboost/widgets/customDialog2.dart';
-
 import '../widgets/customDialog.dart';
 
 String greeting(int hour) {
@@ -130,4 +129,16 @@ dynamic getProfile(image, gender) {
     }
     return AssetImage('assets/images/noprofile_female.png');
   }
+}
+
+bool isDateLessThanToday(String dateStr) {
+  final dateFormat = DateFormat('yyyy-MM-dd');
+  final today = DateTime.now();
+  final date = dateFormat.parse(dateStr);
+
+  // Mengubah tanggal hari ini ke format yang sama
+  final todayFormatted = dateFormat.format(today);
+
+  // Membandingkan tanggal dengan tanggal hari ini
+  return date.isBefore(DateTime.parse(todayFormatted));
 }

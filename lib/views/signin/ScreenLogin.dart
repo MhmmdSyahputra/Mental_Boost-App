@@ -3,9 +3,9 @@ import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/dokter/mainMenu.dart';
+import 'package:mentalboost/views/dokter/mainMenuDokter.dart';
 import 'package:mentalboost/views/signup/ScreenRegistrasi.dart';
-import 'package:mentalboost/views/user/mainMenu.dart';
+import 'package:mentalboost/views/user/mainMenuUser.dart';
 import 'package:mentalboost/views/user/profile/ScreenFormProfile.dart';
 import 'package:provider/provider.dart';
 
@@ -179,8 +179,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
                                 //jika userlogin tidak ditemukan maka muncul notif
                               } else {
-                                myNotif('Your Password or Email is incorrect',
-                                    Colors.red);
+                                final snackBar = createSnackBar(
+                                    'Your Password or Email is Wrong!',
+                                    Colors.red,
+                                    'try again');
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
                               }
                             },
                             child: Text(

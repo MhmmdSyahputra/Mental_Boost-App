@@ -5,7 +5,7 @@ import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/signin/ScreenLogin.dart';
-import 'package:mentalboost/views/user/mainMenu.dart';
+import 'package:mentalboost/views/user/mainMenuUser.dart';
 import 'package:mentalboost/views/user/profile/ScreenProfil.dart';
 import 'package:provider/provider.dart';
 import 'package:image_picker/image_picker.dart';
@@ -255,7 +255,7 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
                                         border: InputBorder.none),
                                     initialValue: dateofBirth,
                                     timeHintText: 'dateofBirth',
-                                    firstDate: DateTime(2000),
+                                    firstDate: DateTime(1000),
                                     lastDate: DateTime(2100),
                                     onChanged: (val) => {dateofBirth = val},
                                     validator: (val) {
@@ -281,7 +281,20 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
                         _inputEmailController.text == '' ||
                         _inputPonselController.text == '' ||
                         dateofBirth == null) {
-                      myNotif('Failed, Your data Not Complate', Colors.red);
+                      final snackBar = createSnackBar(
+                          'Failed, Your data Not Complate',
+                          Colors.red,
+                          'try again');
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      return;
+                    }
+
+                    if (getOld(dateofBirth.toString()) <= 15) {
+                      final snackBar = createSnackBar(
+                          'Minimum age requirement is 15 years.',
+                          Colors.red,
+                          'try again');
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       return;
                     }
 

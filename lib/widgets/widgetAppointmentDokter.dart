@@ -3,6 +3,7 @@ import 'package:mentalboost/providers/ScheduleProvider.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 class WidgetAppointmentDokter extends StatelessWidget {
   final data;
@@ -71,7 +72,10 @@ class WidgetAppointmentDokter extends StatelessWidget {
                                   children: [
                                     Container(
                                       child: ElevatedButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          provSchedule.updateStatusSchedule(
+                                              data.id, 2);
+                                        },
                                         style: ElevatedButton.styleFrom(
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
@@ -115,13 +119,38 @@ class WidgetAppointmentDokter extends StatelessWidget {
                                 )
                               : Row(
                                   children: [
+                                    isDateLessThanToday(data.date) &&
+                                            data.status != 3
+                                        ? Container(
+                                            child: ElevatedButton(
+                                              onPressed: () {
+                                                provSchedule
+                                                    .updateStatusSchedule(
+                                                        data.id, 3);
+                                              },
+                                              style: ElevatedButton.styleFrom(
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                ),
+                                                primary: Colors.green,
+                                              ),
+                                              child: Text(
+                                                'Finished',
+                                                style: TextStyle(
+                                                    color: ColorConstants
+                                                        .textColorLight),
+                                              ),
+                                            ),
+                                          )
+                                        : Text(''),
                                     Text(
                                       checkStatusSchedule(data.status),
                                       style: TextStyle(
                                           color: getColorStatusSchedule(
                                               data.status),
                                           fontWeight: FontWeight.bold),
-                                    ),
+                                    )
                                   ],
                                 )
                         ],
