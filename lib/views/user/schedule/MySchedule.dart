@@ -3,6 +3,7 @@ import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/providers/ScheduleProvider.dart';
 import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
+import 'package:mentalboost/widgets/pageEmpty.dart';
 import 'package:mentalboost/widgets/widgetCardSchedule.dart';
 import 'package:provider/provider.dart';
 
@@ -34,7 +35,7 @@ class _MyScheduleScreenState extends State<MyScheduleScreen> {
       child: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            SliverAppBar(
+            const SliverAppBar(
               backgroundColor: ColorConstants.primaryColor,
               floating: true,
               pinned: true,
@@ -75,27 +76,9 @@ class _MyScheduleScreenState extends State<MyScheduleScreen> {
                             );
                           }).toList()
                         : [
-                            Column(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(top: 50),
-                                  child: Text(
-                                    'Your Schedule is Empty',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: ColorConstants.primaryColor,
-                                        fontSize: 18),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Container(
-                                  child: Image.asset(
-                                      'assets/images/ilustration-empty.png'),
-                                )
-                              ],
-                            )
+                            PageEmpty(
+                                title: 'Empty waiting queue',
+                                gambar: 'assets/images/ilustration-empty.png')
                           ],
                   ),
                 ),
@@ -118,27 +101,9 @@ class _MyScheduleScreenState extends State<MyScheduleScreen> {
                             );
                           }).toList()
                         : [
-                            Column(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(top: 50),
-                                  child: Text(
-                                    'Your Schedule is Empty',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: ColorConstants.primaryColor,
-                                        fontSize: 18),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Container(
-                                  child: Image.asset(
-                                      'assets/images/ilustration-empty.png'),
-                                )
-                              ],
-                            )
+                            PageEmpty(
+                                title: 'No ongoing schedule',
+                                gambar: 'assets/images/ilustration-empty.png')
                           ],
                   ),
                 ),
@@ -160,27 +125,9 @@ class _MyScheduleScreenState extends State<MyScheduleScreen> {
                             );
                           }).toList()
                         : [
-                            Column(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(top: 50),
-                                  child: Text(
-                                    'Your Schedule is Empty',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: ColorConstants.primaryColor,
-                                        fontSize: 18),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Container(
-                                  child: Image.asset(
-                                      'assets/images/ilustration-empty.png'),
-                                )
-                              ],
-                            )
+                            PageEmpty(
+                                title: 'No completed schedule',
+                                gambar: 'assets/images/ilustration-empty.png')
                           ],
                   ),
                 ),
@@ -202,27 +149,9 @@ class _MyScheduleScreenState extends State<MyScheduleScreen> {
                             );
                           }).toList()
                         : [
-                            Column(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(top: 50),
-                                  child: Text(
-                                    'Your Schedule is Empty',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: ColorConstants.primaryColor,
-                                        fontSize: 18),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Container(
-                                  child: Image.asset(
-                                      'assets/images/ilustration-empty.png'),
-                                )
-                              ],
-                            )
+                            PageEmpty(
+                                title: 'No deleted schedule',
+                                gambar: 'assets/images/ilustration-empty.png')
                           ],
                   ),
                 ),

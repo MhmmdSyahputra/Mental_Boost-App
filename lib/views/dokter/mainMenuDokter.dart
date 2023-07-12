@@ -19,6 +19,7 @@ class TabBarDokter extends StatelessWidget {
         (user) => user['id'] == provIdDokter.idUserDoLogin);
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: DefaultTabController(
         length: 3,
         child: NestedScrollView(
@@ -26,21 +27,9 @@ class TabBarDokter extends StatelessWidget {
             return [
               SliverAppBar(
                 backgroundColor: ColorConstants.primaryColor,
+                elevation: 10,
                 title: Row(
                   children: [
-                    Container(
-                      width: 40,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage(dataDokter['fotoProfile'])),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
                     Text('${dataDokter['namaDokter']}'),
                   ],
                 ),
@@ -75,7 +64,7 @@ class TabBarDokter extends StatelessWidget {
               // Halaman pertama
               SingleChildScrollView(
                 child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  // margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   child: PageHomeDokter(),
                 ),
               ),

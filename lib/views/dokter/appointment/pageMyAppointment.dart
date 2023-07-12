@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/providers/ScheduleProvider.dart';
 import 'package:mentalboost/utils/data.dart';
+import 'package:mentalboost/widgets/pageEmpty.dart';
 import 'package:mentalboost/widgets/widgetAppointmentDokter.dart';
 import 'package:provider/provider.dart';
 
@@ -19,17 +20,31 @@ class _PageAppointmentDokterState extends State<PageAppointmentDokter> {
     final dataDokter = Listdokter.firstWhere(
         (user) => user['id'] == provIdDokter.idUserDoLogin);
 
+    checkSchedule() {
+      return provMySchedule.scheduleList
+          .where((dokter) => dokter.idDokter == dataDokter['id'])
+          .map((res) {
+            return WidgetAppointmentDokter(data: res);
+          })
+          .toList()
+          .length;
+    }
+
     return Column(
       children: [
-        Container(
-          child: Column(
-            children: provMySchedule.scheduleList
-                .where((dokter) => dokter.idDokter == dataDokter['id'])
-                .map((res) {
-              return WidgetAppointmentDokter(data: res);
-            }).toList(),
-          ),
-        )
+        checkSchedule() != 0
+            ? Container(
+                child: Column(
+                  children: provMySchedule.scheduleList
+                      .where((dokter) => dokter.idDokter == dataDokter['id'])
+                      .map((res) {
+                    return WidgetAppointmentDokter(data: res);
+                  }).toList(),
+                ),
+              )
+            : PageEmpty(
+                title: 'My Appointments is Empty',
+                gambar: 'assets/images/ilustration-empty.png')
       ],
     );
   }

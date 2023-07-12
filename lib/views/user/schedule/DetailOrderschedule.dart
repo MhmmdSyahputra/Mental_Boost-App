@@ -251,7 +251,7 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    child: Text('Treatment Tine'),
+                                    child: Text('Treatment Time'),
                                   ),
                                   Container(
                                     child: Text('${data.time}'),

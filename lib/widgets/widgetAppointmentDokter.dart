@@ -120,7 +120,8 @@ class WidgetAppointmentDokter extends StatelessWidget {
                               : Row(
                                   children: [
                                     isDateLessThanToday(data.date) &&
-                                            data.status != 3
+                                            data.status != 3 &&
+                                            data.status != 2
                                         ? Container(
                                             child: ElevatedButton(
                                               onPressed: () {

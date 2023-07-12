@@ -153,7 +153,8 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
                               child: DateTimePicker(
                             icon: Icon(Icons.date_range),
                             initialValue: DateTime.now().toString(),
-                            firstDate: DateTime.now(),
+                            // firstDate: DateTime.now(),
+                            firstDate: DateTime(1000),
                             lastDate: DateTime(2100),
                             onChanged: (val) => {dateInput = val},
                             validator: (val) {
