@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/providers/ScheduleProvider.dart';
+import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/schedule/MySchedule.dart';
-import 'package:mentalboost/views/mainMenu.dart';
+import 'package:mentalboost/views/user/mainMenuUser.dart';
+import 'package:mentalboost/views/user/schedule/MySchedule.dart';
 import 'package:provider/provider.dart';
-
-import '../../providers/LoginRegisProvider.dart';
-import '../../providers/UsersProviders.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen({super.key});
@@ -66,22 +65,9 @@ class SuccessScreen extends StatelessWidget {
                         margin: EdgeInsets.symmetric(horizontal: 20),
                         child: Row(children: [
                           Expanded(
-                              child: OutlinedButton(
-                            onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => BottomNavMain()));
-                            },
-                            child: Text(
-                              "Home",
-                              style:
-                                  TextStyle(color: ColorConstants.primaryColor),
-                            ),
-                          )),
-                          SizedBox(width: 20),
-                          Expanded(
                               child: ElevatedButton(
                                   onPressed: () {
-                                    Navigator.of(context).push(
+                                    Navigator.of(context).pushReplacement(
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 MyScheduleScreen()));

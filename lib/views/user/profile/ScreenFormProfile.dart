@@ -5,9 +5,10 @@ import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/signin/ScreenLogin.dart';
-import 'package:mentalboost/views/profile/ScreenProfil.dart';
-import 'package:mentalboost/views/mainMenu.dart';
+import 'package:mentalboost/views/user/mainMenuUser.dart';
+import 'package:mentalboost/views/user/profile/ScreenProfil.dart';
 import 'package:provider/provider.dart';
+import 'package:image_picker/image_picker.dart';
 
 class FormProfileScreen extends StatefulWidget {
   final data;
@@ -25,13 +26,29 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
   final TextEditingController _inputPonselController = TextEditingController();
   String genderValue = 'Male';
   String? dateofBirth;
+  ImageProvider? gambar;
+
+  getFromGallery() async {
+    XFile? pickedFile = await ImagePicker().pickImage(
+      source: ImageSource.gallery,
+    );
+    if (pickedFile != null) {
+      final bytes = await pickedFile.readAsBytes();
+      setState(() {
+        gambar = MemoryImage(bytes);
+      });
+    }
+  }
 
   @override
   void initState() {
     super.initState();
-    _inputUsernameController.text = widget.data.username ?? '';
-    _inputEmailController.text = widget.data.email ?? '';
-    _inputPonselController.text = widget.data.noHp ?? '';
+    if (widget.tipe != 'fill') {
+      gambar = widget.data.profile;
+    }
+    _inputUsernameController.text = widget.data.username;
+    _inputEmailController.text = widget.data.email;
+    _inputPonselController.text = widget.data.noHp;
     dateofBirth = widget.tipe == 'fill' ? null : widget.data.dateOfBirth;
     genderValue = widget.tipe == 'fill' ? 'Male' : widget.data.gender;
   }
@@ -51,10 +68,10 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
           TextButton(
               onPressed: () {
                 if (widget.tipe == 'fill') {
-                  Navigator.of(context).push(
+                  Navigator.of(context).pushReplacement(
                       MaterialPageRoute(builder: (context) => LoginScreen()));
                 } else {
-                  Navigator.of(context).push(
+                  Navigator.of(context).pushReplacement(
                       MaterialPageRoute(builder: (context) => ProfileScreen()));
                 }
               },
@@ -89,18 +106,23 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Container(
-                              width: 150,
-                              height: 150,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: NetworkImage(
-                                      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'),
-                                ),
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  getFromGallery();
+                                });
+                              },
+                              child: Container(
+                                width: 150,
+                                height: 150,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image:
+                                            getProfile(gambar, genderValue))),
                               ),
-                            ),
+                            )
                           ]),
                     ),
                     Container(
@@ -233,7 +255,7 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
                                         border: InputBorder.none),
                                     initialValue: dateofBirth,
                                     timeHintText: 'dateofBirth',
-                                    firstDate: DateTime(2000),
+                                    firstDate: DateTime(1000),
                                     lastDate: DateTime(2100),
                                     onChanged: (val) => {dateofBirth = val},
                                     validator: (val) {
@@ -259,34 +281,48 @@ class _FormProfileScreenState extends State<FormProfileScreen> {
                         _inputEmailController.text == '' ||
                         _inputPonselController.text == '' ||
                         dateofBirth == null) {
-                      myNotif('Failed, Your data Not Complate', Colors.red);
+                      final snackBar = createSnackBar(
+                          'Failed, Your data Not Complate',
+                          Colors.red,
+                          'try again');
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      return;
+                    }
+
+                    if (getOld(dateofBirth.toString()) <= 15) {
+                      final snackBar = createSnackBar(
+                          'Minimum age requirement is 15 years.',
+                          Colors.red,
+                          'try again');
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       return;
                     }
 
                     if (widget.tipe == 'fill') {
                       prov.addUsers(UsersModel(
                           id: widget.data.id,
+                          profile: gambar,
                           username: _inputUsernameController.text,
                           email: _inputEmailController.text,
                           noHp: _inputPonselController.text,
                           gender: genderValue,
                           dateOfBirth: dateofBirth.toString()));
 
-                      Navigator.of(context).push(MaterialPageRoute(
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) => BottomNavMain()));
                     } else {
                       prov.updateUser(
                           widget.data.id,
                           UsersModel(
                               id: widget.data.id,
+                              profile: gambar,
                               username: _inputUsernameController.text,
                               email: _inputEmailController.text,
                               noHp: _inputPonselController.text,
                               gender: genderValue,
                               dateOfBirth: dateofBirth.toString()));
 
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => ProfileScreen()));
+                      Navigator.of(context).pop();
                     }
                   },
                   child: Text('Save'),

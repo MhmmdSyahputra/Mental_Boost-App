@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mentalboost/model/ScheduleModel.dart';
+import 'package:mentalboost/providers/ScheduleProvider.dart';
+import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import '../../utils/MyGlobalFunction.dart';
+import 'package:mentalboost/utils/data.dart';
+import 'package:provider/provider.dart';
 
 class DetailOrderScheduleScreen extends StatelessWidget {
   final data;
@@ -11,6 +15,11 @@ class DetailOrderScheduleScreen extends StatelessWidget {
     DateTime now = DateTime.now();
     String dateNow =
         '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
+
+    final provSchedule = Provider.of<ScheduleProvider>(context);
+
+    final dataDokter =
+        Listdokter.firstWhere((user) => user['id'] == data.idDokter);
 
     return Scaffold(
       appBar: AppBar(
@@ -46,7 +55,7 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                           shape: BoxShape.circle,
                           image: DecorationImage(
                             fit: BoxFit.cover,
-                            image: AssetImage(data.profilDokter),
+                            image: AssetImage(dataDokter['fotoProfile']),
                           ),
                         ),
                       ),
@@ -59,13 +68,13 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                         children: [
                           Container(
                             child: Text(
-                              '${data.nameDokter}',
+                              '${dataDokter['namaDokter']}',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 17),
                             ),
                           ),
                           Container(
-                            child: Text('${data.spesialisDokter}'),
+                            child: Text('${dataDokter['spesialis']}'),
                           ),
                           SizedBox(
                             height: 30,
@@ -82,11 +91,11 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                                 Container(
                                   child: ElevatedButton(
                                     onPressed: () {},
-                                    child: dateNow == data.date &&
-                                            data.status != 0
-                                        ? Text('Waiting')
-                                        : Text(
-                                            checkStatusSchedule(data.status)),
+                                    child: Text(
+                                      checkStatusSchedule(data.status),
+                                      style: TextStyle(
+                                          color: ColorConstants.textColorDark),
+                                    ),
                                     style: ElevatedButton.styleFrom(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 30),
@@ -94,11 +103,8 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(20),
                                         ),
-                                        primary: data.status == 0
-                                            ? Color(0xcce5383b)
-                                            : data.status == 1
-                                                ? Color(0xcc52b788)
-                                                : Color(0xccf77f00)),
+                                        primary: getColorStatusSchedule(
+                                            data.status)),
                                     // primary: Color(0xCC74c69d)),
                                   ),
                                 ),
@@ -245,7 +251,7 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    child: Text('Treatment Tine'),
+                                    child: Text('Treatment Time'),
                                   ),
                                   Container(
                                     child: Text('${data.time}'),
@@ -270,7 +276,7 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                                   ),
                                   Container(
                                     child: Text(
-                                      'Rp ${data.priceDokter}',
+                                      'Rp ${dataDokter['price']}',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 18),
@@ -286,37 +292,23 @@ class DetailOrderScheduleScreen extends StatelessWidget {
                 SizedBox(
                   height: 15,
                 ),
-                Container(
-                    child: dateNow == data.date && data.status != 0
-                        ? Row(children: [
-                            Expanded(
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                child: Text('Confirm'),
-                                style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    primary: Color(0xcc52b788)),
-                              ),
-                            )
-                          ])
-                        : data.status == 2
-                            ? Row(children: [
-                                Expanded(
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    child: Text('Cancel'),
-                                    style: ElevatedButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                        primary: Color(0xcce5383b)),
-                                  ),
-                                )
-                              ])
-                            : null)
+                Row(children: [
+                  data.status == 0
+                      ? Expanded(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              provSchedule.updateStatusSchedule(data.id, 2);
+                            },
+                            child: Text('Cancel'),
+                            style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                primary: Color(0xcce5383b)),
+                          ),
+                        )
+                      : Text('')
+                ])
               ],
             ),
           ),

@@ -42,7 +42,7 @@ class _RegistrasiScreenState extends State<RegistrasiScreen> {
                   Container(
                       child: Text(
                     'Sign Up',
-                    style: TextStyle(fontSize: 30),
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   )),
                   SizedBox(
                     height: 20,
@@ -150,25 +150,33 @@ class _RegistrasiScreenState extends State<RegistrasiScreen> {
                               horizontal: 20, vertical: 20),
                           child: ElevatedButton(
                             onPressed: () {
-                              if (_inputUsernameController.text != '' ||
-                                  _inputEmailUserController.text != '' ||
-                                  _inputNumberController.text != '' ||
+                              if (_inputUsernameController.text != '' &&
+                                  _inputEmailUserController.text != '' &&
+                                  _inputNumberController.text != '' &&
                                   _inputPasswordUserController.text != '') {
                                 prov.register(UserLoginModel(
-                                    id: uuid.v1(),
-                                    username: _inputUsernameController.text,
-                                    email: _inputEmailUserController.text,
-                                    noHp: _inputNumberController.text,
-                                    password:
-                                        _inputPasswordUserController.text));
-
-                                myNotif('Your Account is Successfully Created',
-                                    Colors.green);
+                                  id: uuid.v1(),
+                                  username: _inputUsernameController.text,
+                                  email: _inputEmailUserController.text,
+                                  noHp: _inputNumberController.text,
+                                  password: _inputPasswordUserController.text,
+                                  tipe: 'user',
+                                ));
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => LoginScreen()));
+                                final snackBar = createSnackBar(
+                                    'Your Account is Successfully Created',
+                                    Colors.green,
+                                    'Oke');
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
                               } else {
-                                myNotif('Failed, Your Data is Not Complete',
-                                    Colors.red);
+                                final snackBar = createSnackBar(
+                                    'Your Data is Not Complete',
+                                    Colors.orange,
+                                    'Oke');
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
                               }
                             },
                             child: Text(

@@ -1,13 +1,16 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:mentalboost/providers/LoginRegisProvider.dart';
+import 'package:mentalboost/providers/UsersProviders.dart';
+import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/schedule/MySchedule.dart';
-import 'package:mentalboost/views/profile/ScreenFormProfile.dart';
 import 'package:mentalboost/views/signin/ScreenLogin.dart';
+import 'package:mentalboost/views/user/about/screenAbout.dart';
+import 'package:mentalboost/views/user/profile/ScreenFormProfile.dart';
+import 'package:mentalboost/views/user/schedule/MySchedule.dart';
 import 'package:provider/provider.dart';
-
-import '../../providers/LoginRegisProvider.dart';
-import '../../providers/UsersProviders.dart';
-import '../../utils/MyGlobalFunction.dart';
+import 'package:http/http.dart' as http;
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -15,6 +18,8 @@ class ProfileScreen extends StatefulWidget {
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
+
+bool valLoading = false;
 
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
@@ -36,9 +41,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
               height: MediaQuery.of(context).size.height - 220,
               child: Column(
                 children: [
+                  valLoading
+                      ? SpinKitFadingCircle(
+                          color: ColorConstants.primaryColor,
+                          size: 50.0,
+                        )
+                      : SizedBox(),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                    margin: EdgeInsets.symmetric(vertical: 10),
+                    margin: EdgeInsets.only(bottom: 10),
                     decoration: BoxDecoration(
                         color: ColorConstants.boxColor,
                         boxShadow: [
@@ -58,8 +69,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: NetworkImage(
-                                  'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'),
+                              image: getProfile(user.profile, user.gender),
                             ),
                           ),
                         ),
@@ -131,10 +141,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           margin: EdgeInsets.symmetric(
                                               horizontal: 10),
                                           child: ElevatedButton(
-                                              onPressed: () => {},
+                                              onPressed: () async {
+                                                setState(() {
+                                                  valLoading = true;
+                                                });
+                                                String response =
+                                                    await getOpenAIResponse(
+                                                        'baik');
+                                                setState(() {
+                                                  valLoading = false;
+                                                  showCustomDialog2(
+                                                      context,
+                                                      'Good',
+                                                      '${response}',
+                                                      Colors.orange,
+                                                      Icon(
+                                                        Icons.warning,
+                                                        color: ColorConstants
+                                                            .textColorLight,
+                                                      ));
+                                                });
+                                              },
                                               child: Text('Good'),
                                               style: ElevatedButton.styleFrom(
-                                                  backgroundColor: Colors.red,
+                                                  backgroundColor: Colors.green,
                                                   shape: RoundedRectangleBorder(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -145,10 +175,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           margin: EdgeInsets.symmetric(
                                               horizontal: 10),
                                           child: ElevatedButton(
-                                              onPressed: () => {},
+                                              onPressed: () async {
+                                                setState(() {
+                                                  valLoading = true;
+                                                });
+                                                String response =
+                                                    await getOpenAIResponse(
+                                                        'tidak baik');
+                                                setState(() {
+                                                  valLoading = false;
+                                                  showCustomDialog2(
+                                                      context,
+                                                      'Not Good',
+                                                      '${response}',
+                                                      Colors.orange,
+                                                      Icon(
+                                                        Icons.warning,
+                                                        color: ColorConstants
+                                                            .textColorLight,
+                                                      ));
+                                                });
+                                              },
                                               child: Text('Not Good'),
                                               style: ElevatedButton.styleFrom(
-                                                  backgroundColor: Colors.green,
+                                                  backgroundColor: Colors.red,
                                                   shape: RoundedRectangleBorder(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -342,30 +392,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 borderRadius: BorderRadius.circular(20.0)),
                             child: Row(
                               children: [
-                                Expanded(
-                                    child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      child: Row(
-                                        // mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          Icon(Icons.help),
-                                          SizedBox(
-                                            width: 20,
-                                          ),
-                                          Text(
-                                            'About',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 17),
-                                          ),
-                                        ],
+                                InkWell(
+                                  onTap: () => Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                          builder: (context) => AboutScreen())),
+                                  child: Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        child: Row(
+                                          // mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Icon(Icons.help),
+                                            SizedBox(
+                                              width: 20,
+                                            ),
+                                            Text(
+                                              'About',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 17),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                )),
+                                    ],
+                                  )),
+                                ),
                               ],
                             ),
                           ),
@@ -376,8 +432,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => LoginScreen()));
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginScreen(),
+                  ),
+                  (route) => false,
+                );
               },
               child: Stack(
                 clipBehavior: Clip.none,
@@ -440,5 +501,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
     );
+  }
+}
+
+Future<String> getOpenAIResponse(String input) async {
+  final response = await http.post(
+      Uri.parse('https://api.openai.com/v1/completions'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization':
+            'Bearer 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' // Ganti dengan API Key Anda
+      },
+      body:
+          '{"prompt": "hidup saya sedang $input. bisa berikan motivasi dengan singkat dan padat agar saya lebih semangat jaani hidup", "max_tokens": 200, "model": "text-davinci-003"}');
+
+  if (response.statusCode == 200) {
+    final jsonResponse = json.decode(response.body);
+    final botResponse = jsonResponse['choices'][0]['text'];
+    return botResponse;
+    // return response.body;
+  } else {
+    return 'Error: ${response.statusCode}';
   }
 }

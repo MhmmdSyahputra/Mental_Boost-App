@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mentalboost/views/quiz/detailQuiz.dart';
-import '../../utils/data.dart';
-import '../../widgets/widgetQuizBox.dart';
+import 'package:mentalboost/utils/data.dart';
+import 'package:mentalboost/widgets/widgetQuizBox.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});

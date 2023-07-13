@@ -3,9 +3,10 @@ import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/profile/ScreenFormProfile.dart';
+import 'package:mentalboost/views/dokter/mainMenuDokter.dart';
 import 'package:mentalboost/views/signup/ScreenRegistrasi.dart';
-import 'package:mentalboost/views/mainMenu.dart';
+import 'package:mentalboost/views/user/mainMenuUser.dart';
+import 'package:mentalboost/views/user/profile/ScreenFormProfile.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -38,10 +39,9 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 children: [
                   Container(
-                      child: Text(
-                    'Login',
-                    style: TextStyle(fontSize: 30),
-                  )),
+                      child: Text('Login',
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold))),
                   SizedBox(
                     height: 20,
                   ),
@@ -141,32 +141,50 @@ class _LoginScreenState extends State<LoginScreen> {
                                 //simpan id user yg login
                                 provLogin.userDoLogin(dataUser.id);
 
-                                //cek apakah yg login sudah melengkapi profile nya
-                                //dengan cara bandingkan apakah idlogin sudah ada di users
-                                //*note idusers == idLoginUsers
-                                final findUser = provUsers.usersList
-                                    .any((user) => user.id == dataUser.id);
-
-                                //jika tidak, maka lempar dia kehalaman lengkapi profile
-                                if (!findUser) {
-                                  Navigator.push(
+                                if (dataUser.tipe == 'dokter') {
+                                  print('dokter');
+                                  Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => FormProfileScreen(
-                                              data: dataUser,
-                                              tipe: 'fill',
-                                            )),
+                                        builder: (context) => TabBarDokter()),
                                   );
-                                  //jika sudah lengkap, maka lempar dia ke home langsung
+                                  return;
                                 } else {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => BottomNavMain()));
+                                  print('user');
+                                  //cek apakah yg login sudah melengkapi profile nya
+                                  //dengan cara bandingkan apakah idlogin sudah ada di users
+                                  //*note idusers == idLoginUsers
+                                  final findUser = provUsers.usersList
+                                      .any((user) => user.id == dataUser.id);
+
+                                  //jika tidak, maka lempar dia kehalaman lengkapi profile
+                                  if (!findUser) {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              FormProfileScreen(
+                                                data: dataUser,
+                                                tipe: 'fill',
+                                              )),
+                                    );
+                                    //jika sudah lengkap, maka lempar dia ke home langsung
+                                  } else {
+                                    Navigator.of(context).pushReplacement(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                BottomNavMain()));
+                                  }
                                 }
 
                                 //jika userlogin tidak ditemukan maka muncul notif
                               } else {
-                                myNotif('Your Password or Email is incorrect',
-                                    Colors.red);
+                                final snackBar = createSnackBar(
+                                    'Your Password or Email is Wrong!',
+                                    Colors.red,
+                                    'try again');
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
                               }
                             },
                             child: Text(

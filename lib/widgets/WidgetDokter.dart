@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/schedule/DetailDokter.dart';
+import 'package:mentalboost/views/user/schedule/DetailDokter.dart';
 
 class WidgetDokter extends StatefulWidget {
   final data;
@@ -17,15 +17,8 @@ class _WidgetDokterState extends State<WidgetDokter> {
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => DetailDokterScreen(
-                profil: widget.data['fotoProfile'],
-                name: widget.data['namaDokter'],
-                price: widget.data['price'],
-                biografi: widget.data['biografi'],
-                spesialis: widget.data['spesialis'],
-                manyPasien: widget.data['manyPasien'],
-                color: widget.data['color'],
-                pengalaman: widget.data['pengalaman'],
-                review: widget.data['review'])));
+                  data: widget.data,
+                )));
       },
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 5),
@@ -91,15 +84,8 @@ class _WidgetDokterState extends State<WidgetDokter> {
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => DetailDokterScreen(
-                            profil: widget.data['fotoProfile'],
-                            name: widget.data['namaDokter'],
-                            price: widget.data['price'],
-                            biografi: widget.data['biografi'],
-                            spesialis: widget.data['spesialis'],
-                            manyPasien: widget.data['manyPasien'],
-                            color: widget.data['color'],
-                            pengalaman: widget.data['pengalaman'],
-                            review: widget.data['review'])));
+                              data: widget.data,
+                            )));
                   },
                   child: Text("Lihat"),
                   style: ElevatedButton.styleFrom(

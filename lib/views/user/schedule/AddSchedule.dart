@@ -1,30 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:mentalboost/model/ScheduleModel.dart';
+import 'package:mentalboost/providers/LoginRegisProvider.dart';
 import 'package:mentalboost/providers/ScheduleProvider.dart';
+import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/other/ScreenSuccess.dart';
+import 'package:mentalboost/utils/data.dart';
+import 'package:mentalboost/views/user/schedule/ScreenSuccess.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../providers/LoginRegisProvider.dart';
-import '../../providers/UsersProviders.dart';
-
 class AddScheduleScreen extends StatefulWidget {
-  final String profil;
-  final String name;
-  final String price;
-  final Color color;
-  final String spesialis;
+  final data;
 
-  const AddScheduleScreen(
-      {super.key,
-      required this.profil,
-      required this.name,
-      required this.price,
-      required this.color,
-      required this.spesialis});
+  const AddScheduleScreen({
+    super.key,
+    this.data,
+  });
 
   @override
   State<AddScheduleScreen> createState() => _AddScheduleScreenState();
@@ -159,8 +152,9 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
                           Container(
                               child: DateTimePicker(
                             icon: Icon(Icons.date_range),
-                            initialValue: '',
-                            firstDate: DateTime(2000),
+                            initialValue: DateTime.now().toString(),
+                            // firstDate: DateTime.now(),
+                            firstDate: DateTime(1000),
                             lastDate: DateTime(2100),
                             onChanged: (val) => {dateInput = val},
                             validator: (val) {
@@ -192,7 +186,7 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
                             child: ElevatedButton(
                               onPressed: () {},
                               child: Text(
-                                'RP. ${widget.price}',
+                                'RP. ${widget.data['price']}',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black),
@@ -226,26 +220,33 @@ class _AddScheduleScreenState extends State<AddScheduleScreen> {
                             width: double.infinity, // membuat button full width
                             child: ElevatedButton(
                               onPressed: () {
-                                Provider.of<ScheduleProvider>(context,
-                                        listen: false)
-                                    .AddSchedule(ScheduleModel(
-                                        id: uuid.v1().substring(0, 8),
-                                        profilDokter: widget.profil,
-                                        nameDokter: widget.name,
-                                        priceDokter: widget.price,
-                                        spesialisDokter: widget.spesialis,
-                                        iduser: user.id,
-                                        namePasien: user.username,
-                                        agePasien:
-                                            getOld(user.dateOfBirth).toString(),
-                                        appointment: user.gender,
-                                        orderDate: dateNow,
-                                        color: widget.color,
-                                        time: selectedTime.toString(),
-                                        date: dateInput.toString(),
-                                        status: 2));
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => SuccessScreen()));
+                                if (selectedTime != null && dateInput != null) {
+                                  Provider.of<ScheduleProvider>(context,
+                                          listen: false)
+                                      .AddSchedule(ScheduleModel(
+                                          id: uuid.v1().substring(0, 8),
+                                          idDokter: widget.data['id'],
+                                          iduser: user.id,
+                                          namePasien: user.username,
+                                          agePasien: getOld(user.dateOfBirth)
+                                              .toString(),
+                                          appointment: user.gender,
+                                          orderDate: dateNow,
+                                          color: widget.data['color'],
+                                          time: selectedTime.toString(),
+                                          date: dateInput.toString(),
+                                          status: 0));
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              SuccessScreen()));
+                                  return;
+                                }
+                                Navigator.of(context).pop();
+                                final snackBar = createSnackBar(
+                                    'Time is Required!', Colors.red, 'try');
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
                               },
                               child: Text(
                                 'BUAT JADWAL',

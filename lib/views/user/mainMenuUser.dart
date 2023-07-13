@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/providers/LoginRegisProvider.dart';
+import 'package:mentalboost/providers/UsersProviders.dart';
+import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/schedule/MySchedule.dart';
-import 'package:mentalboost/views/home/ScreenHome.dart';
-import 'package:mentalboost/views/konseling/ScreenKonseling.dart';
 import 'package:mentalboost/views/signin/ScreenLogin.dart';
-import 'package:mentalboost/views/meditasi/ScreenMeditasi.dart';
-import 'package:mentalboost/views/profile/ScreenProfil.dart';
-import 'package:mentalboost/views/quiz/ScreenQuiz.dart';
-import 'package:mentalboost/views/tips/ScreenTips.dart';
+import 'package:mentalboost/views/user/home/ScreenHome.dart';
+import 'package:mentalboost/views/user/konseling/ScreenKonseling.dart';
+import 'package:mentalboost/views/user/meditasi/ScreenMeditasi.dart';
+import 'package:mentalboost/views/user/profile/ScreenProfil.dart';
+import 'package:mentalboost/views/user/quiz/ScreenQuiz.dart';
+import 'package:mentalboost/views/user/schedule/MySchedule.dart';
+import 'package:mentalboost/views/user/tips/ScreenTips.dart';
 import 'package:provider/provider.dart';
-
-import '../providers/UsersProviders.dart';
 
 class BottomNavMain extends StatefulWidget {
   const BottomNavMain({super.key});
@@ -77,11 +77,8 @@ class _BottomNavMainState extends State<BottomNavMain> {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage(
-                        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80',
-                      ),
-                    ),
+                        fit: BoxFit.cover,
+                        image: getProfile(user.profile, user.gender)),
                   ),
                 ),
                 SizedBox(
@@ -106,8 +103,13 @@ class _BottomNavMainState extends State<BottomNavMain> {
                     ));
                   } else if (value == MenuItem.Pengaturan) {
                   } else if (value == MenuItem.Logout) {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => LoginScreen()));
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginScreen(),
+                      ),
+                      (route) => false,
+                    );
                   }
                 },
                 itemBuilder: (context) => [

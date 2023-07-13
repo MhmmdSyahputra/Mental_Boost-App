@@ -3,7 +3,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/schedule/DetailOrderschedule.dart';
+import 'package:mentalboost/utils/data.dart';
+import 'package:mentalboost/views/user/schedule/DetailOrderschedule.dart';
 
 class WidgetMySchedule extends StatefulWidget {
   final data;
@@ -21,6 +22,9 @@ class _WidgetMyScheduleState extends State<WidgetMySchedule> {
     String dateNow =
         '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
 
+    final dataDokter =
+        Listdokter.firstWhere((user) => user['id'] == widget.data.idDokter);
+
     return GestureDetector(
       onTap: () => Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => DetailOrderScheduleScreen(data: widget.data))),
@@ -31,7 +35,7 @@ class _WidgetMyScheduleState extends State<WidgetMySchedule> {
               color: ColorConstants.boxColor,
               border: Border(
                 left: BorderSide(
-                  color: widget.data.color,
+                  color: dataDokter['color'],
                   width: 5,
                 ),
               ),
@@ -57,7 +61,7 @@ class _WidgetMyScheduleState extends State<WidgetMySchedule> {
                         children: [
                           Container(
                             child: Text(
-                              '${widget.data.spesialisDokter}',
+                              '${dataDokter['spesialis']}',
                               style: TextStyle(
                                   color: widget.data.color,
                                   fontWeight: FontWeight.w500),
@@ -75,7 +79,7 @@ class _WidgetMyScheduleState extends State<WidgetMySchedule> {
                       )),
                       Container(
                         child: Text(
-                          '${widget.data.nameDokter}',
+                          '${dataDokter['namaDokter']}',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
@@ -94,17 +98,19 @@ class _WidgetMyScheduleState extends State<WidgetMySchedule> {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20),
                                   ),
-                                  primary: widget.data.color),
+                                  primary: dataDokter['color']),
                             ),
                           ),
                           Expanded(
                             child: Align(
                                 alignment: Alignment.centerRight,
-                                child: dateNow == widget.data.date &&
-                                        widget.data.status != 0
-                                    ? Text('Waiting')
-                                    : Text(checkStatusSchedule(
-                                        widget.data.status))),
+                                child: Text(
+                                  checkStatusSchedule(widget.data.status),
+                                  style: TextStyle(
+                                      color: getColorStatusSchedule(
+                                          widget.data.status),
+                                      fontWeight: FontWeight.bold),
+                                )),
                           )
                         ],
                       )),

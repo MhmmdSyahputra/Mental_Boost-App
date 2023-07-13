@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
-import 'package:mentalboost/views/tips/DetailTips.dart';
+import 'package:mentalboost/views/user/tips/DetailTips.dart';
 
 class WidgetTips extends StatefulWidget {
   final data;

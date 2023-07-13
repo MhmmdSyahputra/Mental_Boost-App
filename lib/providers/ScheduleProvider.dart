@@ -10,4 +10,14 @@ class ScheduleProvider with ChangeNotifier {
     _scheduleList.add(schedule);
     notifyListeners();
   }
+
+  void updateStatusSchedule(String id, int status) {
+    final index = _scheduleList.indexWhere((data) => data.id == id);
+    if (index >= 0) {
+      _scheduleList[index].status = status;
+      notifyListeners();
+    } else {
+      throw Exception('data not found');
+    }
+  }
 }
