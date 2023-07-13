@@ -6,6 +6,7 @@ import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/utils/MyGlobalFunction.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/signin/ScreenLogin.dart';
+import 'package:mentalboost/views/user/about/screenAbout.dart';
 import 'package:mentalboost/views/user/profile/ScreenFormProfile.dart';
 import 'package:mentalboost/views/user/schedule/MySchedule.dart';
 import 'package:provider/provider.dart';
@@ -391,30 +392,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 borderRadius: BorderRadius.circular(20.0)),
                             child: Row(
                               children: [
-                                Expanded(
-                                    child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      child: Row(
-                                        // mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          Icon(Icons.help),
-                                          SizedBox(
-                                            width: 20,
-                                          ),
-                                          Text(
-                                            'About',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 17),
-                                          ),
-                                        ],
+                                InkWell(
+                                  onTap: () => Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                          builder: (context) => AboutScreen())),
+                                  child: Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        child: Row(
+                                          // mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Icon(Icons.help),
+                                            SizedBox(
+                                              width: 20,
+                                            ),
+                                            Text(
+                                              'About',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 17),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                )),
+                                    ],
+                                  )),
+                                ),
                               ],
                             ),
                           ),

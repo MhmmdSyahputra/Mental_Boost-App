@@ -6,6 +6,7 @@ import 'package:mentalboost/providers/UsersProviders.dart';
 import 'package:mentalboost/providers/questionQuizProvider.dart';
 import 'package:mentalboost/utils/Mycolor.dart';
 import 'package:mentalboost/views/signin/ScreenLogin.dart';
+import 'package:mentalboost/views/splashScreen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -41,6 +42,6 @@ class MyApp extends StatelessWidget {
               primaryColor: ColorConstants.primaryColor,
             ),
             // home: const FormProfileScreen()));
-            home: LoginScreen()));
+            home: SplashScreen()));
   }
 }
