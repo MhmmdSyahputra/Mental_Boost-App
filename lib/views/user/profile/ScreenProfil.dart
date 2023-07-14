@@ -62,14 +62,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         borderRadius: BorderRadius.circular(20.0)),
                     child: Row(
                       children: [
-                        Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: getProfile(user.profile, user.gender),
+                        InkWell(
+                          onTap: () => {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => FormProfileScreen(
+                                      data: user,
+                                      tipe: 'edit',
+                                    )))
+                          },
+                          child: Container(
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: getProfile(user.profile, user.gender),
+                              ),
                             ),
                           ),
                         ),
@@ -103,6 +112,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     )))
                           },
                           child: Container(
+                            padding: EdgeInsets.only(right: 20),
                             child: Icon(Icons.edit),
                           ),
                         )
@@ -375,28 +385,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ],
                             ),
                           ),
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 10),
-                            margin: EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 10),
-                            decoration: BoxDecoration(
-                                color: ColorConstants.boxColor,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    spreadRadius: 1,
-                                    blurRadius: 12,
-                                  ),
-                                ],
-                                borderRadius: BorderRadius.circular(20.0)),
-                            child: Row(
-                              children: [
-                                InkWell(
-                                  onTap: () => Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                          builder: (context) => AboutScreen())),
-                                  child: Expanded(
+                          InkWell(
+                            onTap: () => Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => AboutScreen())),
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 10),
+                              margin: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 10),
+                              decoration: BoxDecoration(
+                                  color: ColorConstants.boxColor,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      spreadRadius: 1,
+                                      blurRadius: 12,
+                                    ),
+                                  ],
+                                  borderRadius: BorderRadius.circular(20.0)),
+                              child: Row(
+                                children: [
+                                  Expanded(
                                       child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
@@ -421,8 +431,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       ),
                                     ],
                                   )),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ]),
@@ -510,7 +520,7 @@ Future<String> getOpenAIResponse(String input) async {
       headers: {
         'Content-Type': 'application/json',
         'Authorization':
-            'Bearer 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' // Ganti dengan API Key Anda
+            'Bearer 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' // Ganti dengan API Key Anda
       },
       body:
           '{"prompt": "hidup saya sedang $input. bisa berikan motivasi dengan singkat dan padat agar saya lebih semangat jaani hidup", "max_tokens": 200, "model": "text-davinci-003"}');

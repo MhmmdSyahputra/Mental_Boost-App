@@ -127,10 +127,10 @@ Future<String> getOpenAIResponse(String input) async {
       headers: {
         'Content-Type': 'application/json',
         'Authorization':
-            'Bearer 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' // Ganti dengan API Key Anda
+            'Bearer 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' // Ganti dengan API Key Anda
       },
       body:
-          '{"prompt": "$input", "max_tokens": 100, "model": "text-davinci-003"}');
+          '{"prompt": "$input", "max_tokens": 500, "model": "text-davinci-003"}');
 
   if (response.statusCode == 200) {
     final jsonResponse = json.decode(response.body);
