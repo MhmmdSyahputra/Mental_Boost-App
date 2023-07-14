@@ -82,7 +82,7 @@ Future<String> getOpenAIResponse(String input) async {
       headers: {
         'Content-Type': 'application/json',
         'Authorization':
-            'Bearer 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' // Ganti dengan API Key Anda
+            'Bearer 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' // Ganti dengan API Key Anda
       },
       body:
           '{"prompt": "anggap dirimu psikog. Simpulkan kepribadian ku ini dengan singkat, dan berikan saran darimu $input", "max_tokens": 200, "model": "text-davinci-003"}');
